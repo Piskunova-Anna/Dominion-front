@@ -1,0 +1,29 @@
+.page-dev__back {
+    /*display: flex;*/
+    position: absolute;
+    margin: 100px auto;
+    color: white;
+    font-size: 64px;
+    text-decoration: none;
+    background: rgba(227, 228, 250, .5);
+    box-shadow: 20px 20px 15px 0 rgba(126, 129, 132, .35);
+    border-radius: 30px;
+    width: 200px;
+    text-align: center;
+}
+
+@media screen and (max-width: 787px) {
+    .page-dev__back {
+        font-size: 48px;
+        margin: 80px auto;
+        width: 150px;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .page-dev__back {
+        font-size: 26px;
+        margin: 60px auto;
+        width: 100px;
+    }
+}

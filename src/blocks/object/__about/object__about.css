@@ -1,0 +1,23 @@
+.object__about {
+    display: flex;
+    flex-direction: column;
+    margin: 54px 0;
+}
+
+@media screen and (max-width: 1240px) {
+    .object__about {
+        margin: 40px 0; 
+    }
+}
+
+@media screen and (max-width: 820px) {
+    .object__about {
+        margin: 10px 0 30px;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .object__about {
+        align-items: center;
+    }
+}

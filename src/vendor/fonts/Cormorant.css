@@ -1,0 +1,31 @@
+@font-face {
+    font-family: 'Cormorant';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('Cormorant-Regular.ttf') format('ttf');
+}
+
+@font-face {
+    font-family: 'Cormorant';
+    font-style: italic;
+    font-weight: 700;
+    font-display: swap;
+    src: url('Cormorant-BoldItalic.ttf') format('ttf');
+}
+
+@font-face {
+    font-family: 'Cormorant';
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url('Cormorant-Italic.ttf') format('ttf');
+}
+
+@font-face {
+    font-family: 'Cormorant';
+    font-style: italic;
+    font-weight: 600;
+    font-display: swap;
+    src: url('Cormorant-SemiBoldItalic.ttf') format('ttf');
+}

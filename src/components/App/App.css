@@ -1,0 +1,25 @@
+.page {
+  display: flex;
+  font-family: 'Cormorant'/*, 'Arial', 'sans-serif'*/;
+  flex-direction: column;
+  margin: auto;
+  background-color: #fff;
+  min-width: 303px;
+  max-width: 1440px;
+}
+
+.page::-webkit-scrollbar {
+  width: 10px;
+}
+
+/*.page::-webkit-scrollbar-track {
+  box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.2) inset;
+  background-color: #  background-color: #fff;
+  ;
+  border-radius: 10px;
+}
+
+.page::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: linear-gradient(180deg, #FFE5B4, #82CAFF);
+}*/

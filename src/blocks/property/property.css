@@ -1,0 +1,49 @@
+.property {
+    display: flex;
+    flex-direction: column;
+    max-width: 1440px;
+    width: 91%;
+    margin: 35px auto 0;
+}
+
+.property:last-of-type {
+    margin: 35px auto 110px;
+}
+
+@media screen and (max-width: 1240px) {
+    .property {
+        margin: 100px auto 0;
+        max-width: 1038px;
+        width: 86%;
+    }
+    .property:last-of-type {
+        margin: 100px auto 35px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .property {
+        margin: 40px auto 0;
+        max-width: 924px;
+        width: 91%;
+    }
+    .property:last-of-type {
+        margin: 40px auto 80px;
+    }
+}
+
+@media screen and (max-width: 820px) {
+    .property {
+        max-width: 644px;
+        flex: 1;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .property {
+        margin: 30px auto 0;
+    }
+    .property:last-of-type {
+        margin: 30px auto 40px;
+    }
+}
