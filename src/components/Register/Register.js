@@ -12,9 +12,9 @@ function Register(props) {
   
   function handleSubmit(e) {
     e.preventDefault();
-    props.onRegister(values.email, values.password, values.name, values.agency, values.phone, values.surname) 
+    props.onRegister(values.name,values.email, values.surname, values.phone, values.agency, values.password ) 
+   
   } 
-
   return (
     <Form 
     title="Добро пожаловать!" 
@@ -88,7 +88,7 @@ function Register(props) {
     required 
     minLength="11" 
     maxLength="40"
-    pattern={pattern.phone}
+    
     />
     {errors.phone && <span className="email-error form__item-error">{errors.phone}</span>}    
     </Form>    

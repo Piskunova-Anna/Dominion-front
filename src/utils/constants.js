@@ -1,7 +1,7 @@
 export const pattern = {
     email: '^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$',
     name: '^[a-zA-Zа-яА-ЯЁё\\s\\-]+$',
-    phone: '',
+    phone: '7([0-9]{3})[0-9]{3}-[0-9]{2}-[0-9]{2}',
   }
   
   
@@ -20,7 +20,8 @@ export const pattern = {
   
   export const succesOk = {
     changeInfoUser: 'Данные успешно обновлены!',
-    signinOk: 'Вы успешно зарегистрированы',
+    signinOk: 'Регистрация прошла успешно, ожидайте подтверждения',
+    
   }
   
   export const infoMessage = {
