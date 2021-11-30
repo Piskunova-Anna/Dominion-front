@@ -1,0 +1,27 @@
+.news__header {
+    display: flex;
+    max-width: 1230px;
+    width: 100%;
+    justify-content: flex-start;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 72px;
+    line-height: 87px;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin: 5px auto;
+}
+
+@media screen and (max-width: 1320px) {
+    .news__header {
+        max-width: 1041px;
+        font-size: 48px;
+        line-height: 58px;
+    }
+}
+
+@media screen and (max-width: 1120px) {
+    .news__header {
+        max-width: 780px;
+    }
+}

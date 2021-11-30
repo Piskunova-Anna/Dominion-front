@@ -1,0 +1,27 @@
+.news__link {
+    color: black;
+    display: flex;
+    max-width: 1230px;
+    width: 100%;
+    justify-content: flex-start;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 1320px) {
+    .news__link {
+        max-width: 1041px;
+        max-height: 360px;
+        font-size: 16px;
+        line-height: 24px;
+    }
+}
+
+@media screen and (max-width: 1120px) {
+    .news__link {
+        max-width: 780px;
+    }
+}

@@ -1,0 +1,30 @@
+.news__text {
+    display: flex;
+    flex-direction: column;
+    max-width: 1230px;
+    max-height: 495px;
+    justify-content: flex-start;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 1320px) {
+    .news__text {
+        max-width: 1041px;
+        max-height: 360px;
+        font-size: 16px;
+        line-height: 24px;
+        overflow: hidden;
+    }
+}
+
+@media screen and (max-width: 1120px) {
+    .news__text {
+        max-width: 780px;
+    }
+}
