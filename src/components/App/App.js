@@ -116,7 +116,7 @@ function handlerClose() {
       <Route path="/" element={<><Header /><Landing /> <Footer /> </>} />
       <Route path="/signup" element={<><Header /><Register onRegister={onRegister}/> <Footer /> </>} />
       <Route path="/signin" element={<><Header /><Login onLogin={onLogin} /> <Footer /> </>} />
-      <Route path="/profile" element={<><Header /><Profile /> <Footer /> </>} />
+      <Route path="/profile" element={<><Header /><Profile /> <Footer /> </>} />    
       </Routes>
     <ModalInfo 
     isOpen={showModal}

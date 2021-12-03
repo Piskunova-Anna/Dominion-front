@@ -1,0 +1,82 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.profile__block {
+  display: flex;
+  flex-direction: row;
+  margin: 15px 50px 15px 60px;
+  font-size: 24px;
+  line-height: 29px;
+  font-style: italic;
+  font-weight: 600;
+}
+
+.profile__block .profile__user {
+  margin-left: auto;
+}
+
+.profile__user {
+display: flex;
+margin-right: 20px;
+}
+
+.profile__exit {
+  display: flex;
+  text-decoration: none;
+  color: #000;
+}
+
+.profile__button {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  padding: 0 20px;
+  background-color: #FEE0D4;
+  border-width: 0;
+  font-size: 24px;
+  line-height: 29px;
+  font-style: italic;
+  cursor: pointer;
+  font-family: 'Cormorant'/*, 'Arial', 'sans-serif'*/;
+}
+
+.profile__name {
+  display: flex;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 58px;
+  margin-right: auto;
+}
+
+.profile__object {
+  align-items: center;
+  padding: 0 30px;
+  font-family: Cormorant;
+  display: flex;
+  margin-left: auto;
+  box-shadow: 5px 5px 10px rgb(0 0 0 / 30%);
+  height: 70px;
+  font-size: 36px;
+  line-height: 43px;
+  font-style: italic;
+  font-weight: 600;
+  border-radius: 20px;
+  border: 2px solid black;
+  background-color: transparent;
+}
+
+.profile__main {
+  display: flex;
+  text-decoration: none;
+  align-self: center;
+  color: #000;
+}
+
+a:hover, button:hover {
+  text-decoration: underline;
+}

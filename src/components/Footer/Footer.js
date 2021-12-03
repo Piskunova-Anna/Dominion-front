@@ -7,15 +7,15 @@ function Footer(props) {
   
   
   return (
-    <footer class="footer">
-        <div class = 'footer__block'>
-        <p class="footer__logo">Доминион</p>
-        <p class="footer__author">&copy; 2021.Пискунова Анна</p>
+    <footer className ="footer">
+        <div className  = 'footer__block'>
+        <p className ="footer__logo">Доминион</p>
+        <p className ="footer__author">&copy; 2021.Пискунова Анна</p>
         </div>
-        <ul class="contacts">Контакты
-            <li class="contact">8-950-035-10-35</li>
-            <li class="contact">8-981-808-33-58</li>
-            <li class="contact"></li>
+        <ul className ="contacts">Контакты
+            <li className ="contact">8-950-035-10-35</li>
+            <li className ="contact">8-981-808-33-58</li>
+            <li className ="contact"></li>
         </ul>
     </footer>
   );

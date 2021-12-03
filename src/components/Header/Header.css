@@ -1,11 +1,11 @@
 .header {
     display: flex;
-    margin: auto;
+    margin: 0 auto;
     width: 95%;
     height: 120px;
     z-index: 1;
     justify-content:space-between;
-  position: relative;
+    position: relative;
 }
 
 .header__img {
