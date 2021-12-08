@@ -9,12 +9,13 @@ function Register(props) {
   const { values, handleChange, errors, isValid } = useFormValidation({
     email: '', password: '', surname:'', phone: '', agency: '' });
   const submitDisabled = values.email === '' || values.password === '' || values.agency === '' || values.surname === '' || values.phone === '' || !isValid || submitAuth;
-  
+      
   function handleSubmit(e) {
     e.preventDefault();
     props.onRegister(values.name,values.email, values.surname, values.phone, values.agency, values.password ) 
    
   } 
+
   return (
     <Form 
     title="Добро пожаловать!" 
@@ -86,9 +87,7 @@ function Register(props) {
     name="phone" 
     id="phone" 
     required 
-    minLength="11" 
-    maxLength="40"
-    
+    pattern={pattern.phone}
     />
     {errors.phone && <span className="email-error form__item-error">{errors.phone}</span>}    
     </Form>    
