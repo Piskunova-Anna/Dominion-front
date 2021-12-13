@@ -1,0 +1,6 @@
+.card__block {
+  display: flex;
+  font-size: 36px;
+  line-height: 44px;
+  margin: 10px 0;
+}

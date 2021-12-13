@@ -1,13 +1,14 @@
 import React from "react";
 import "./Profile.css";
 //import Cards from '../Cards.js';
+//{props.name}{props.surname}
 
 //Страничка профиля
 function Profile(props) {
   return (
     <main className = "profile">
       <div className = "profile__block">
-        <div className="profile__user">{props.name}{props.surname}</div>
+        <div className="profile__user">Piskunova Anna</div>
         <a href="/signin" className="profile__exit">
           Выход
         </a>
