@@ -1,16 +1,22 @@
 .page {
   display: flex;
-  font-family: 'Cormorant'/*, 'Arial', 'sans-serif'*/;
+  font-family: 'Cormorant'
+    /*, 'Arial', 'sans-serif'*/
+  ;
   flex-direction: column;
   margin: auto;
   background-color: #FFF4E4;
   min-width: 303px;
-  max-width: 1440px;
+  /*max-width: 1440px;*/
   min-height: 100vh;
 }
 
 .page::-webkit-scrollbar {
   width: 10px;
+}
+
+.body {
+  margin: auto;
 }
 
 /*.page::-webkit-scrollbar-track {

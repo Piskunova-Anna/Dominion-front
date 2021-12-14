@@ -10,7 +10,8 @@
     font-weight: 400;
     font-size: 36px;
     line-height: 44px;
-    margin: 15px 200px 0 0;
+    margin-top: 15px;
+    white-space: nowrap;
 }
 
 @media screen and (max-width: 1024px) {
