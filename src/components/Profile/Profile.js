@@ -21,7 +21,7 @@ function Profile(props) {
       <a href="/" className="profile__main">
         На главную
       </a>
-      <button className="profile__object">Добавить новый объект</button>
+      <button className="profile__object" onClick={props.onClick}>Добавить новый объект</button>
       </div>
     </main>
   );

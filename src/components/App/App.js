@@ -9,8 +9,10 @@ import Profile from '../Profile/Profile';
 import * as auth from '../../utils/Auth.js';
 import {infoMessage, errorMessage, authErrors, succesOk} from '../../utils/constants';
 import ModalInfo from '../ModalInfo/ModalInfo'
+import AddNewCard from '../AddCard/AddNewCard'
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import './App.css';
+import api from '../../utils/Api.js';
 
 function App() {
   const [loggedIn, setLoggedIn] = React.useState(false);
@@ -19,7 +21,8 @@ function App() {
   const [showModal,setShowModal] = React.useState(false);
   const [iconVisual,setIconVisual] = React.useState(false);
   const [textsucces, setTextsucces] = React.useState('');
-  
+  const [cards, setCards] = React.useState([]);
+  const [showCardModal,setShowCardModal] = React.useState(false);
 
 //Регистрация пользователя
 function onRegister( name, email, surname, phone, agency, password ) {
@@ -62,7 +65,7 @@ function onLogin(email,password){
     setShowModal(true)
     setIconVisual(true)
     setTextsucces(res.message)
-   //navigate('/profile');
+   navigate('/profile');
   }
    
   })
@@ -106,9 +109,23 @@ function tokenCheck() {
 //закрытие модального окна
 function handlerClose() {
   setShowModal(false)
-  
+  setShowCardModal(false)
+}
+function handlerOpenModal() {
+  setShowCardModal(true)
+  console.log(showCardModal)
 }
 
+function hanldNewcard(values) {
+ console.log(values[1][0].name)
+ api.createNewCard(values)
+ .then((newCard) => {
+  setCards([newCard, ...cards]); 
+  console.log(newCard)
+  
+})
+.catch(err => console.log(`Ошибка при добавлении карточки: ${err}`))
+}
   return (
     <CurrentUserContext.Provider>
     <div className="page">
@@ -116,13 +133,21 @@ function handlerClose() {
       <Route path="/" element={<><Header /><Landing /> <Footer /> </>} />
       <Route path="/signup" element={<><Header /><Register onRegister={onRegister}/> <Footer /> </>} />
       <Route path="/signin" element={<><Header /><Login onLogin={onLogin} /> <Footer /> </>} />
-      <Route path="/profile" element={<><Header /><Profile /> <Footer /> </>} />    
+      <Route path="/profile" element={<><Header /><Profile onClick={handlerOpenModal}/> <Footer /> </>} />    
       </Routes>
+      <AddNewCard
+      isOpen={showCardModal}
+      onClose={handlerClose}
+      title='Добавить новый объект'
+      name='квартиры'
+      onCardData={hanldNewcard}
+        />
     <ModalInfo 
     isOpen={showModal}
     textError={textsucces}
     onClose={handlerClose}
-    icon={iconVisual} />
+    icon={iconVisual}
+     />
     </div>
    
   </CurrentUserContext.Provider>
