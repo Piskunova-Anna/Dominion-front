@@ -6,6 +6,7 @@ import Landing from '../Landing/Landing';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
 import Profile from '../Profile/Profile';
+import CardDesc from '../CardDesc/CardDesc';
 import * as auth from '../../utils/Auth.js';
 import {infoMessage, errorMessage, authErrors, succesOk} from '../../utils/constants';
 import ModalInfo from '../ModalInfo/ModalInfo'
@@ -134,6 +135,8 @@ function hanldNewcard(values) {
       <Route path="/signup" element={<><Header /><Register onRegister={onRegister}/> <Footer /> </>} />
       <Route path="/signin" element={<><Header /><Login onLogin={onLogin} /> <Footer /> </>} />
       <Route path="/profile" element={<><Header /><Profile onClick={handlerOpenModal}/> <Footer /> </>} />    
+      <Route path="/profile" element={<><Profile /> <Footer /> </>} />
+      <Route path="/CardDesc" element={<><Header /><CardDesc /><Footer /></>} />
       </Routes>
       <AddNewCard
       isOpen={showCardModal}

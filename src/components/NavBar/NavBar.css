@@ -2,7 +2,8 @@
     margin: -120px auto 0;
     background: url('../../images/back.jpg') no-repeat;
     background-size: cover;
-    width: 95%;
+    background-position-x: center;
+    width: 100%;
 }
 
 .nav {
