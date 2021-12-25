@@ -1,0 +1,149 @@
+.popup__container__type_flats {
+  width: 90%
+}
+
+.popup_type_flats {
+  position: absolute;
+  z-index: 1;
+}
+
+.popup__close_type_flats {
+  top: 0;
+  right: 0;
+  width: 50px;
+  height: 50px;
+}
+
+.add-form {
+  display: flex;
+  width: 95%;
+  margin: auto;
+  flex-direction: column;
+}
+
+.add-form__title {
+  margin: 0;
+  padding: 0;
+}
+
+.add-form__modul {
+  display: flex;
+  justify-content: space-between;
+}
+
+.add-form__modul_class {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.add-form__item_type_info {
+  resize: vertical;
+  padding:15px;
+  border-radius:15px;
+  border:0;
+  box-shadow:4px 4px 10px rgba(0,0,0,0.4);
+  height:150px;
+}
+
+.add-form__label {
+  padding: 10px 10px 15px 0;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 12px;
+  padding-right: 10px;
+  text-decoration: underline;
+  font-style: italic;
+}
+
+.add-form__type_info {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-form__fieldset {
+  border: 0;
+}
+
+.add-form__item {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid;  
+}
+
+.add-form__fieldset_type_column {
+  border: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.add-form__type_area {
+  display: flex;
+  flex-direction: column;
+}
+.add-form__type_addition {
+  display: flex;
+  gap: 5px;
+}
+
+.add-form__button {
+  margin: 20px auto;
+  width: 227px;
+  height: 54px;
+  border: 0;
+  border-radius: 2px;
+  font-family: inherit;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  background-color: antiquewhite;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25), inset 0px 0px 10px rgba(0, 0, 0, 0.25);
+}
+
+.add-form__button_disabled {
+  background: #c6c7cc;
+}
+
+.card_image {
+  width: 200px;
+  object-fit: cover;
+  height: 200px;
+}
+
+.card__skeleton_cont {
+  display: flex;
+}
+
+.image__skeleton {
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+}
+.image__item {
+  width: 100%;
+  height: 100px;
+  background-color: antiquewhite;
+  margin-bottom: 5px;
+  object-fit: cover;
+}
+
+.image__item_type_one {
+  width: 250px;
+  height: 315px;
+  margin-left: 5px;
+}
+
+.add-form_button_active {
+  background-color: antiquewhite;
+}
+
+.popup__container_type_object {
+  width: 430px;
+  height: 200px;
+}
+
+
+
+
+
+

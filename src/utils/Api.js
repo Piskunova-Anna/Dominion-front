@@ -11,14 +11,31 @@ class Api {
          return Promise.reject(res.status)
        } 
     }
+
+    getCards () {
+        return fetch(`${this._address}/cards`, {
+          method: 'GET',
+          headers: this._headers,
+          credentials: 'include',
+        })
+        .then(this._getResponseData)
+      }
+
+      deleteCard(id) {
+        return fetch(`${this._address}/profile/cards/${id}`, {
+          method: 'DELETE',
+          headers: this._headers,
+          credentials: 'include'
+        })
+    }
     createNewCard(data) {
         return fetch(`${this._address}/profile/cards`, {
           method: 'POST',
           headers: this._headers,
           credentials: 'include',
           body: JSON.stringify({
-            name: data[0].name ,
-            image: data[1][0].name,
+            name: data[2],
+            image: data[1],
             description: data[0].info,
             price: data[0].price,
             adress: data[0].adress,
@@ -36,6 +53,8 @@ class Api {
         })
         .then(this._getResponseData)
       }
+
+      
     }
 
 

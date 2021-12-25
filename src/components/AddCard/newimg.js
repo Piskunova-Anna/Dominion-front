@@ -1,26 +1,19 @@
-import React from "react";
+import React from 'react';
+import './AddNewCard.css';
 
-const UploadAndDisplayImage = (props) => {
-   
-
+function UploadAndDisplayImage (props) {
   const arr = Object.values(props.selectedImage);
-
+  
   return (
-    <div>
+    <div >
       {props.selectedImage && (
-        <div>
-            {arr.map((item) => (
-                <>
-                <img className="card_image" alt="not fount" width={"250px"} src={URL.createObjectURL(item)} />
-            
-                </>
-            ))
-            }
-        </div>
+      <div className="select__image">
+        {arr.map((item) => (
+          <img className="card_image" alt="not fount" width={"250px"} src={URL.createObjectURL(item)} />
+        ))
+        }
+      </div>
       )}
-      <br />
-     
-      <br /> 
       <input
         type="file"
         name="myImage"

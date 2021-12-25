@@ -1,7 +1,5 @@
 import React from 'react';
 
-//import './Selected.css'
-
 export function Selected (props) {
 
   return (
