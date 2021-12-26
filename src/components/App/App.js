@@ -85,10 +85,10 @@ function onLogin(email,password){
    
    } else if(res.succes === 'ok') {
      tokenCheck()
-     navigate('/profile');
-     setShowModal(true)
+     /*setShowModal(true)
      setIconVisual(true)
-     setTextsucces(res.message)
+     setTextsucces(res.message)*/
+     navigate('/profile');
    }
     
    })

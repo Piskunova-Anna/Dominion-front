@@ -29,6 +29,7 @@
 .add-form__modul {
   display: flex;
   justify-content: space-between;
+  gap: 20px;
 }
 
 .add-form__modul_class {
@@ -66,6 +67,7 @@
 }
 
 .add-form__item {
+  width: 100%;
   padding: 5px;
   border-radius: 5px;
   border: 1px solid;  
@@ -143,7 +145,9 @@
 }
 
 
-
-
-
-
+@media screen and (max-width: 855px) {
+  .image__skeleton {
+    display: none;
+    
+  }
+}

@@ -9,10 +9,11 @@ import { CurrentCards } from '../Auxiliary/Auxiliary'
 function Profile(props) {
   const currentUser = React.useContext(CurrentUserContext);
   const newcards = CurrentCards(props.cards)
-
+  const userparams = Object.keys(currentUser).length === 0
+console.log(currentUser)
   return (
     <>
-    { currentUser ? 
+    { !userparams ? 
     <main className = "profile">
       <div className = "profile__block">
         <div className="profile__user">{currentUser.name}</div>

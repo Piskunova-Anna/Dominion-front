@@ -73,17 +73,17 @@ function AddNewFlats(props) {
             <fieldset className="add-form__fieldset add-form__type_rooms">
               <h2 className="add-form__title add-form__title_rooms">Количество комнат</h2>
               <label className="add-form__label" htmlFor="studio">Студия</label>
-              <input type="radio" value={'studio'} onChange={handleChange} className="add-form__item add-form__item_type_name" name="rooms" id="studio"/>
+              <input type="radio" value={'studio'} onChange={handleChange} className="add-form__item_type_rooms" name="rooms" id="studio"/>
               <label className="add-form__label" htmlFor="one">1</label>
-              <input type="radio" value={'1'} onChange={handleChange} className="add-form__item add-form__item_type_name" name="rooms" id="one"/>
+              <input type="radio" value={'1'} onChange={handleChange} className="add-form__item_type_rooms" name="rooms" id="one"/>
               <label className="add-form__label" htmlFor="two">2</label>
-              <input type="radio" value={'2'} onChange={handleChange} className="add-form__item add-form__item_type_name" name="rooms" id="two"/>
+              <input type="radio" value={'2'} onChange={handleChange} className="add-form__item_type_rooms" name="rooms" id="two"/>
               <label className="add-form__label" htmlFor="three">3</label>
-              <input type="radio" value={'3'} onChange={handleChange} className="add-form__item add-form__item_type_name" name="rooms" id="three"/>
+              <input type="radio" value={'3'} onChange={handleChange} className="add-form__item_type_rooms" name="rooms" id="three"/>
               <label className="add-form__label" htmlFor="four">4</label>
-              <input type="radio" value={'4'} onChange={handleChange} className="add-form__item add-form__item_type_name" name="rooms" id="four"/>
+              <input type="radio" value={'4'} onChange={handleChange} className="add-form__item_type_rooms" name="rooms" id="four"/>
               <label className="add-form__label" htmlFor="five">5+</label>
-              <input type="radio" value={'5'} onChange={handleChange} className="add-form__item add-form__item_type_name" name="rooms" id="five"/>
+              <input type="radio" value={'5'} onChange={handleChange} className="add-form__item_type_rooms" name="rooms" id="five"/>
             </fieldset>  
             <fieldset className="add-form__fieldset add-form__type_area">
               <h2 className="add-form__title add-form__title_total-area">Площадь квартиры</h2>
