@@ -1,7 +1,7 @@
 import React from 'react';
 import './AddNewCard.css';
 
-function UploadAndDisplayImage (props) {
+function DisplayImage (props) {
   const arr = Object.values(props.selectedImage);
   
   return (
@@ -24,4 +24,4 @@ function UploadAndDisplayImage (props) {
   );
 };
 
-export default UploadAndDisplayImage;
+export default DisplayImage;

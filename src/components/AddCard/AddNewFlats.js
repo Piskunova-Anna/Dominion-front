@@ -2,8 +2,7 @@ import React, { useRef} from 'react';
 import './AddNewFlats.css';
 import {useFormValidation} from '../../utils/Validator.js';
 import {metro} from '../../utils/constants'
-import {Selected} from './Selected'
-//import UploadAndDisplayImage from './newimg'
+import {SelectedMetro} from './SelectedMetro'
 import SceletonImage from './SceletonImage'
 import {pattern} from '../../utils/constants';
 
@@ -102,7 +101,7 @@ function AddNewFlats(props) {
               <select name="metro" value={values.metro} onChange={handleChange}>
               <option value="none" name="none">Выберите метро</option>
                 {metro.map((item, index)=> (
-                  <Selected item={item} key={index}/>
+                  <SelectedMetro item={item} key={index}/>
                 ))}
               </select>
             </fieldset>

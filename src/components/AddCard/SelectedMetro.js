@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function Selected (props) {
+export function SelectedMetro (props) {
 
   return (
     <option onChange={props.onChange}>{props.item}</option>

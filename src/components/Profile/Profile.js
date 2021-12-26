@@ -3,16 +3,16 @@ import "./Profile.css";
 import {Link, Navigate} from 'react-router-dom';
 import Flats from '../Flats/Flats.js'
 import { CurrentUserContext } from '../../contexts/CurrentUserContext.js';
-import { CurrentCards } from '../Auxiliary/auxiliary'
+import { CurrentCards } from '../Auxiliary/Auxiliary'
 
 //Страничка профиля
 function Profile(props) {
   const currentUser = React.useContext(CurrentUserContext);
   const newcards = CurrentCards(props.cards)
-console.log(props.loggedIn)
-  return (
-    currentUser ? 
 
+  return (
+    <>
+    { currentUser ? 
     <main className = "profile">
       <div className = "profile__block">
         <div className="profile__user">{currentUser.name}</div>
@@ -34,7 +34,10 @@ console.log(props.loggedIn)
       </div>
     </main>
     : <Navigate to="/signin" />
+    }
+    </>
   );
+  
 }
 
 export default Profile;

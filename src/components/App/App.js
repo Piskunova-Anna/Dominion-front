@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Routes, useNavigate, /*useLocation*/Navigate } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Landing from '../Landing/Landing';
@@ -14,8 +14,7 @@ import AddNewFlats from '../AddCard/AddNewFlats'
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import './App.css';
 import api from '../../utils/Api.js';
-import Selectobject from '../AddCard/Selectobject'
-import ProtectedRoute from '../ProtectedRoute'
+import SelectObject from '../AddCard/SelectObject'
 import NotFound from '../NotFound/NotFound'
 import FlatsList from '../Flats/FlatsList';
 
@@ -87,9 +86,9 @@ function onLogin(email,password){
    } else if(res.succes === 'ok') {
      tokenCheck()
      navigate('/profile');
-     /*setShowModal(true)
+     setShowModal(true)
      setIconVisual(true)
-     setTextsucces(res.message)*/
+     setTextsucces(res.message)
    }
     
    })
@@ -124,9 +123,7 @@ function tokenCheck() {
         admin: res.admin,
         _id: res._id
       })
-      
     }
-    
   })
   .catch(err => console.log(`Зарегистрируйтесь или войдите в систему: ${err}`))  
 }
@@ -182,8 +179,7 @@ function handleDeleteCard(card) {
 function handleChange(event) {
   setObject(event.target.value)
 }
-console.log(loggedIn)
-console.log(currentUser) 
+
   return (
     <CurrentUserContext.Provider  value={currentUser}>
     <div className="page">
@@ -204,7 +200,7 @@ console.log(currentUser)
       onCardData={hanldNewcard}
       object={object}
         />
-      <Selectobject 
+      <SelectObject 
         isOpen={showSelectModal}
         onClose={handlerClose}
         onNext={handlerOpenAddModal}

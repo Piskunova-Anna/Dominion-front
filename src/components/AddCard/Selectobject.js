@@ -1,7 +1,7 @@
 import React from 'react';
 import '../ModalInfo/ModalInfo.css'
 
-function Selectobject (props) {
+function SelectObject (props) {
  
   function handleSubmit(event) {
     event.preventDefault();
@@ -31,4 +31,4 @@ function Selectobject (props) {
   )
 }
 
-export default Selectobject 
+export default SelectObject 
