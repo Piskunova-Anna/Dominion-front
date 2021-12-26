@@ -40,11 +40,10 @@
   line-height: 29px;
   font-style: italic;
   cursor: pointer;
-  font-family: 'Cormorant'
-    /*, 'Arial', 'sans-serif'*/
-  ;
+  font-family: "Cormorant";
 }
 
+/*, 'Arial', 'sans-serif'*/
 .profile__name {
   display: flex;
   margin-block-start: 0;
@@ -61,7 +60,7 @@
   font-family: Cormorant;
   display: flex;
   margin-left: auto;
-  box-shadow: 5px 5px 10px rgb(0 0 0 / 30%);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
   height: 70px;
   font-size: 36px;
   line-height: 43px;
@@ -84,7 +83,6 @@ a:hover, button:hover {
 }
 
 @media screen and (max-width: 1024px) {
-
   .profile__block {
     margin: 10px 40px;
     font-size: 18px;
@@ -106,69 +104,67 @@ a:hover, button:hover {
     font-weight: 400;
   }
 }
-
-  @media screen and (max-width: 850px) {
-
-    .profile__button {
-      height: 50px;
-      padding: 0 10px;
-      font-size: 18px;
-      line-height: 22px;
-    }
-
-    .profile__name {
-      font-size: 36px;
-      line-height: 43px;
-    }
-
-    .profile__object {
-      padding: 0 10px;
-      height: 50px;
-      font-size: 24px;
-      line-height: 29px;
-    }
+@media screen and (max-width: 850px) {
+  .profile__button {
+    height: 50px;
+    padding: 0 10px;
+    font-size: 18px;
+    line-height: 22px;
   }
 
-  @media screen and (max-width: 850px) {
-    
-    .profile__block {
-      flex-direction: column;
-      font-size: 18px;
-      line-height: 22px;
-      font-weight: 400;
-    }
-    
-    .profile__user {
-      margin-right: 0;
-    }
-    
-    .profile__exit {
-      justify-content: end;
-    }
-    
-    .profile__button {
-      justify-content: center;
-      height: 50px;
-      padding: 0;
-      font-size: 18px;
-      line-height: 22px;
-    }
-    
-    .profile__block h1, .profile__block button {
-      justify-items: start;
-    }
-
-    .profile__name {
-      font-size: 24px;
-      line-height: 29px;
-      margin-right: auto;
-      margin-bottom: 20px;
-    }
-
-    .profile__object {
-      margin: 20px auto;
-      font-size: 18px;
-      line-height: 22px;
-      font-weight: 400;
-    }
+  .profile__name {
+    font-size: 36px;
+    line-height: 43px;
   }
+
+  .profile__object {
+    padding: 0 10px;
+    height: 50px;
+    font-size: 24px;
+    line-height: 29px;
+  }
+}
+@media screen and (max-width: 850px) {
+  .profile__block {
+    flex-direction: column;
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 400;
+  }
+
+  .profile__user {
+    margin-right: 0;
+  }
+
+  .profile__exit {
+    justify-content: end;
+  }
+
+  .profile__button {
+    justify-content: center;
+    height: 50px;
+    padding: 0;
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .profile__block h1, .profile__block button {
+    justify-items: start;
+  }
+
+  .profile__name {
+    font-size: 24px;
+    line-height: 29px;
+    margin-right: auto;
+    margin-bottom: 20px;
+  }
+
+  .profile__object {
+    margin: 20px auto;
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 400;
+  }
+}
+
+/*# sourceMappingURL=Profile.css.map */

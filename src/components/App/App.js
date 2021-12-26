@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Routes, useNavigate, useLocation } from 'react-router-dom';
+import { Route, Routes, useNavigate/*, useLocation*/ } from 'react-router-dom';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Landing from '../Landing/Landing';
@@ -8,15 +8,15 @@ import Login from '../Login/Login';
 import Profile from '../Profile/Profile';
 import CardDesc from '../CardDesc/CardDesc';
 import * as auth from '../../utils/Auth.js';
-import {infoMessage, errorMessage, authErrors, succesOk} from '../../utils/constants';
+import {/*infoMessage, */errorMessage, authErrors, succesOk} from '../../utils/constants';
 import ModalInfo from '../ModalInfo/ModalInfo'
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import './App.css';
 
 function App() {
-  const [loggedIn, setLoggedIn] = React.useState(false);
+  const [/*loggedIn, */setLoggedIn] = React.useState(false);
   let navigate = useNavigate();
-  const [currentUser, setCurrentUser] = React.useState({});
+  const [/*currentUser, */setCurrentUser] = React.useState({});
   const [showModal,setShowModal] = React.useState(false);
   const [iconVisual,setIconVisual] = React.useState(false);
   const [textsucces, setTextsucces] = React.useState('');

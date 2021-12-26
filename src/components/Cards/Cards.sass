@@ -1,0 +1,125 @@
+%flexRow
+  display: flex
+  flex-direction: row
+%flexCol
+  display: flex
+  flex-direction: column
+%fontXS
+  font: 18px/22px
+%fontS
+  font: 24px/29px
+    style: normal
+    weight: normal
+%fontM
+  font: 36px/44px
+    style: normal
+    weight: normal
+%margin
+  display: flex
+  margin:
+    block-start: 0
+    block-end: 0
+.object
+  @extend %flexRow
+  max-width: 1200px
+  min-height: 475px
+  margin: 50px 60px
+  border: 5px solid #4B0082
+  background: #E8C9FF
+  @media screen
+    @media (max-width: 1240px)
+      /*max-width: 1134px*/
+      margin: 50px 55px
+    @media (max-width: 820px)
+      /*max-width: 687px*/
+      margin: 50px
+    @media (max-width: 650px)
+      flex-direction: column
+      /*max-width: 260px*/
+      margin: 30px
+.object__name
+  @extend %flexRow
+  align-items: center
+  max-width: 250px
+  @extend %fontS
+  @media screen
+    @media (max-width: 1024px)
+        margin: 10px auto
+        font: 18px/22px
+.object_mob
+  @extend %flexRow
+  @media screen
+    @media (max-width: 850px)
+      flex-direction: column
+      align-items: center
+      margin: 20px auto 0
+    @media (max-width: 650px)
+      max-width: 260px
+      align-items: center
+.object__about
+  @extend %flexCol
+  margin: 54px 0
+  @media screen
+    @media (max-width: 1240px)
+      margin: 40px 0
+    @media (max-width: 820px)
+      margin: 10px 0 30px
+    @media (max-width: 650px)
+      align-items: center
+.object__block
+  @extend %margin
+  align-self: baseline
+  @extend  %fontS
+  @media screen
+    @media (max-width: 1024px)
+        font: 18px/22px
+.object__photo
+  width: 270px
+  height: 360px
+  background-size: cover
+  border: 3px solid #9d9d9d
+  margin: auto 50px
+  @media screen
+    @media (max-width: 1240px)
+      width: 230px
+      height: 310px
+      margin: auto 24px
+    @media (max-width: 820px)
+      margin: auto 22px
+    @media (max-width: 650px)
+      height: 400px
+    @media (max-width: 550px)
+      width: 200px
+      height: 260px
+      margin: auto
+.object__price
+  @extend %margin
+  @extend %fontM
+  @media screen
+    @media (max-width: 1024px)
+      font: 18px/22px
+.object__text-block
+  @extend %flexCol
+  height: 360px
+  margin: auto 50px
+  @media screen
+    @media (max-width: 1240px)
+      height: 550px
+      margin: auto 24px
+.object__head
+  @extend %margin
+  @extend %fontS
+  @media screen
+    @media (max-width: 650px)
+      font: 18px/22px
+.object__text
+  max-width: 620px
+  height: 320px
+  overflow: hidden
+  @extend %margin
+  @extend %fontS
+  @media screen
+    @media (max-width: 1240px)
+      height: 100%
+    @media (max-width: 820px)
+        font: 18px/22px

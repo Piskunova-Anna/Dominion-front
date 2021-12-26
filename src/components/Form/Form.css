@@ -6,7 +6,6 @@
   color: #990012;
 }
 
-
 .form__title {
   display: flex;
   justify-content: center;
@@ -47,7 +46,6 @@
 .form__item:focus {
   outline: none;
   border-bottom: 1px solid #000;
-
 }
 
 .input__label {
@@ -89,9 +87,7 @@
   .form__container {
     margin: 40px auto 232px;
   }
-
 }
-
 @media screen and (max-width: 550px) {
   .form__container {
     width: 260px;
@@ -105,6 +101,7 @@
 
   .form__button {
     width: 260px;
-    
   }
 }
+
+/*# sourceMappingURL=Form.css.map */

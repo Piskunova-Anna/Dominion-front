@@ -1,0 +1,118 @@
+//не правила
+.menu
+  margin: -120px auto 0
+  background: url('../../images/back.jpg') no-repeat
+  background-size: cover
+  background-position-x: center
+  width: 100%
+
+.nav
+  margin-top: 150px
+
+.property
+  display: flex
+  flex-direction: column
+  max-width: 1440px
+  width: 91%
+  margin: 35px auto 0
+
+.property:last-of-type
+  margin: 35px auto 110px
+
+.property__grid
+  display: grid
+  grid-template-columns: repeat(3, minmax(250px, 1fr))
+  column-gap: 50px
+  row-gap: 40px
+  margin-top: 25px
+  justify-content: center
+
+.property_estate
+  font-size: 72px
+  line-height: 87px
+  text-align: center
+  font-style: italic
+  font-weight: 700
+  margin: auto
+  margin-block-start: 0
+  margin-block-end: 0
+  color: #FFAB2D
+  display: flex
+
+.property__block
+  display: flex
+  border-radius: 30px
+  background: rgba(255, 244, 228, .9)
+  box-shadow: 15px 15px 15px 0 rgba(255, 255, 255, .6)
+  color: #BC7203
+  font-style: normal
+  font-weight: normal
+  font-size: 64px
+  line-height: 78px
+  justify-content: center
+  text-decoration: none
+  min-height: 120px
+  align-items: center
+  max-width: 400px
+  width: 100%
+
+@media screen
+  @media (max-width: 1240px)
+    .property
+      margin: 100px auto 0
+      max-width: 1038px
+      width: 86%
+    .property:last-of-type
+      margin: 100px auto 35px
+    .property__grid
+      column-gap: 40px
+      row-gap: 70px
+    .property_estate
+      font-size: 64px
+      line-height: 78px
+    .property__block
+      font-size: 36px
+      line-height: 44px
+      min-height: 145px
+      max-width: 320px
+
+  @media (max-width: 1024px)
+    .property
+      margin: 40px auto 0
+      max-width: 924px
+      width: 91%
+    .property:last-of-type
+      margin: 40px auto 80px
+
+  @media (max-width: 820px)
+    .property
+      max-width: 644px
+      flex: 1
+    .property__grid
+      grid-template-columns: repeat(2, 1fr)
+      column-gap: 75px
+      row-gap: 45px
+    .property__block
+      min-height: 135px
+      max-width: 284px
+      background: rgba(254, 224, 180, .9)
+      box-shadow: 15px 15px 15px 0 rgba(207, 91, 0, .6)
+
+  @media (max-width: 787px)
+    .property_estate
+      font-size: 48px
+      line-height: 58px
+
+  @media (max-width: 550px)
+    .property
+      margin: 30px auto 0
+    .property:last-of-type
+      margin: 30px auto 40px
+    .property__grid
+      grid-template-columns: 250px
+    .property_estate
+      font-size: 36px
+      line-height: 44px
+    .property__block
+      min-height: 75px
+      max-width: 250px

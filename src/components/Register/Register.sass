@@ -1,0 +1,35 @@
+%marPad
+  margin: 0
+  padding: 0
+.form__signup
+    display: flex
+    justify-content: center
+    align-items: center
+    @extend %marPad
+.form__text
+  @extend %marPad
+  font-weight: normal
+  font-size: 14px
+  line-height: 19px
+  font-style: italic
+  text-align: center
+  color: #990012
+  padding-right: 6px
+  @media screen
+    @media (max-width: 502px)
+      font-size: 12px
+      line-height: 15px  
+.form__link
+  @extend %marPad
+  font-weight: normal
+  font-size: 14px
+  line-height: 17px
+  text-align: center
+  color: #3456F3
+  text-decoration: none
+  @media screen
+    @media (max-width: 502px)
+      font-size: 12px
+      line-height: 15px
+.form__link:hover
+  text-decoration: underline
