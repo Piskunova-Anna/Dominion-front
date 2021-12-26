@@ -1,0 +1,10 @@
+.cards__basket {
+  position: absolute;
+  width: 20px;
+  top: 0;
+    right: 0;
+}
+
+.object_mob {
+    position: relative;
+}
