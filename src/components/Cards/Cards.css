@@ -32,6 +32,7 @@
   margin: 50px 60px;
   border: 5px solid #4B0082;
   background: #E8C9FF;
+  position: relative;
 }
 @media screen and (max-width: 1240px) {
   .object {
@@ -64,6 +65,9 @@
   }
 }
 
+.object_mob {
+  position: relative;
+}
 @media screen and (max-width: 850px) {
   .object_mob {
     flex-direction: column;
@@ -175,6 +179,13 @@
   .object__text {
     font: 18px/22px;
   }
+}
+
+.cards__basket {
+  position: absolute;
+  width: 20px;
+  top: 0;
+  right: 0;
 }
 
 /*# sourceMappingURL=Cards.css.map */
