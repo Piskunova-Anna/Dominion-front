@@ -24,15 +24,16 @@
   line-height: 19px;
   text-align: center;
   margin-bottom: 184px;
-  
 }
 
 .error__link {
   font-weight: normal;
   font-size: 14px;
-  line-height: 17px;  
-  text-align: center;  
+  line-height: 17px;
+  text-align: center;
   color: #3456F3;
   background-color: transparent;
   border: 0;
 }
+
+/*# sourceMappingURL=NotFound.css.map */

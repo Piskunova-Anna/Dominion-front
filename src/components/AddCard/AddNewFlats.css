@@ -1,5 +1,5 @@
 .popup__container__type_flats {
-  width: 90%
+  width: 90%;
 }
 
 .popup_type_flats {
@@ -40,11 +40,11 @@
 
 .add-form__item_type_info {
   resize: vertical;
-  padding:15px;
-  border-radius:15px;
-  border:0;
-  box-shadow:4px 4px 10px rgba(0,0,0,0.4);
-  height:150px;
+  padding: 15px;
+  border-radius: 15px;
+  border: 0;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+  height: 150px;
 }
 
 .add-form__label {
@@ -70,7 +70,7 @@
   width: 100%;
   padding: 5px;
   border-radius: 5px;
-  border: 1px solid;  
+  border: 1px solid;
 }
 
 .add-form__fieldset_type_column {
@@ -83,6 +83,7 @@
   display: flex;
   flex-direction: column;
 }
+
 .add-form__type_addition {
   display: flex;
   gap: 5px;
@@ -121,6 +122,12 @@
   display: flex;
   flex-direction: column;
 }
+@media screen and (max-width: 855px) {
+  .image__skeleton {
+    display: none;
+  }
+}
+
 .image__item {
   width: 100%;
   height: 100px;
@@ -144,10 +151,4 @@
   height: 200px;
 }
 
-
-@media screen and (max-width: 855px) {
-  .image__skeleton {
-    display: none;
-    
-  }
-}
+/*# sourceMappingURL=AddNewFlats.css.map */
