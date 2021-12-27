@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .object_mob, .object__name, .object {
   display: flex;
   flex-direction: row;
@@ -181,11 +182,22 @@
   }
 }
 
+=======
+>>>>>>> 71596b788c4571e2f6889aa6017a515c3397d868
 .cards__basket {
   position: absolute;
   width: 20px;
   top: 0;
+<<<<<<< HEAD
   right: 0;
 }
 
 /*# sourceMappingURL=Cards.css.map */
+=======
+    right: 0;
+}
+
+.object_mob {
+    position: relative;
+}
+>>>>>>> 71596b788c4571e2f6889aa6017a515c3397d868
