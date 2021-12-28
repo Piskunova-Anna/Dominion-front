@@ -14,14 +14,15 @@ import AddNewFlats from '../AddCard/AddNewFlats'
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import './App.css';
 import api from '../../utils/Api.js';
-import SelectObject from '../AddCard/SelectObject'
+import SelectObject from '../AddCard/Selectobject'
 import NotFound from '../NotFound/NotFound'
 import FlatsList from '../Flats/FlatsList';
+import Cards from '../Cards/Cards';
 
 function App() {
-  const [/*loggedIn, */setLoggedIn] = React.useState(false);
+  const [loggedIn, setLoggedIn] = React.useState(false);
   let navigate = useNavigate();
-  const [/*currentUser, */setCurrentUser] = React.useState({});
+  const [currentUser, setCurrentUser] = React.useState({});
   const [showModal,setShowModal] = React.useState(false);
   const [iconVisual,setIconVisual] = React.useState(false);
   const [textsucces, setTextsucces] = React.useState('');
@@ -184,13 +185,14 @@ function handleChange(event) {
     <CurrentUserContext.Provider  value={currentUser}>
     <div className="page">
       <Routes> 
-      <Route path="/" element={<><Header /><Landing /> <Footer /> </>} />
-      <Route path="/signup" element={<><Header /><Register onRegister={onRegister}/> <Footer /> </>} />
-      <Route path="/signin" element={<><Header /><Login onLogin={onLogin} /> <Footer /> </>} />
-      <Route path="/profile" element={<><Header /><Profile loggedIn={loggedIn} cards={cards} logOut={onSignOut} onCardDelete={handleDeleteCard} onClick={handlerOpenModal}/>  <Footer /> </>} />
+        <Route path="/" element={<><Header /><Landing /> <Footer /> </>} />
+        <Route path="/signup" element={<><Header /><Register onRegister={onRegister}/> <Footer /> </>} />
+        <Route path="/signin" element={<><Header /><Login onLogin={onLogin} /> <Footer /> </>} />
+        <Route path="/profile" element={<><Profile /*loggedIn={loggedIn}*/ cards={cards} logOut={onSignOut} onCardDelete={handleDeleteCard} onClick={handlerOpenModal}/>  <Footer /> </>} />
       
-      <Route path="/flats" element={<><Header /><FlatsList cards={cards} onCardDelete={handleDeleteCard} /><Footer /></>} />
-      <Route path="*" element={<NotFound />} />
+        <Route path="/flats" element={<><Header /><FlatsList cards={cards} onCardDelete={handleDeleteCard} /><Footer /></>} />
+        <Route path="*" element={<NotFound />} />
+        <Route path='/confirm' element={<><Header /><Footer /></>}/>  
       </Routes>
       <AddNewFlats
       isOpen={showCardModal}
