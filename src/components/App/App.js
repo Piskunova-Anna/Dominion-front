@@ -18,7 +18,7 @@ import SelectObject from '../AddCard/Selectobject'
 import NotFound from '../NotFound/NotFound'
 import FlatsList from '../Flats/FlatsList';
 import {ProtectedRoute} from  '../ProtectedRoute'
-
+import ConfirmList from "../Confirm/ConfirmList"
 function App() {
   const [loggedIn, setLoggedIn] = React.useState(false);
   const navigate = useNavigate();
@@ -199,6 +199,7 @@ function handleChange(event) {
 
       </Routes>
       <Footer /> 
+      <ConfirmList />
       <AddNewFlats
       isOpen={showCardModal}
       onClose={handlerClose}
