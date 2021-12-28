@@ -14,7 +14,7 @@ import AddNewFlats from '../AddCard/AddNewFlats'
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import './App.css';
 import api from '../../utils/Api.js';
-import SelectObject from '../AddCard/Selectobject'
+import SelectObject from '../AddCard/SelectObject'
 import NotFound from '../NotFound/NotFound'
 import FlatsList from '../Flats/FlatsList';
 import {ProtectedRoute} from  '../ProtectedRoute'
@@ -27,6 +27,7 @@ function App() {
   const [showModal,setShowModal] = React.useState(false);
   const [iconVisual,setIconVisual] = React.useState(false);
   const [textsucces, setTextsucces] = React.useState('');
+  const [users, setUsers] = React.useState([]);
   const [cards, setCards] = React.useState([]);
   const [showCardModal,setShowCardModal] = React.useState(false);
   const [showSelectModal,setShowSelectModal] = React.useState(false);
@@ -199,7 +200,7 @@ function handleChange(event) {
 
       </Routes>
       <Footer /> 
-      <ConfirmList />
+      <ConfirmList users={users}/>
       <AddNewFlats
       isOpen={showCardModal}
       onClose={handlerClose}
