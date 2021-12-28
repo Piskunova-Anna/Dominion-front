@@ -1,6 +1,6 @@
 import React from "react";
 import "./Profile.css";
-import {Link, Navigate} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import Flats from '../Flats/Flats.js'
 import { CurrentUserContext } from '../../contexts/CurrentUserContext.js';
 import CurrentCards from '../Auxiliary/auxiliary'
@@ -9,11 +9,10 @@ import CurrentCards from '../Auxiliary/auxiliary'
 function Profile(props) {
   const currentUser = React.useContext(CurrentUserContext);
   const newcards = CurrentCards(props.cards)
-  const userparams = Object.keys(currentUser).length === 0
-console.log(currentUser)
+  
   return (
     <>
-    { !userparams ? 
+    
     <main className = "profile">
       <div className = "profile__block">
       <Link to = "/confirm" className = "profile__confirm">Подтвердить регистрацию пользователя</Link>
@@ -33,8 +32,8 @@ console.log(currentUser)
         <Flats cards={newcards} onCardDelete={props.onCardDelete} />
       </div>
     </main>
-    : <Navigate to="/signin" />
-    }
+    
+    
     </>
   );
   

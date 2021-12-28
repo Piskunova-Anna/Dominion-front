@@ -4,14 +4,16 @@ import './NavBar.css';
 
 function NavBar(props) {
   
+
   return (
       <section className="menu">
     <nav className="nav">
       <div className="property">
         <h2 className="property_estate">Жилая недвижимость</h2>
         <ul className="property__grid">
-            <Link to="/flats" target="_self" className="property__block">Квартиры</Link>
-            <Link to="/rooms" target='_self' className="property__block">Комнаты</Link>
+            
+            <Link to="rooms" target='_self' className="property__block">Комнаты</Link>
+            <Link to="flats" target="_self" className="property__block">Квартиры</Link>
             <Link to="new-flats" target='_self' className="property__block">Новостройки</Link>
             <Link to="houses" target='_self' className="property__block">Дома</Link>
             <Link to="plots" target='_self' className="property__block">Участки</Link>
