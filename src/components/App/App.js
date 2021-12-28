@@ -17,11 +17,13 @@ import api from '../../utils/Api.js';
 import SelectObject from '../AddCard/SelectObject'
 import NotFound from '../NotFound/NotFound'
 import FlatsList from '../Flats/FlatsList';
+import {ProtectedRoute} from  '../ProtectedRoute'
 
 function App() {
-  const [/*loggedIn, */setLoggedIn] = React.useState(false);
-  let navigate = useNavigate();
-  const [/*currentUser, */setCurrentUser] = React.useState({});
+  const [loggedIn, setLoggedIn] = React.useState(false);
+  const navigate = useNavigate();
+  
+  const [currentUser, setCurrentUser] = React.useState({});
   const [showModal,setShowModal] = React.useState(false);
   const [iconVisual,setIconVisual] = React.useState(false);
   const [textsucces, setTextsucces] = React.useState('');
@@ -29,7 +31,8 @@ function App() {
   const [showCardModal,setShowCardModal] = React.useState(false);
   const [showSelectModal,setShowSelectModal] = React.useState(false);
   const [object, setObject ] = React.useState('') 
- 
+  let authUser = JSON.parse(localStorage.getItem('authUser'));
+  
     /* //Получение данных с сервера
      React.useEffect(() => { 
       if(loggedIn) {
@@ -45,11 +48,10 @@ function App() {
     }, [loggedIn])*/
 
     //Получение токена при какждом мониторовании
-  React.useEffect(()=>{
-    getCards() 
+    React.useEffect(()=>{
     tokenCheck()
-  }, [])
-
+    getCards() 
+  },[])
 //Регистрация пользователя
 function onRegister( name, email, surname, phone, agency, password ) {
   auth.register(name, email, surname, phone, agency, password)
@@ -85,9 +87,9 @@ function onLogin(email,password){
    
    } else if(res.succes === 'ok') {
      tokenCheck()
-     /*setShowModal(true)
+     setShowModal(true)
      setIconVisual(true)
-     setTextsucces(res.message)*/
+     setTextsucces(res.message)
      navigate('/profile');
    }
     
@@ -113,6 +115,7 @@ function tokenCheck() {
   .then((res) => {
     if(res){
       setLoggedIn(true)
+      localStorage.setItem("authUser", JSON.stringify(res));
       setCurrentUser({
         name: res.name,
         email: res.email,
@@ -132,7 +135,9 @@ function tokenCheck() {
 function onSignOut(){
   auth.signOut()
   .then(()=> {
+    navigate('/signin');
     setLoggedIn(false)
+    localStorage.clear();
     setCurrentUser({})
   })
   .catch(err => console.log(`Не удалось выйти из системы: ${err}`)) 
@@ -183,15 +188,17 @@ function handleChange(event) {
   return (
     <CurrentUserContext.Provider  value={currentUser}>
     <div className="page">
+      <Header />
       <Routes> 
-      <Route path="/" element={<><Header /><Landing /> <Footer /> </>} />
-      <Route path="/signup" element={<><Header /><Register onRegister={onRegister}/> <Footer /> </>} />
-      <Route path="/signin" element={<><Header /><Login onLogin={onLogin} /> <Footer /> </>} />
-      <Route path="/profile" element={<><Header /><Profile loggedIn={loggedIn} cards={cards} logOut={onSignOut} onCardDelete={handleDeleteCard} onClick={handlerOpenModal}/>  <Footer /> </>} />
-      
-      <Route path="/flats" element={<><Header /><FlatsList cards={cards} onCardDelete={handleDeleteCard} /><Footer /></>} />
-      <Route path="*" element={<NotFound />} />
+        <Route exact path="/" element={<Landing />} />
+        <Route path="/signup" element={<Register onRegister={onRegister}/>} />
+        <Route path="/signin" element={<Login onLogin={onLogin} />} />
+        <Route path="/flats" element={<FlatsList cards={cards} onCardDelete={handleDeleteCard} />} />
+        <Route path="/profile" element={<ProtectedRoute component={Profile} authUser={authUser} cards={cards} logOut={onSignOut} onCardDelete={handleDeleteCard} onClick={handlerOpenModal} />} />
+        <Route path="*" element={<NotFound />} />
+
       </Routes>
+      <Footer /> 
       <AddNewFlats
       isOpen={showCardModal}
       onClose={handlerClose}

@@ -1,11 +1,15 @@
 import React from "react";
-
-import Flats from './Flats';
+import Cards from '../Cards/Cards';
 
 //Список для страницы квартиры
 function FlatsList(props) {
+  const cards = props.cards
   return (
-    <Flats cards={props.cards} onCardDelete={props.onCardDelete} />
+    <div>
+        {cards.map((card)=> (
+        <Cards card={card} onCardDelete={props.onCardDelete} key={card._id}/>
+      ))}
+     </div>
   );
 }
 
