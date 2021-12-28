@@ -11,6 +11,7 @@ function Header(props) {
       <Link to="/" className = 'header__img'>
         <img className="header__logo" src={logo} alt="лого" />
       </Link>
+      <Link to="/profile" className = 'header__profile'>Профиль</Link>
    </header>
   );
 

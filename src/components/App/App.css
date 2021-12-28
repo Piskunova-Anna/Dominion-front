@@ -62,6 +62,7 @@
   margin: auto;
 }
 
+<<<<<<< HEAD
 .popup {
   visibility: hidden;
   display: flex;
@@ -107,6 +108,17 @@
 .popup__close:hover {
   opacity: 0.6;
   cursor: pointer;
+=======
+.body::-webkit-scrollbar-track {
+  box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.2) inset;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.body::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: linear-gradient(180deg, #FFE5B4, #82CAFF);
+>>>>>>> c8bbdfe4f8d125af024e14c167dedadf4db316a9
 }
 
 .form__item-error {
@@ -123,3 +135,8 @@
   cursor: pointer;
   opacity: 0.3;
 }
+<<<<<<< HEAD
+=======
+
+/*# sourceMappingURL=App.css.map */
+>>>>>>> c8bbdfe4f8d125af024e14c167dedadf4db316a9

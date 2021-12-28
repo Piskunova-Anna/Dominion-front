@@ -14,7 +14,7 @@ import AddNewFlats from '../AddCard/AddNewFlats'
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import './App.css';
 import api from '../../utils/Api.js';
-import SelectObject from '../AddCard/SelectObject'
+import SelectObject from '../AddCard/Selectobject'
 import NotFound from '../NotFound/NotFound'
 import FlatsList from '../Flats/FlatsList';
 import {ProtectedRoute} from  '../ProtectedRoute'

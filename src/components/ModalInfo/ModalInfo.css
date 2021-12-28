@@ -1,41 +1,52 @@
 .popup__container_card {
-  width: 90%
+  width: 90%;
 }
-  .popup__icon {
-    width: 120px;
-    height: 120px;
-    margin: auto;
-    margin-top: 60px;
-  }
+
+.popup__close {
+  top: -40px;
+  right: -30px;
+}
+
+.popup__close:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.popup__icon {
+  width: 120px;
+  height: 120px;
+  margin: auto;
+  margin-top: 60px;
+}
+
+.popup__title {
+  margin: 0;
+  padding: 36px 34px 36px 44px;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+  color: #000;
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
   .popup__title {
-    margin: 0;
-    padding: 36px 34px 36px 44px;
-    font-weight: 900;
-    font-size: 24px;
-    line-height: 29px;
-    color: #000;
-    text-align: center;
+    font-size: 18px;
+    line-height: 22px;
+    padding-top: 25px;
+    padding-bottom: 75px;
+    padding-left: 22px;
   }
-  .popup__close { 
-    top: -40px;
-    right: -30px;
-    
+
+  .popup__close {
+    width: 20px;
+    top: -30px;
+    right: 0;
   }
-  
-  @media screen and (max-width: 768px) {
-    .popup__title {
-      font-size: 18px;
-      line-height: 22px;
-      padding-top: 25px;
-      padding-bottom: 75px;
-      padding-left: 22px;
-    }
-    .popup__close {
-        width: 20px;
-        top: -30px;
-        right: 0;
-      }
-      .popup__container {
-        width: 282px;
-      }
+
+  .popup__container {
+    width: 282px;
   }
+}
+
+/*# sourceMappingURL=ModalInfo.css.map */
