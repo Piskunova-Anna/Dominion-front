@@ -18,11 +18,15 @@ import SelectObject from '../AddCard/SelectObject'
 import NotFound from '../NotFound/NotFound'
 import FlatsList from '../Flats/FlatsList';
 import {ProtectedRoute} from  '../ProtectedRoute'
-import ConfirmList from "../Confirm/ConfirmList"
+import ConfirmList from "../Confirm/ConfirmList";
+import CardDesc from '../CardDesc/CardDesc'
+import ImageBlocks from '../Auxiliary/ImageBlocks'
+import ImagePopup from '../Auxiliary/ImagePopup'
+
 function App() {
   const [loggedIn, setLoggedIn] = React.useState(false);
   const navigate = useNavigate();
-  
+  const [showImagePopup,setShowImagePopup] = React.useState('');
   const [currentUser, setCurrentUser] = React.useState({});
   const [showModal,setShowModal] = React.useState(false);
   const [iconVisual,setIconVisual] = React.useState(false);
@@ -156,6 +160,7 @@ function handlerClose() {
   setShowModal(false)
   setShowCardModal(false)
   setShowSelectModal(false)
+  setShowImagePopup(false)
 }
 function handlerOpenAddModal() {
   setShowSelectModal(false)
@@ -186,6 +191,11 @@ function handleChange(event) {
   setObject(event.target.value)
 }
 
+function handleImageOpenPopup(image) {
+  
+  setShowImagePopup(image)
+}
+console.log(showImagePopup)
   return (
     <CurrentUserContext.Provider  value={currentUser}>
     <div className="page">
@@ -196,11 +206,12 @@ function handleChange(event) {
         <Route path="/signin" element={<Login onLogin={onLogin} />} />
         <Route path="/flats" element={<FlatsList cards={cards} onCardDelete={handleDeleteCard} />} />
         <Route path="/profile" element={<ProtectedRoute component={Profile} authUser={authUser} cards={cards} logOut={onSignOut} onCardDelete={handleDeleteCard} onClick={handlerOpenModal} />} />
+        <Route path="/:id" element={<CardDesc onCardClick={handleImageOpenPopup} cards={cards}/>} />
+        
         <Route path="*" element={<NotFound />} />
 
       </Routes>
       <Footer /> 
-      <ConfirmList users={users}/>
       <AddNewFlats
       isOpen={showCardModal}
       onClose={handlerClose}
@@ -223,6 +234,10 @@ function handleChange(event) {
     onClose={handlerClose}
     icon={iconVisual}
     
+     />
+     <ImagePopup 
+    onClose={handlerClose}
+    card={showImagePopup !==null && showImagePopup}
      />
     </div>
    

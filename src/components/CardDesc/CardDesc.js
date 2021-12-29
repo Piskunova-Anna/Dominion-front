@@ -1,24 +1,22 @@
 import React from "react";
 import "./CardDesc.css";
-import Flats from "../CardList/CardList";
-
+import CardList from "../CardList/CardList";
+import { useParams } from 'react-router-dom';
+import ImageBlocks from '../Auxiliary/ImageBlocks'
 function CardDesc(props) {
+  let { id } = useParams();
+  let cards = props.cards;
+  const card = cards.find(f => f._id === id);
+
   return (
     <main className="desc">
       <div className="desc__block">
-        <div className="desc__photo">
-          <img className="desc__photo_m" src={props.photo} alt={props.address} />
-          <div className="desc__photo_mini">
-            <img className="desc__photo_s" src={props.photoMini} alt="фото" />
-            <img className="desc__photo_s" src={props.photoMini} alt="фото" />
-            <img className="desc__photo_s" src={props.photoMini} alt="фото" />
-          </div>
-        </div>
+        <ImageBlocks onCardClick={props.onCardClick} image={card.image}/>
         <div className="desc__list">
-          <Flats />
+          <CardList card={card} />
         </div>
       </div>
-      <div className="desc__text">Описание: {props.text}</div>
+      <div className="desc__text">Описание: {card.description}</div>
     </main>
   );
 }
