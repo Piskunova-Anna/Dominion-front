@@ -1,11 +1,5 @@
 import React from "react";
 import "../CardDesc/CardDesc.css";
-import im1 from '../../images/Elbrus.jpg'
-import im2 from '../../images/Elbrus.png'
-import im3 from '../../images/Dombay.png'
-import im4 from '../../images/gumbashi.jpg'
-import im5 from '../../images/teberda.jpg'
-import im6 from '../../images/pexels-photo-1370704.jpg'
 import {ImageItem} from './ImageItem'
 
 function ImageBlocks(props) {
