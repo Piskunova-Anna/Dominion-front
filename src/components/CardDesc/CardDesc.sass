@@ -18,7 +18,12 @@
       max-width: 87%
 .desc__block
   @extend %flexRow
+.desc__image_block
+  @extend %flexCol
+  margin-right: 40px
+  width: 40%
 .desc__photo
+  position: relative
   @extend %flexCol
   @media screen
     @media (max-width: 850px)
@@ -26,6 +31,7 @@
 .desc__photo_m
   width: 400px
   height: 500px
+  position: relative
   @media screen
     @media (max-width: 1440px)
         width: 330px
@@ -33,7 +39,30 @@
     @media (max-width: 550px)
       width: 260px
       height: 335px
+.object__arrow
+  display: flex
+  position: absolute
+  width: 20px
+  height: 20px
+  border-top: 5px solid #9d9d9d
+  border-right: 5px solid #9d9d9d
+  top: 50%
+  transition: opacity 1s linear
+  z-index: 1
+.object__arrow:hover
+  opacity: .8
+  cursor: pointer
+.object__arrow_left
+  transform: rotate(-135deg)
+  left: 15px
+.object__arrow_right 
+  transform: rotate(45deg)
+  right: 15px
+.popup__list 
+  position: relative
+  display: flex
 .desc__photo_mini
+  position: relative
   @extend %flexRow
   @media screen
     @media (max-width: 550px)

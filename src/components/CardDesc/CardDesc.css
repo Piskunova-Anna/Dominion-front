@@ -1,4 +1,4 @@
-.desc, .desc__photo, .desc__list {
+.desc__list, .desc__photo, .desc__image_block, .desc {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -42,6 +42,14 @@
   }
 }
 
+.desc__image_block {
+  margin-right: 40px;
+  width: 40%;
+}
+
+.desc__photo {
+  position: relative;
+}
 @media screen and (max-width: 850px) {
   .desc__photo {
     -webkit-box-align: center;
@@ -53,6 +61,7 @@
 .desc__photo_m {
   width: 400px;
   height: 500px;
+  position: relative;
 }
 
 @media screen and (max-width: 1440px) {
@@ -69,6 +78,41 @@
   }
 }
 
+.object__arrow {
+  display: flex;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-top: 5px solid #9d9d9d;
+  border-right: 5px solid #9d9d9d;
+  top: 50%;
+  transition: opacity 1s linear;
+  z-index: 1;
+}
+
+.object__arrow:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.object__arrow_left {
+  transform: rotate(-135deg);
+  left: 15px;
+}
+
+.object__arrow_right {
+  transform: rotate(45deg);
+  right: 15px;
+}
+
+.popup__list {
+  position: relative;
+  display: flex;
+}
+
+.desc__photo_mini {
+  position: relative;
+}
 @media screen and (max-width: 550px) {
   .desc__photo_mini {
     display: none;
