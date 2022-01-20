@@ -1,11 +1,21 @@
 .desc__list, .desc__photo, .desc__image_block, .desc {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
-.desc__photo_mini, .desc__block {
+.desc__block, .desc__photo_mini {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 
 .desc {
@@ -13,16 +23,19 @@
   width: 100%;
   margin: auto;
 }
+
 @media screen and (min-width: 1441px) {
   .desc {
     max-width: 1340px;
   }
 }
+
 @media screen and (max-width: 850px) {
   .desc {
     max-width: 89%;
   }
 }
+
 @media screen and (max-width: 550px) {
   .desc {
     max-width: 87%;
@@ -39,7 +52,9 @@
 }
 @media screen and (max-width: 850px) {
   .desc__photo {
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
 }
 
@@ -48,12 +63,14 @@
   height: 500px;
   position: relative;
 }
+
 @media screen and (max-width: 1440px) {
   .desc__photo_m {
     width: 330px;
     height: 425px;
   }
 }
+
 @media screen and (max-width: 550px) {
   .desc__photo_m {
     width: 260px;
@@ -108,6 +125,7 @@
   margin-right: 30px;
   margin-top: 30px;
 }
+
 @media screen and (max-width: 1440px) {
   .desc__photo_s {
     height: 165px;
@@ -116,6 +134,7 @@
     margin-top: 30px;
   }
 }
+
 @media screen and (max-width: 850px) {
   .desc__photo_s {
     margin-right: 50px;
@@ -126,6 +145,7 @@
 .desc__photo_s:last-of-type {
   margin-right: 15px;
 }
+
 @media (max-width: 850px) {
   .desc__photo_s:last-of-type {
     margin-right: 0;
@@ -135,6 +155,7 @@
 .desc__list {
   margin-left: 20px;
 }
+
 @media (max-width: 850px) {
   .desc__list {
     margin-left: 0;
@@ -142,6 +163,8 @@
 }
 
 .desc__text {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   width: 100%;
   font-size: 24px;
@@ -151,17 +174,20 @@
   margin-top: 20px;
   margin-bottom: 30px;
 }
+
 @media screen and (max-width: 1440px) {
   .desc__text {
     font-weight: 400;
     margin-top: 15px;
   }
 }
+
 @media screen and (max-width: 850px) {
   .desc__text {
     margin: auto;
   }
 }
+
 @media (max-width: 550px) {
   .desc__text {
     font-size: 18px;
@@ -170,5 +196,4 @@
     margin-bottom: 15px;
   }
 }
-
 /*# sourceMappingURL=CardDesc.css.map */

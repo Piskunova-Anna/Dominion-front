@@ -16,21 +16,21 @@ function Card(props) {
       <img src={props.card.image[0]} alt={props.card.address} className="object__photo" />
       </Link>
       <div className="object__about">
-        <div className="object__price object__cost">{props.card.price}</div>
+        <div className="object__price object__cost">{/*{props.card.price}*/}</div>
         <div className="object__name object_a">
           М.
-          <p className="object__block object__metro">{props.card.metro}</p>
+          <p className="object__block object__metro">{/*{props.card.metro}*/}</p>
         </div>
         <div className="object__name object_b">
           Этаж:
-          <p className="object__block object__level">{props.card.floor}</p>
+          <p className="object__block object__level">{/*{props.card.floor}*/}</p>
         </div>
         <div className="object__block object__area">50<div className="object__name">кв.м.</div></div>  
-        <div className="object__block object__address">{props.card.address}</div>
+        <div className="object__block object__address">{/*{props.card.address}*/}</div>
         <div className="object__name object_c">район:<div className = "object__block">красногвардейский</div></div>  
         <div className="object__name object_d">
           Кол-во комнат:
-          <p className="object__block object__num">{props.card.rooms}</p>
+          <p className="object__block object__num">{/*{props.card.rooms}*/}</p>
         </div>
         <div className="object__text-block">
           <h2 className="object__head">Описание</h2>
