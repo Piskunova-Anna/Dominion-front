@@ -1,6 +1,12 @@
 .popup__container__type_flats {
-  width: 90%;
-  height: 95%;
+  width: 70%;
+  height: 90vh;
+}
+
+@media screen and (min-width: 1440px) {
+  .popup__container__type_flats {
+    width: 960px;
+  }
 }
 
 .popup_type_flats {
@@ -25,6 +31,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  overflow-y: auto;
 }
 
 .add-form__title {
@@ -41,6 +48,15 @@
       -ms-flex-pack: justify;
           justify-content: space-between;
   gap: 20px;
+}
+
+@media screen and (max-width: 850px) {
+  .add-form__modul {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
 }
 
 .add-form__modul_class {
@@ -87,7 +103,21 @@
 
 .add-form__fieldset {
   border: 0;
-  padding: 0 0 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-margin-start: 0;
+          margin-inline-start: 0;
+  -webkit-margin-end: 0;
+          margin-inline-end: 0;
+  -webkit-padding-before: 0;
+          padding-block-start: 0;
+  -webkit-padding-start: 0;
+          padding-inline-start: 0;
+  -webkit-padding-end: 0;
+          padding-inline-end: 0;
+  -webkit-padding-after: 0;
+          padding-block-end: 0;
 }
 
 .add-form__item {

@@ -14,13 +14,6 @@
   }
 }
 
-@media screen and (max-width: 850px) {
-  .card__block {
-    font-size: 20px;
-    margin: 0 0 10px 0;
-  }
-}
-
 @media screen and (max-width: 550px) {
   .card__block {
     font-size: 18px;

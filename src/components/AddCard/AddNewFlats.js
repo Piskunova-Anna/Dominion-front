@@ -73,7 +73,7 @@ function AddNewFlats(props) {
   }
 
   return (
-    <div className={`popup popup_type_${props.name} ${props.isOpen ? ('popup_opened') : ''}`} >
+    <div className={`popup popup_opened popup_type_${props.name} ${props.isOpen ? ('popup_opened') : ''}`} >
     <div className={`popup__container popup__container__type_${props.name}`}>
       <button onClick={props.onClose} type="button" className={`popup__close popup__close_type_${props.name}`} aria-label="Закрыть форму"></button>
       <h2 className="popup__title">{props.title}</h2>
@@ -102,7 +102,7 @@ function AddNewFlats(props) {
               <label className="add-form__label" htmlFor="kitchenArea">Площадь кухни:</label>
               <input type="number" onChange={handleChange}  value={values.kitchenArea} className="add-form__item add-form__item_type_kitchen-area" name="kitchenArea" id="kitchenArea"/>
             </fieldset> 
-            <fieldset className="add-form__fieldset_type_column add-form_type_adress">
+            <fieldset className="add-form__fieldset add-form__fieldset_type_column add-form_type_adress">
               <label className="add-form__label" htmlFor="adress">Адрес</label>
               <input type="text"value={values.adress} onChange={handleChange} placeholder='Введите адрес' className="add-form__item add-form__item_type_adress" name="adress" id="adress"/>
             </fieldset>

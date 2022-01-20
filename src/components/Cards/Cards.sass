@@ -68,21 +68,22 @@
   //grid-template-rows: 4
   column-gap: 100px
   row-gap: 10px
-  margin: 54px 0
+  margin: 54px 20px 54px 0
   align-items: center
   justify-items: flex-start
   max-height: 365px
-  width: 100%
   @media screen
     @media (max-width: 1240px)
       column-gap: 50px
-      margin: 40px 0
+      margin: 40px 10px 40px 0
     @media (max-width: 950px)
       display: flex
       flex-direction: column
-      margin: 10px 0 30px
+      margin: 10px 15px 30px
     @media (max-width: 650px)
       align-items: center
+    @media (min-width: 950px)
+      width: 100%
 .object__block
   @extend %margin
   //align-self: baseline
@@ -119,11 +120,8 @@
       font: 18px/22px
 .object__text-block
   @extend %flexCol
-  margin: auto 50px
   grid-area: 5/1/6/5
-  @media screen
-    @media (max-width: 1240px)
-      margin: auto 24px
+  overflow: hidden 
 .object__head
   @extend %margin
   @extend %fontS
@@ -131,8 +129,6 @@
     @media (max-width: 650px)
       font: 18px/22px
 .object__text
-  max-width: 620px
-  overflow: hidden
   @extend %margin
   @extend %fontS
   @media screen

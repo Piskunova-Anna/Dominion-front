@@ -1,6 +1,7 @@
 
 import React from "react";
 import Confirm from "./Confirm";
+import './ConfirmList.css';
 
 function ConfirmList(props) {
   const users = props.users

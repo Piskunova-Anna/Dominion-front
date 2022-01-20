@@ -1,6 +1,10 @@
 .popup__container__type_flats
-  width: 90%
-  height: 95%
+  width: 70%
+  height: 90vh
+  @media screen
+    @media (min-width: 1440px)
+      width: 960px
+    
 
 .popup_type_flats
   position: absolute
@@ -17,6 +21,7 @@
   width: 95%
   margin: auto
   flex-direction: column
+  overflow-y: auto
 
 .add-form__title
   margin: 0
@@ -26,6 +31,9 @@
   display: flex
   justify-content: space-between
   gap: 20px
+  @media screen
+    @media (max-width: 850px)
+      flex-direction: column
 
 .add-form__modul_class
   display: flex
@@ -54,7 +62,14 @@
 
 .add-form__fieldset
   border: 0
-  padding: 0 0 10px;
+  display: flex
+  margin-inline-start: 0
+  margin-inline-end: 0
+  padding-block-start: 0
+  padding-inline-start: 0
+  padding-inline-end: 0
+  padding-block-end: 0
+
 .add-form__item
   width: 100%
   padding: 5px

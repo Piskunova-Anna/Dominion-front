@@ -209,7 +209,6 @@ console.log(showImagePopup)
         <Route path="/:id" element={<CardDesc onCardClick={handleImageOpenPopup} cards={cards}/>} />
         <Route path="/confirm" element={<ConfirmList users={users}/>} />
         <Route path="*" element={<NotFound />} />
-
       </Routes>
       <Footer /> 
       <AddNewFlats
@@ -219,7 +218,7 @@ console.log(showImagePopup)
       name='flats'
       onCardData={hanldNewcard}
       object={object}
-        />
+      />
       <SelectObject 
         isOpen={showSelectModal}
         onClose={handlerClose}
@@ -228,19 +227,17 @@ console.log(showImagePopup)
         onChange={handleChange}
         name='object'
       />
-    <ModalInfo 
-    isOpen={showModal}
-    textError={textsucces}
-    onClose={handlerClose}
-    icon={iconVisual}
-    
-     />
-     <ImagePopup 
-    onClose={handlerClose}
-    card={showImagePopup !==null && showImagePopup}
-     />
-    </div>
-   
+      <ModalInfo 
+        isOpen={showModal}
+        textError={textsucces}
+        onClose={handlerClose}
+        icon={iconVisual}
+      />
+      <ImagePopup 
+        onClose={handlerClose}
+        card={showImagePopup !==null && showImagePopup}
+      />
+    </div> 
   </CurrentUserContext.Provider>
   );
 }

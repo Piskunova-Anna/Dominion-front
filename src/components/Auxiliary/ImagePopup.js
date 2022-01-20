@@ -3,7 +3,7 @@ import "../CardDesc/CardDesc.css";
 
 function ImagePopup(props) {
     console.log(props.card)
-  const[counter, setCounter] = React.useState(0)
+  //const[counter, setCounter] = React.useState(0)
   function handlerCounterAfter() {
     
   
