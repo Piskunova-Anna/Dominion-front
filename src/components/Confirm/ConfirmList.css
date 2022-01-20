@@ -1,0 +1,38 @@
+.confirm__users, .confirm__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-margin-before: 0;
+          margin-block-start: 0;
+  -webkit-margin-after: 0;
+          margin-block-end: 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  max-width: 80%;
+  width: 100%;
+  -ms-flex-item-align: center;
+      align-self: center;
+}
+
+@media screen and (max-width: 1024px) {
+  .confirm__users, .confirm__list {
+    max-width: 90%;
+  }
+}
+
+.confirm__users {
+  font-size: 36px;
+  font-weight: 600;
+}
+
+.confirm__list {
+  list-style-type: none;
+  -webkit-padding-start: 0;
+          padding-inline-start: 0;
+}
+/*# sourceMappingURL=ConfirmList.css.map */

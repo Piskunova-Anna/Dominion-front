@@ -19,6 +19,8 @@ import NotFound from '../NotFound/NotFound'
 import FlatsList from '../Flats/FlatsList';
 import {ProtectedRoute} from  '../ProtectedRoute'
 import ConfirmList from "../Confirm/ConfirmList"
+import Card from '../Cards/Cards';
+
 function App() {
   const [loggedIn, setLoggedIn] = React.useState(false);
   const navigate = useNavigate();
@@ -189,7 +191,7 @@ function handleChange(event) {
   return (
     <CurrentUserContext.Provider  value={currentUser}>
     <div className="page">
-      <Header />
+        {/*<Header />
       <Routes> 
         <Route exact path="/" element={<Landing />} />
         <Route path="/signup" element={<Register onRegister={onRegister}/>} />
@@ -200,16 +202,17 @@ function handleChange(event) {
 
       </Routes>
       <Footer /> 
-      <ConfirmList users={users}/>
+        <ConfirmList users={users} />
+        <Card />*/}
       <AddNewFlats
-      isOpen={showCardModal}
-      onClose={handlerClose}
+      /*isOpen={showCardModal}
+      onClose={handlerClose}*/
       title='Добавить новый объект'
       name='flats'
-      onCardData={hanldNewcard}
-      object={object}
+      /*onCardData={hanldNewcard}
+      object={object}*/
         />
-      <SelectObject 
+        {/*<SelectObject 
         isOpen={showSelectModal}
         onClose={handlerClose}
         onNext={handlerOpenAddModal}
@@ -218,12 +221,12 @@ function handleChange(event) {
         name='object'
       />
     <ModalInfo 
-    isOpen={showModal}
+          isOpen={showModal}
     textError={textsucces}
     onClose={handlerClose}
-    icon={iconVisual}
+      icon={iconVisual}
     
-     />
+      />*/}
     </div>
    
   </CurrentUserContext.Provider>
