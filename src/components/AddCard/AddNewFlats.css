@@ -1,5 +1,6 @@
 .popup__container__type_flats {
   width: 90%;
+  height: 95%;
 }
 
 .popup_type_flats {
@@ -15,27 +16,44 @@
 }
 
 .add-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   width: 95%;
   margin: auto;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .add-form__title {
   margin: 0;
   padding: 0;
+  font-size: 22px;
 }
 
 .add-form__modul {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   gap: 20px;
 }
 
 .add-form__modul_class {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
 }
 
 .add-form__item_type_info {
@@ -43,27 +61,33 @@
   padding: 15px;
   border-radius: 15px;
   border: 0;
-  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+          box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
   height: 150px;
 }
 
 .add-form__label {
-  padding: 10px 10px 15px 0;
+  padding: 10px 0 5px 0;
   font-weight: normal;
   font-size: 20px;
   line-height: 12px;
   padding-right: 10px;
-  text-decoration: underline;
   font-style: italic;
 }
 
 .add-form__type_info {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .add-form__fieldset {
   border: 0;
+  padding: 0 0 10px;
 }
 
 .add-form__item {
@@ -75,16 +99,29 @@
 
 .add-form__fieldset_type_column {
   border: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 0 0 10px;
 }
 
 .add-form__type_area {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .add-form__type_addition {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   gap: 5px;
 }
@@ -100,7 +137,8 @@
   font-size: 18px;
   line-height: 22px;
   background-color: antiquewhite;
-  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25), inset 0px 0px 10px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25), inset 0px 0px 10px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25), inset 0px 0px 10px rgba(0, 0, 0, 0.25);
 }
 
 .add-form__button_disabled {
@@ -109,19 +147,28 @@
 
 .card_image {
   width: 200px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   height: 200px;
 }
 
 .card__skeleton_cont {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
 .image__skeleton {
   width: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
+
 @media screen and (max-width: 855px) {
   .image__skeleton {
     display: none;
@@ -130,15 +177,16 @@
 
 .image__item {
   width: 100%;
-  height: 100px;
+  height: 60px;
   background-color: antiquewhite;
   margin-bottom: 5px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .image__item_type_one {
   width: 250px;
-  height: 315px;
+  height: 250px;
   margin-left: 5px;
 }
 
@@ -150,5 +198,4 @@
   width: 430px;
   height: 200px;
 }
-
 /*# sourceMappingURL=AddNewFlats.css.map */

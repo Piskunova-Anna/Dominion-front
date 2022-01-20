@@ -16,7 +16,10 @@ function CardDesc(props) {
           <CardList card={card} />
         </div>
       </div>
-      <div className="desc__text">Описание: {card.description}</div>
+      <div>
+        <h2 className="desc__title">Описание:</h2>
+        <p className="desc__text">{card.description}</p>
+      </div>
     </main>
   );
 }

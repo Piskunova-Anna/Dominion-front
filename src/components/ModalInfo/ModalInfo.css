@@ -3,7 +3,7 @@
 }
 
 .popup__close {
-  top: -40px;
+  top: -30px;
   right: -30px;
 }
 
@@ -21,7 +21,7 @@
 
 .popup__title {
   margin: 0;
-  padding: 36px 34px 36px 44px;
+  padding: 10px;
   font-weight: 900;
   font-size: 24px;
   line-height: 29px;
@@ -33,20 +33,14 @@
   .popup__title {
     font-size: 18px;
     line-height: 22px;
-    padding-top: 25px;
-    padding-bottom: 75px;
-    padding-left: 22px;
   }
-
   .popup__close {
     width: 20px;
     top: -30px;
     right: 0;
   }
-
   .popup__container {
     width: 282px;
   }
 }
-
 /*# sourceMappingURL=ModalInfo.css.map */

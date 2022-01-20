@@ -23,6 +23,7 @@ import CardDesc from '../CardDesc/CardDesc'
 import ImageBlocks from '../Auxiliary/ImageBlocks'
 import ImagePopup from '../Auxiliary/ImagePopup'
 
+
 function App() {
   const [loggedIn, setLoggedIn] = React.useState(false);
   const navigate = useNavigate();
@@ -38,19 +39,18 @@ function App() {
   const [object, setObject ] = React.useState('') 
   let authUser = JSON.parse(localStorage.getItem('authUser'));
   
-    /* //Получение данных с сервера
+    //Получение данных с сервера
      React.useEffect(() => { 
       if(loggedIn) {
-       auth.getContent()
-        .then(([ userData, cardlist]) => {
-          setCards(cardlist)
-          setCurrentUser(userData);
+       api.getUsers()
+        .then((userData) => {
+          setUsers(userData)
         })
         .catch(err => console.log(`Ошибка при загрузке профиля: ${err}`))
         }else {
         }
      
-    }, [loggedIn])*/
+    }, [loggedIn])
 
     //Получение токена при какждом мониторовании
     React.useEffect(()=>{
@@ -207,7 +207,7 @@ console.log(showImagePopup)
         <Route path="/flats" element={<FlatsList cards={cards} onCardDelete={handleDeleteCard} />} />
         <Route path="/profile" element={<ProtectedRoute component={Profile} authUser={authUser} cards={cards} logOut={onSignOut} onCardDelete={handleDeleteCard} onClick={handlerOpenModal} />} />
         <Route path="/:id" element={<CardDesc onCardClick={handleImageOpenPopup} cards={cards}/>} />
-        
+        <Route path="/confirm" element={<ConfirmList users={users}/>} />
         <Route path="*" element={<NotFound />} />
 
       </Routes>

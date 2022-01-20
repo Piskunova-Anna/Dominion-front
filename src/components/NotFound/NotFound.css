@@ -1,8 +1,15 @@
 .error__page {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   margin: auto;
-  flex-direction: column;
-  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   margin: 246px auto 60px;
 }
 
@@ -35,5 +42,4 @@
   background-color: transparent;
   border: 0;
 }
-
 /*# sourceMappingURL=NotFound.css.map */
