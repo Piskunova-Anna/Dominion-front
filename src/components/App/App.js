@@ -6,9 +6,9 @@ import Landing from '../Landing/Landing';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
 import Profile from '../Profile/Profile';
-//import CardDesc from '../CardDesc/CardDesc';
+import CardDesc from '../CardDesc/CardDesc';
 import * as auth from '../../utils/Auth.js';
-import {/*infoMessage,*/ errorMessage, authErrors, succesOk} from '../../utils/constants';
+import {infoMessage, errorMessage, authErrors, succesOk} from '../../utils/constants';
 import ModalInfo from '../ModalInfo/ModalInfo'
 import AddNewFlats from '../AddCard/AddNewFlats'
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
@@ -19,7 +19,6 @@ import NotFound from '../NotFound/NotFound'
 import FlatsList from '../Flats/FlatsList';
 import {ProtectedRoute} from  '../ProtectedRoute'
 import ConfirmList from "../Confirm/ConfirmList";
-import CardDesc from '../CardDesc/CardDesc'
 import ImageBlocks from '../Auxiliary/ImageBlocks'
 import ImagePopup from '../Auxiliary/ImagePopup'
 
@@ -38,7 +37,7 @@ function App() {
   const [object, setObject ] = React.useState('') 
   let authUser = JSON.parse(localStorage.getItem('authUser'));
   
-    /* //Получение данных с сервера
+    //Получение данных с сервера
      React.useEffect(() => { 
       if(loggedIn) {
        auth.getContent()
@@ -50,7 +49,7 @@ function App() {
         }else {
         }
      
-    }, [loggedIn])*/
+    }, [loggedIn])
 
     //Получение токена при какждом мониторовании
     React.useEffect(()=>{
@@ -199,7 +198,7 @@ console.log(showImagePopup)
   return (
     <CurrentUserContext.Provider  value={currentUser}>
     <div className="page">
-        {/*<Header />
+        <Header />
       <Routes> 
         <Route exact path="/" element={<Landing />} />
         <Route path="/signup" element={<Register onRegister={onRegister}/>} />
@@ -213,14 +212,14 @@ console.log(showImagePopup)
       </Routes>
       <Footer /> 
       <AddNewFlats
-      /*isOpen={showCardModal}
-      onClose={handlerClose}*/
+      isOpen={showCardModal}
+      onClose={handlerClose}
       title='Добавить новый объект'
       name='flats'
-      /*onCardData={hanldNewcard}
-      object={object}*/
+      onCardData={hanldNewcard}
+      object={object}
         />
-        {/*<SelectObject 
+        <SelectObject 
         isOpen={showSelectModal}
         onClose={handlerClose}
         onNext={handlerOpenAddModal}

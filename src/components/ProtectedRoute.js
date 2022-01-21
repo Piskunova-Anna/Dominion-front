@@ -7,5 +7,5 @@ export const ProtectedRoute = ({ component: RouteComponent, ...props }) => {
   if (props.authUser) {
     return <RouteComponent {...props}/>
   }
-  return <Navigate to="/profile" state={{from: location}}/>
+  return <Navigate to="/signin" state={{from: location}}/>
 }

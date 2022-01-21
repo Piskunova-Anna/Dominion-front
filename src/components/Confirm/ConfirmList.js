@@ -9,11 +9,8 @@ function ConfirmList(props) {
     <>
     <h2 className = "confirm__users">Пользователи</h2>
       <ul className = "confirm__list">
-          <Confirm /*key={user._id} user={user}*/ />
-          <Confirm /*key={user._id} user={user}*/ />
-          <Confirm /*key={user._id} user={user}*/ />
         {users.map((user)=> (
-          <Confirm /*key={user._id} user={user}*/ />
+          <Confirm key={user._id} user={user} />
         ))}
       </ul>
     </>

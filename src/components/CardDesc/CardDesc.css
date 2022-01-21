@@ -1,4 +1,4 @@
-.desc__list, .desc__photo, .desc__image_block, .desc {
+.desc, .desc__image_block, .desc__photo, .desc__list {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -50,6 +50,7 @@
 .desc__photo {
   position: relative;
 }
+
 @media screen and (max-width: 850px) {
   .desc__photo {
     -webkit-box-align: center;
@@ -79,6 +80,8 @@
 }
 
 .object__arrow {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   position: absolute;
   width: 20px;
@@ -86,33 +89,39 @@
   border-top: 5px solid #9d9d9d;
   border-right: 5px solid #9d9d9d;
   top: 50%;
+  -webkit-transition: opacity 1s linear;
   transition: opacity 1s linear;
   z-index: 1;
 }
 
 .object__arrow:hover {
-  opacity: 0.8;
+  opacity: .8;
   cursor: pointer;
 }
 
 .object__arrow_left {
-  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+          transform: rotate(-135deg);
   left: 15px;
 }
 
 .object__arrow_right {
-  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
   right: 15px;
 }
 
 .popup__list {
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
 .desc__photo_mini {
   position: relative;
 }
+
 @media screen and (max-width: 550px) {
   .desc__photo_mini {
     display: none;
