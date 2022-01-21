@@ -8,8 +8,24 @@ import CurrentCards from '../Auxiliary/auxiliary'
 //Страничка профиля
 function Profile(props) {
   const currentUser = React.useContext(CurrentUserContext);
-  const newcards = CurrentCards(props.cards)
+  const [userCards, setUserCards] = React.useState(CurrentCards(props.cards))
+  const newcards = userCards.length !==0 ? userCards : CurrentCards(props.cards)
   
+  function handleCardActiveClick() {
+    const userCards = newcards.filter((item) => {
+      return item.active
+    })
+    setUserCards(userCards)
+  }
+
+  function handleCardDesableClick() {
+    const userCards = newcards.filter((item) => {
+      return !item.active
+    })
+    setUserCards(userCards)
+  }
+
+
   return (
     <>
     
@@ -21,8 +37,8 @@ function Profile(props) {
       </div>
       <div className = "profile__block">
       <h1 className="profile__name">Ваши объекты</h1>
-      <button className="profile__button profile__button_public">Опубликованные</button>
-      <button className="profile__button profile__button_no-piblic">Снятые с публикации</button>
+      <button onClick={handleCardActiveClick} className="profile__button profile__button_public">Опубликованные</button>
+      <button onClick={handleCardDesableClick} className="profile__button profile__button_no-piblic">Снятые с публикации</button>
       </div>
       <div className = "profile__block">
       <a href="/" className="profile__main">На главную</a>

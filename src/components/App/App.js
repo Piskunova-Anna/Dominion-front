@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Switch, useHistory } from 'react-router-dom';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Landing from '../Landing/Landing';
@@ -17,16 +17,18 @@ import api from '../../utils/Api.js';
 import SelectObject from '../AddCard/SelectObject'
 import NotFound from '../NotFound/NotFound'
 import FlatsList from '../Flats/FlatsList';
-import {ProtectedRoute} from  '../ProtectedRoute'
+import ProtectedRoute from '../ProtectedRoute'
 import ConfirmList from "../Confirm/ConfirmList";
 import ImageBlocks from '../Auxiliary/ImageBlocks'
 import ImagePopup from '../Auxiliary/ImagePopup'
 
+
 function App() {
   const [loggedIn, setLoggedIn] = React.useState(false);
-  const navigate = useNavigate();
+  const history= useHistory();
   const [showImagePopup,setShowImagePopup] = React.useState('');
   const [currentUser, setCurrentUser] = React.useState({});
+  const [upDateUser, setUpDateUser] = React.useState({});
   const [showModal,setShowModal] = React.useState(false);
   const [iconVisual,setIconVisual] = React.useState(false);
   const [textsucces, setTextsucces] = React.useState('');
@@ -35,32 +37,42 @@ function App() {
   const [showCardModal,setShowCardModal] = React.useState(false);
   const [showSelectModal,setShowSelectModal] = React.useState(false);
   const [object, setObject ] = React.useState('') 
-  let authUser = JSON.parse(localStorage.getItem('authUser'));
-  
-    //Получение данных с сервера
-     React.useEffect(() => { 
-      if(loggedIn) {
-       auth.getContent()
-        .then(([ userData, cardlist]) => {
-          setCards(cardlist)
-          setCurrentUser(userData);
-        })
-        .catch(err => console.log(`Ошибка при загрузке профиля: ${err}`))
-        }else {
-        }
-     
-    }, [loggedIn])
 
-    //Получение токена при какждом мониторовании
+  //Получение Всех карточек с сервера
+  React.useEffect(() => {
+    if(loggedIn) {
+    Promise.all([api.getUsers(), api.getCards(), auth.getContent()])
+    .then(([userData, cardlist, currentUser]) => {
+      setCards(cardlist) 
+      setUsers(userData)
+      
+      setCurrentUser({
+        name: currentUser.name,
+        email: currentUser.email,
+        surname: currentUser.surname,
+        agency: currentUser.agency, 
+        phone: currentUser.phone,
+        access: currentUser.access,
+        admin: currentUser.admin,
+        _id: currentUser._id
+      })
+      
+    })
+    .catch(err => console.log(`Ошибка при загрузке профиля: ${err}`))
+  }
+  }, [loggedIn])
+ 
+        //Получение токена при какждом мониторовании
     React.useEffect(()=>{
-    tokenCheck()
-    getCards() 
-  },[])
+      tokenCheck();
+    }, [])
+
+  console.log(cards)
 //Регистрация пользователя
 function onRegister( name, email, surname, phone, agency, password ) {
   auth.register(name, email, surname, phone, agency, password)
   .then((res) => {
-    navigate('/');
+    history.push('/');
     setShowModal(true)
     setIconVisual(true)
     setTextsucces(succesOk.signinOk)
@@ -84,6 +96,7 @@ function onLogin(email,password){
   // setSubmitBlock(true)
    auth.authorize(email, password)
    .then((res) => {
+    
      if(res.succes === 'no') {
      setShowModal(true)
      setIconVisual(false)
@@ -91,10 +104,10 @@ function onLogin(email,password){
    
    } else if(res.succes === 'ok') {
      tokenCheck()
+     history.push('/profile');
      setShowModal(true)
      setIconVisual(true)
      setTextsucces(res.message)
-     navigate('/profile');
    }
     
    })
@@ -117,19 +130,9 @@ function onLogin(email,password){
 function tokenCheck() {
   auth.getContent()
   .then((res) => {
+    console.log('dghg')
     if(res){
       setLoggedIn(true)
-      localStorage.setItem("authUser", JSON.stringify(res));
-      setCurrentUser({
-        name: res.name,
-        email: res.email,
-        surname: res.surname,
-        agency: res.agency, 
-        phone: res.phone,
-        access: res.access,
-        admin: res.admin,
-        _id: res._id
-      })
     }
   })
   .catch(err => console.log(`Зарегистрируйтесь или войдите в систему: ${err}`))  
@@ -139,7 +142,7 @@ function tokenCheck() {
 function onSignOut(){
   auth.signOut()
   .then(()=> {
-    navigate('/signin');
+    history.push('/signin');
     setLoggedIn(false)
     localStorage.clear();
     setCurrentUser({})
@@ -151,6 +154,7 @@ function getCards () {
   api.getCards()
   .then((cardlist) => { 
     setCards(cardlist)
+    localStorage.setItem('searchResult', JSON.stringify(cardlist));
   })
   .catch(err => console.log(`Не удалось получить карточки: ${err}`))   
 }
@@ -160,11 +164,13 @@ function handlerClose() {
   setShowCardModal(false)
   setShowSelectModal(false)
   setShowImagePopup(false)
+  
 }
 function handlerOpenAddModal() {
   setShowSelectModal(false)
   setShowCardModal(true)
 }
+
 
 function handlerOpenModal() {
  
@@ -194,22 +200,58 @@ function handleImageOpenPopup(image) {
   
   setShowImagePopup(image)
 }
-console.log(showImagePopup)
+
+//Изменение права доступа юзера
+function handlerUserActive(data) {
+  console.log(data)
+  api.editContent(data.access, data.user._id)
+  .then((UpdateUser) => {
+    setUsers((state) => state.map((c) => c._id === data.user._id ? UpdateUser : c)); 
+  })
+  .catch(err => console.log(`Ошибка при загрузке профиля: ${err}`))
+}
+
+
   return (
     <CurrentUserContext.Provider  value={currentUser}>
     <div className="page">
-        <Header />
-      <Routes> 
-        <Route exact path="/" element={<Landing />} />
-        <Route path="/signup" element={<Register onRegister={onRegister}/>} />
-        <Route path="/signin" element={<Login onLogin={onLogin} />} />
-        <Route path="/flats" element={<FlatsList cards={cards} onCardDelete={handleDeleteCard} />} />
-        <Route path="/profile" element={<ProtectedRoute component={Profile} authUser={authUser} cards={cards} logOut={onSignOut} onCardDelete={handleDeleteCard} onClick={handlerOpenModal} />} />
-        <Route path="/:id" element={<CardDesc onCardClick={handleImageOpenPopup} cards={cards}/>} />
-        
-        <Route path="*" element={<NotFound />} />
+      <Header />
+      <Switch>
+        <Route exact path="/">
+        <Landing />
+        </Route>
+        <Route path="/signup">
+        <Register onRegister={onRegister}/>
+        </Route>
+        <Route path="/signin">
+        <Login onLogin={onLogin} />
+        </Route>
+        <Route path="/flats">
+        <FlatsList cards={cards} onCardDelete={handleDeleteCard} />
+        </Route>
+        <ProtectedRoute
+          path="/profile"
+          component={Profile}
+          loggedIn={loggedIn} 
+          cards={cards} 
+          logOut={onSignOut} 
+          onCardDelete={handleDeleteCard} 
+          onClick={handlerOpenModal}
+        />
+        <Route path="/confirm">
+          <ConfirmList onUpdateUser={handlerUserActive} onDeleteAcces={handlerUserActive} users={users}/>
+        </Route>
 
-      </Routes>
+        <Route path="/:id">
+          <CardDesc 
+            onCardClick={handleImageOpenPopup} 
+            cards={cards}
+          />
+        </Route> 
+        <Route path="*">
+        <NotFound />
+        </Route>
+      </Switch>
       <Footer /> 
       <AddNewFlats
       isOpen={showCardModal}
@@ -218,8 +260,8 @@ console.log(showImagePopup)
       name='flats'
       onCardData={hanldNewcard}
       object={object}
-        />
-        <SelectObject 
+      />
+      <SelectObject 
         isOpen={showSelectModal}
         onClose={handlerClose}
         onNext={handlerOpenAddModal}
@@ -227,18 +269,17 @@ console.log(showImagePopup)
         onChange={handleChange}
         name='object'
       />
-    <ModalInfo 
-          isOpen={showModal}
-    textError={textsucces}
-    onClose={handlerClose}
-      icon={iconVisual}
-     />
-     <ImagePopup 
-    onClose={handlerClose}
-    card={showImagePopup !==null && showImagePopup}
-     />
-    </div>
-   
+      <ModalInfo 
+        isOpen={showModal}
+        textError={textsucces}
+        onClose={handlerClose}
+        icon={iconVisual}
+      />
+      <ImagePopup 
+        onClose={handlerClose}
+        card={showImagePopup !==null && showImagePopup}
+      />
+    </div> 
   </CurrentUserContext.Provider>
   );
 }

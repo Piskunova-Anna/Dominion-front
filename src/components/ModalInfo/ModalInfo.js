@@ -5,7 +5,6 @@ import succesError from '../../images/succesErr.svg'
 
 function ModalInfo (props) {
  const succesIcon = props.icon ? succesOk : succesError
-
   
   return (
     <div className={`popup popup_type_${props.name} ${props.isOpen ? ('popup_opened') : ''}`} >

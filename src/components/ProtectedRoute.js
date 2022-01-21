@@ -1,11 +1,21 @@
 import React from 'react';
-import { Navigate, useLocation } from 'react-router-dom'
+import { Route, Redirect } from "react-router-dom";
 
-export const ProtectedRoute = ({ component: RouteComponent, ...props }) => {
- const location = useLocation();
+const ProtectedRoute = ({component: Component, ...props}) => {
   
-  if (props.authUser) {
-    return <RouteComponent {...props}/>
+  return (
+    <Route>
+      {()=>
+  props.loggedIn ? <Component {...props}/> : <Redirect to="/signin" />
   }
+<<<<<<< HEAD
   return <Navigate to="/signin" state={{from: location}}/>
 }
+=======
+
+  </ Route>
+)};
+
+
+export default ProtectedRoute;
+>>>>>>> 9510170d1bcd6678851b60cd1bccd218e0c68bce

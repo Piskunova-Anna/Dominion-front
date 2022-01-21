@@ -2,19 +2,40 @@ import React from "react";
 import "./Confirm.css";
 
 function Confirm(props) {
-  
+  const user=props.user
+  const status=user.access ? 'Активен' : 'Не активирован'
+  const [access, setAccess] = React.useState(false)
+ 
+ function handleAddAccess () {
+  setAccess(true)
+   props.onUpdateUser({
+     user,
+     access: true,
+    })
+ }
+
+ function handleDeleteAccess () {
+  setAccess(false)
+   props.onDeleteAcces({
+     user,
+     access: false,
+    })
+ }
+
+
   return (
-    <li className = "confirm__card">
-      <p className = "confirm__item">Семенова Ольга</p>
-      <p className = "confirm__item"> Email: semenova@ya.ru</p>
-      <p className = "confirm__item">Статус: Активен</p>
-      <p className = "confirm__item">Агенство: Белый кот</p>
-      <p className="confirm__item">тел: 8-999-999-99-99</p>
+    <li className="confirm__card">
+      <p className={`confirm__item ${user.access ? ('confirm__item_active') : ''} `}>{user.name}</p>
+      <p className={`confirm__item ${user.access ? ('confirm__item_active') : ''} `}> Email: {user.email}</p>
+      <p className={`confirm__item ${user.access ? ('confirm__item_active') : ''} `}>Статус: {status}</p>
+      <p className={`confirm__item ${user.access ? ('confirm__item_active') : ''} `}>Агенство: {user.agency}</p>
+      <p className={`confirm__item ${user.access ? ('confirm__item_active') : ''} `}>тел: {user.phone}</p>
       <div>
-      <button className = "confirm__button confirm__ok"></button>
-        <button className="confirm__button confirm__no"></button>
-        </div>
-        </li>
+        <button  onClick={handleAddAccess} className="confirm__button confirm__ok"></button>
+        <button  onClick={handleDeleteAccess} className="confirm__button confirm__no"></button>
+      </div>
+    </li>
+
   )
 }
 

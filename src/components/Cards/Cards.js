@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import "./Cards.css";
 import { CurrentUserContext } from '../../contexts/CurrentUserContext.js';
 
+//Шаблон карточек на странице квартир
 function Card(props) {
   const currentUser = React.useContext(CurrentUserContext);
 
@@ -27,7 +28,7 @@ function Card(props) {
         </div>
         <div className="object__block object__area">50<div className="object__name">кв.м.</div></div>  
         <div className="object__block object__address">{props.card.address}</div>
-        <div className="object__name object_c">район:<div className = "object__block">красногвардейский</div></div>  
+        <div className="object__name object_c">район:<div className = "object__block">{props.card.district}</div></div>  
         <div className="object__name object_d">
           Кол-во комнат:
           <p className="object__block object__num">{props.card.rooms}</p>

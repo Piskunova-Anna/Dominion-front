@@ -24,29 +24,27 @@
   visibility: visible
   display: flex
   opacity: 1
-
+  z-index: 1
 .popup__container
-  //width: 430px
   background-color: #ffffff
   border-radius: 10px
   display: flex
   flex-direction: column
   z-index: 1
   position: relative
-
+  overflow: auto
 .popup__close
   background-image: url(../../images/close-icon.svg)
   background-repeat: no-repeat
   background-size: contain
   border: 0
   background-color: rgba(1, 1, 1, 0)
-  //width: 30px
-  //height: 30px
+  width: 30px
+  height: 30px
   position: absolute
-  //top: -40px
-  //right: -30px
   transition: opacity 0.3s
   padding: 0
+  
 .body::-webkit-scrollbar 
   width: 10px
 .body 

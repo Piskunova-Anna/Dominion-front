@@ -3,8 +3,8 @@
 }
 
 .popup__close {
-  top: -40px;
-  right: -30px;
+  top: 0;
+  right: 0;
 }
 
 .popup__close:hover {
@@ -41,9 +41,6 @@
   .popup__title {
     font-size: 18px;
     line-height: 22px;
-    padding-top: 25px;
-    padding-bottom: 75px;
-    padding-left: 22px;
   }
   .popup__close {
     width: 20px;

@@ -23,6 +23,15 @@
   }
 }
 
+@media screen and (max-width: 550px) {
+  .header {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
 .header__img {
   position: relative;
 }
@@ -43,6 +52,13 @@
   top: 0;
   left: 10px;
   margin-top: 20px;
+}
+
+@media screen and (max-width: 550px) {
+  .header__logo {
+    width: 100px;
+    top: 15px;
+  }
 }
 
 .header__nav_mob {
