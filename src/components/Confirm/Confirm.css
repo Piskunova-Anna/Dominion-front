@@ -57,6 +57,10 @@
   }
 }
 
+.confirm__item_active {
+  background-color: rgba(7, 133, 61, 0.8);
+}
+
 .confirm__button {
   display: -webkit-box;
   display: -ms-flexbox;

@@ -29,7 +29,19 @@ class Api {
         })
         .then(this._getResponseData)
       }
+    //Изменение прав доступа для юзера
+      editContent (access, userId) {
+        console.log(access)
+        return fetch(`${this._address}/users/${userId}`, {
+        method: 'PATCH',
+        headers: this._headers,
+        credentials: "include",
+        body: JSON.stringify({access})
+      })
+      .then(this._getResponseData)
+    }
 
+    
       deleteCard(id) {
         return fetch(`${this._address}/profile/cards/${id}`, {
           method: 'DELETE',
@@ -60,6 +72,7 @@ class Api {
             kitchenarea: data[0].kitchenArea,
             district: data[0].district,
             commission: data[0].commission,
+            active: true,
           })
         })
         .then(this._getResponseData)

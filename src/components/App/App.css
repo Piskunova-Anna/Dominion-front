@@ -66,6 +66,8 @@
   background-size: contain;
   border: 0;
   background-color: rgba(1, 1, 1, 0);
+  width: 30px;
+  height: 30px;
   position: absolute;
   -webkit-transition: opacity 0.3s;
   transition: opacity 0.3s;

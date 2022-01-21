@@ -3,8 +3,8 @@
 }
 
 .popup__close {
-  top: -30px;
-  right: -30px;
+  top: 0;
+  right: 0;
 }
 
 .popup__close:hover {

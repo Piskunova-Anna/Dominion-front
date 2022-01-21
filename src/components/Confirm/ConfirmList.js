@@ -4,6 +4,7 @@ import Confirm from "./Confirm";
 import './ConfirmList.css';
 
 function ConfirmList(props) {
+ 
   const users = props.users
   console.log(users)
   return (
@@ -12,7 +13,10 @@ function ConfirmList(props) {
       <ul>
       {
         users.map((user)=>(
-         <Confirm key={user._id} user={user} />
+         <Confirm 
+         onUpdateUser={props.onUpdateUser} 
+         onDeleteAcces={props.onDeleteAcces} 
+         key={user._id} user={user} />
         ))
       }
       </ul>
