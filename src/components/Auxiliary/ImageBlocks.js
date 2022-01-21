@@ -1,11 +1,5 @@
 import React from "react";
 import "../CardDesc/CardDesc.css";
-import im1 from '../../images/Elbrus.jpg'
-import im2 from '../../images/Elbrus.png'
-import im3 from '../../images/Dombay.png'
-import im4 from '../../images/gumbashi.jpg'
-import im5 from '../../images/teberda.jpg'
-import im6 from '../../images/pexels-photo-1370704.jpg'
 import {ImageItem} from './ImageItem'
 
 function ImageBlocks(props) {
@@ -63,8 +57,8 @@ const arrLength = arr.length-1 > counter
         <img className="desc__photo_m" onClick={handleClick}  src={newimg} alt={props.address} />
       </div>  
       <div className="desc__photo_mini">
-        <div onClick={handleBeforeClick} className="object__arrow object__arrow_left"></div>
-        <div onClick={handleNextClick} className="object__arrow object__arrow_right"></div>
+        <div onClick={handleBeforeClick} className="object__arrow object__arrow_left object__arrow_type_mini"></div>
+        <div onClick={handleNextClick} className="object__arrow object__arrow_right object__arrow_type_mini"></div>
           {imageShow.map((item, index) => (
             <ImageItem key={index} src={item} alt="фото" onClick={handleSelectImg}/>
           ))

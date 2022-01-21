@@ -1,3 +1,5 @@
+//Компонент модального окна для добавления квартир
+
 import React, { useRef} from 'react';
 import './AddNewFlats.css';
 import {useFormValidation} from '../../utils/Validator.js';
@@ -13,7 +15,7 @@ function AddNewFlats(props) {
   const [repButtonActive, setRapButtonActive] = React.useState(false);
   const [balButtonActive, setBalButtonActive] = React.useState(false);
   const [selectedImage, setSelectedImage] = React.useState({});
-  const form = useRef(null)
+  const form = useRef()
   const [imageBlob, setImageBlob] = React.useState([]);
   let copy = Object.assign([], imageBlob);
   const object= props.object;
@@ -27,8 +29,15 @@ function AddNewFlats(props) {
     values.totalArea === '' ||
     values.transaction === '' ||
     values.price === '' ||
+    values.kadastr === '' ||
+    values.district === '' ||
+    values.commission === '' ||
     copy.length === 0 ||
      !isValid;
+
+    React.useEffect(()=> {
+      form.current.reset()
+    },  [props.isOpen])
 
   function  uploadImage(e) {
     setSelectedImage(e.target.files);
@@ -49,6 +58,7 @@ function AddNewFlats(props) {
   function handleSubmit(event) {
     event.preventDefault();
     props.onCardData([values, imageBlob, object])
+   
   } 
 
   function handleElButtonClick() {
@@ -63,7 +73,7 @@ function AddNewFlats(props) {
   }
 
   return (
-    <div className={`popup popup_opened popup_type_${props.name} ${props.isOpen ? ('popup_opened') : ''}`} >
+    <div className={`popup popup_type_${props.name} ${props.isOpen ? ('popup_opened') : ''}`} >
     <div className={`popup__container popup__container__type_${props.name}`}>
       <button onClick={props.onClose} type="button" className={`popup__close popup__close_type_${props.name}`} aria-label="Закрыть форму"></button>
       <h2 className="popup__title">{props.title}</h2>
@@ -96,6 +106,10 @@ function AddNewFlats(props) {
               <label className="add-form__label" htmlFor="adress">Адрес</label>
               <input type="text"value={values.adress} onChange={handleChange} placeholder='Введите адрес' className="add-form__item add-form__item_type_adress" name="adress" id="adress"/>
             </fieldset>
+            <fieldset className="add-form__fieldset_type_column add-form_type_district">
+              <label className="add-form__label" htmlFor="district">Район</label>
+              <input type="text"value={values.district} onChange={handleChange} placeholder='Введите район' className="add-form__item add-form__item_type_district" name="district" id="district"/>
+            </fieldset>
             <fieldset className="add-form__fieldset add-form_type_metro">
               <h2 className="add-form__title add-form__title_metro">Метро</h2>
               <select name="metro" value={values.metro} onChange={handleChange}>
@@ -124,6 +138,10 @@ function AddNewFlats(props) {
                 <option value="Аренда">Аренда</option>
               </select>
             </fieldset>
+            <fieldset className="add-form__fieldset_type_column add-form_type_kadastr">
+              <label className="add-form__label" htmlFor="kadastr">Кадастровый номер</label>
+              <input type="text"value={values.kadastr} onChange={handleChange} placeholder='Введите номер' className="add-form__item add-form__item_type_kadastr" name="kadastr" id="kadastr"/>
+            </fieldset>
             <fieldset className="add-form__fieldset add-form__type_addition">
               <button value={values.elevator= elButtonActive} className={`add-form_button element__link ${elButtonActive ? 'add-form_button_active' : ''}`} name="elevator" id="elevator" onClick={handleElButtonClick}>Лифт</button>
               <button value={values.repair= repButtonActive} className={`add-form_button element__link ${repButtonActive ? 'add-form_button_active' : ''}`} name="repair" onClick={handleRepButtonClick}>Ремонт</button>
@@ -133,6 +151,11 @@ function AddNewFlats(props) {
               <label className="add-form__label" htmlFor="floor">Этаж</label>
               <input type="text" pattern={pattern.floor} value={values.floor} onChange={handleChange} placeholder='Введите этаж' className="modal__item add-form__item_type_floor" name="floor" id="floor"/>
               {errors.floor && <span className="email-error add-form__item-error">{errors.floor}</span>}
+            </fieldset>
+            <fieldset className="add-form__fieldset_type_column add-form_type_commission">
+              <label className="add-form__label" htmlFor="commission">Комиссионные</label>
+              <input type="text" pattern={pattern.commission} value={values.commission} onChange={handleChange} placeholder='Введите вознаграждение' className="modal__item add-form__item_type_commission" name="commission" id="commission"/>
+              {errors.commission && <span className="email-error add-form__item-error">{errors.commission}</span>}
             </fieldset>
             <fieldset className="add-form_type_image">
               <SceletonImage selectedImage={selectedImage} imageBlob={imageBlob} onChange={uploadImage} />
