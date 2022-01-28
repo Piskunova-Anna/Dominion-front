@@ -143,9 +143,9 @@ function AddNewFlats(props) {
               <input type="text"value={values.kadastr} onChange={handleChange} placeholder='Введите номер' className="add-form__item add-form__item_type_kadastr" name="kadastr" id="kadastr"/>
             </fieldset>
             <fieldset className="add-form__fieldset add-form__type_addition">
-              <button value={values.elevator= elButtonActive} className={`add-form_button element__link ${elButtonActive ? 'add-form_button_active' : ''}`} name="elevator" id="elevator" onClick={handleElButtonClick}>Лифт</button>
-              <button value={values.repair= repButtonActive} className={`add-form_button element__link ${repButtonActive ? 'add-form_button_active' : ''}`} name="repair" onClick={handleRepButtonClick}>Ремонт</button>
-              <button value={values.balcony= balButtonActive} className={`add-form_button element__link ${balButtonActive ? 'add-form_button_active' : ''}`} name="balcony" onClick={handleBalButtonClick}>Балкон</button>
+              <button type="button" value={values.elevator= elButtonActive} className={`add-form_button element__link ${elButtonActive ? 'add-form_button_active' : ''}`} name="elevator" id="elevator" onClick={handleElButtonClick}>Лифт</button>
+              <button type="button" value={values.repair= repButtonActive} className={`add-form_button element__link ${repButtonActive ? 'add-form_button_active' : ''}`} name="repair" onClick={handleRepButtonClick}>Ремонт</button>
+              <button type="button" value={values.balcony= balButtonActive} className={`add-form_button element__link ${balButtonActive ? 'add-form_button_active' : ''}`} name="balcony" onClick={handleBalButtonClick}>Балкон</button>
             </fieldset>
             <fieldset className="add-form__fieldset_type_column add-form_type_floor">
               <label className="add-form__label" htmlFor="floor">Этаж</label>

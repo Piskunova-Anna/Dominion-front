@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch, useHistory } from 'react-router-dom';
+import { Route, Switch, useHistory, useLocation } from 'react-router-dom';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Landing from '../Landing/Landing';
@@ -27,6 +27,7 @@ import ImagePopup from '../Auxiliary/ImagePopup'
 function App() {
   const [loggedIn, setLoggedIn] = React.useState(false);
   const history= useHistory();
+  const location = useLocation();
   const [showImagePopup,setShowImagePopup] = React.useState('');
   const [currentUser, setCurrentUser] = React.useState({});
   const [upDateUser, setUpDateUser] = React.useState({});
@@ -38,6 +39,7 @@ function App() {
   const [showCardModal,setShowCardModal] = React.useState(false);
   const [showSelectModal,setShowSelectModal] = React.useState(false);
   const [object, setObject ] = React.useState('') 
+  
 
   //Получение Всех карточек с сервера
   React.useEffect(() => {
@@ -68,7 +70,7 @@ function App() {
       tokenCheck();
     }, [])
 
-  console.log(cards)
+  
 //Регистрация пользователя
 function onRegister( name, email, surname, phone, agency, password ) {
   auth.register(name, email, surname, phone, agency, password)
@@ -131,9 +133,23 @@ function onLogin(email,password){
 function tokenCheck() {
   auth.getContent()
   .then((res) => {
-    console.log('dghg')
     if(res){
+      setCurrentUser({
+        name: res.name,
+        email: res.email,
+        surname: res.surname,
+        agency: res.agency, 
+        phone: res.phone,
+        access: res.access,
+        admin: res.admin,
+        _id: res._id
+      })
       setLoggedIn(true)
+      if (location.pathname === '/signin' || location.pathname === '/signup') {
+        history.push('/profile');
+      } else {
+        history.push(location.pathname);
+      }
     }
   })
   .catch(err => console.log(`Зарегистрируйтесь или войдите в систему: ${err}`))  

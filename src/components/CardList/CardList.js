@@ -4,7 +4,7 @@ import "./CardList.css";
 //Список характеристик для страницы квартиры
 function CardList(props) {
   const card=props.card
-  console.log(card)
+
   return (
     <>
       <li className="card__block">Стоимость: {card.price}</li>
