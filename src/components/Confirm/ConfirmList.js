@@ -9,8 +9,8 @@ function ConfirmList(props) {
   console.log(users)
   return (
     <>
-    <h2>Пользователи</h2>
-      <ul>
+    <h2 className = "confirm__users">Пользователи</h2>
+      <ul className = "confirm__list">
       {
         users.map((user)=>(
          <Confirm 

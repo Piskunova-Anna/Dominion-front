@@ -11,7 +11,7 @@ function ModalInfo (props) {
       <div className={`popup__container popup__container__type_${props.name}`}>   
         <button onClick={props.onClose} type="button" className="popup__close" aria-label="Закрыть форму"></button>
         <img className="popup__icon" src={succesIcon} alt="иконка подтверждения" />
-        <h2 className="popup__title">{props.textError}</h2>
+        <h2 className="popup__title popup__title_modal-info">{props.textError}</h2>
       </div>
     </div>
   )
