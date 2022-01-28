@@ -9,15 +9,8 @@ function ConfirmList(props) {
   console.log(users)
   return (
     <>
-<<<<<<< HEAD
     <h2 className = "confirm__users">Пользователи</h2>
       <ul className = "confirm__list">
-        {users.map((user)=> (
-          <Confirm key={user._id} user={user} />
-        ))}
-=======
-    <h2>Пользователи</h2>
-      <ul>
       {
         users.map((user)=>(
          <Confirm 
@@ -26,7 +19,6 @@ function ConfirmList(props) {
          key={user._id} user={user} />
         ))
       }
->>>>>>> 9510170d1bcd6678851b60cd1bccd218e0c68bce
       </ul>
     </>
   )

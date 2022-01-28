@@ -17,7 +17,7 @@ function SelectObject (props) {
       <form className="add-form"  onSubmit={handleSubmit} name="objinfo">
         <fieldset className="add-form__fieldset add-form__type_select">
           <h2 className="add-form__title add-form__title_select">Тип недвижимости</h2>
-          <select onChange={props.onChange} placeholder="Выберите" name="object">
+          <select onChange={props.onChange} placeholder="Выберите" name="object" className = "add-form__selected">
             <option value="none" name="none">Выберите объект</option>
             <option value="Квартира" name="flat">Квартира</option>
             <option value="Дом"  name="home">Дом</option>

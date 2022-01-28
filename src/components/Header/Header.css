@@ -11,7 +11,7 @@
       -ms-flex-pack: justify;
           justify-content: space-between;
   position: relative;
-  max-width: 1440px;
+  background-image: url("../../images/fon1.jpg");
 }
 
 @media screen and (max-width: 820px) {

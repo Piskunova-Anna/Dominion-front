@@ -73,7 +73,7 @@ function AddNewFlats(props) {
   }
 
   return (
-    <div className={`popup popup_type_${props.name} ${props.isOpen ? ('popup_opened') : ''}`} >
+    <div className={`popup popup__type_${props.name} ${props.isOpen ? ('popup_opened') : ''}`} >
     <div className={`popup__container popup__container__type_${props.name}`}>
       <button onClick={props.onClose} type="button" className={`popup__close popup__close_type_${props.name}`} aria-label="Закрыть форму"></button>
       <h2 className="popup__title">{props.title}</h2>
@@ -81,7 +81,8 @@ function AddNewFlats(props) {
         <div className="add-form__modul">
           <div className="add-form__modul_class"> 
             <fieldset className="add-form__fieldset add-form__type_rooms">
-              <h2 className="add-form__title add-form__title_rooms">Количество комнат</h2>
+                <h2 className="add-form__title add-form__title_rooms">Количество комнат</h2>
+              
               <label className="add-form__label" htmlFor="studio">Студия</label>
               <input type="radio" value={'studio'} onChange={handleChange} className="add-form__item_type_rooms" name="rooms" id="studio"/>
               <label className="add-form__label" htmlFor="one">1</label>
