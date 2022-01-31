@@ -11,3 +11,11 @@ export default function CurrentCards (arr) {
    })
  return NewArray
 }
+
+//Функция фильтрации опубликованных объявлений
+export function filtrPublic(cards) {
+  const publicCards = cards.filter((item) => {
+    return item.active
+  }) 
+  return publicCards
+}

@@ -12,6 +12,7 @@ class Api {
     } 
   }
 
+  //Получение всех карточек
   getCards () {
     return fetch(`${this._address}/cards`, {
       method: 'GET',
@@ -20,6 +21,7 @@ class Api {
     })
     .then(this._getResponseData)
   }
+
   //Получение всех зарегистрированных пользователей
   getUsers () {
     return fetch(`${this._address}/users`, {
@@ -29,6 +31,7 @@ class Api {
     })
     .then(this._getResponseData)
     }
+
   //Изменение прав доступа для юзера
   editContent (access, userId) {
     console.log(access)
@@ -57,13 +60,18 @@ class Api {
     })
   }
 
-  hideCard(id) {
+//Скрытие карточек
+  hideCard (id, active) {
     return fetch(`${this._address}/profile/cards/${id}`, {
-      method: '',
-      headers: this.headers,
+      method: 'PATCH',
+      headers: this._headers,
+      credentials: "include",
+      body: JSON.stringify({active})
     })
+    .then(this._getResponseData)
   }
 
+  //Создание новой карточки
   createNewCard(data) {
     return fetch(`${this._address}/profile/cards`, {
       method: 'POST',

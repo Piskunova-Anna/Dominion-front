@@ -10,7 +10,7 @@ import {pattern} from '../../utils/constants';
 
 function AddNewFlats(props) {
  
-  const { values, handleChange, errors, isValid } = useFormValidation({});
+  const { values, handleChange, errors, resetForm, isValid } = useFormValidation({});
   const [elButtonActive, setElButtonActive] = React.useState(false);
   const [repButtonActive, setRapButtonActive] = React.useState(false);
   const [balButtonActive, setBalButtonActive] = React.useState(false);
@@ -31,14 +31,15 @@ function AddNewFlats(props) {
     values.price === '' ||
     values.kadastr === '' ||
     values.district === '' ||
-    values.commission === '' ||
     copy.length === 0 ||
      !isValid;
 
     React.useEffect(()=> {
-      form.current.reset()
+      resetForm()
+      setSelectedImage({})
     },  [props.isOpen])
-
+    
+    //форматирование фотографий для бэка
   function  uploadImage(e) {
     setSelectedImage(e.target.files);
     const imgarr = Object.values(e.target.files);
@@ -58,7 +59,6 @@ function AddNewFlats(props) {
   function handleSubmit(event) {
     event.preventDefault();
     props.onCardData([values, imageBlob, object])
-   
   } 
 
   function handleElButtonClick() {
@@ -81,8 +81,7 @@ function AddNewFlats(props) {
         <div className="add-form__modul">
           <div className="add-form__modul_class"> 
             <fieldset className="add-form__fieldset add-form__type_rooms">
-                <h2 className="add-form__title add-form__title_rooms">Количество комнат</h2>
-              
+              <h2 className="add-form__title add-form__title_rooms">Количество комнат</h2>
               <label className="add-form__label" htmlFor="studio">Студия</label>
               <input type="radio" value={'studio'} onChange={handleChange} className="add-form__item_type_rooms" name="rooms" id="studio"/>
               <label className="add-form__label" htmlFor="one">1</label>
@@ -99,21 +98,21 @@ function AddNewFlats(props) {
             <fieldset className="add-form__fieldset add-form__type_area">
               <h2 className="add-form__title add-form__title_total-area">Площадь квартиры</h2>
               <label className="add-form__label" htmlFor="totalArea">Общая площадь:</label>
-              <input type="number" onChange={handleChange} value={values.totalArea} className="add-form__item add-form__item_type_total-area" name="totalArea" id="totalArea"/>
+              <input type="number" onChange={handleChange} value={values.totalArea || ''} className="add-form__item add-form__item_type_total-area" name="totalArea" id="totalArea"/>
               <label className="add-form__label" htmlFor="kitchenArea">Площадь кухни:</label>
-              <input type="number" onChange={handleChange}  value={values.kitchenArea} className="add-form__item add-form__item_type_kitchen-area" name="kitchenArea" id="kitchenArea"/>
+              <input type="number" onChange={handleChange}  value={values.kitchenArea || ''} className="add-form__item add-form__item_type_kitchen-area" name="kitchenArea" id="kitchenArea"/>
             </fieldset> 
             <fieldset className="add-form__fieldset add-form__fieldset_type_column add-form_type_adress">
               <label className="add-form__label" htmlFor="adress">Адрес</label>
-              <input type="text"value={values.adress} onChange={handleChange} placeholder='Введите адрес' className="add-form__item add-form__item_type_adress" name="adress" id="adress"/>
+              <input type="text"value={values.adress || ''} onChange={handleChange} placeholder='Введите адрес' className="add-form__item add-form__item_type_adress" name="adress" id="adress"/>
             </fieldset>
             <fieldset className="add-form__fieldset_type_column add-form_type_district">
               <label className="add-form__label" htmlFor="district">Район</label>
-              <input type="text"value={values.district} onChange={handleChange} placeholder='Введите район' className="add-form__item add-form__item_type_district" name="district" id="district"/>
+              <input type="text"value={values.district || ''} onChange={handleChange} placeholder='Введите район' className="add-form__item add-form__item_type_district" name="district" id="district"/>
             </fieldset>
             <fieldset className="add-form__fieldset add-form_type_metro">
               <h2 className="add-form__title add-form__title_metro">Метро</h2>
-              <select name="metro" value={values.metro} onChange={handleChange}>
+              <select name="metro" value={values.metro || ''} onChange={handleChange}>
               <option value="none" name="none">Выберите метро</option>
                 {metro.map((item, index)=> (
                   <SelectedMetro item={item} key={index}/>
@@ -122,18 +121,18 @@ function AddNewFlats(props) {
             </fieldset>
             <fieldset className="add-form__fieldset add-form__type_info">
               <label className="add-form__label" htmlFor="info">Описание</label>
-              <textarea value={values.info} onChange={handleChange} type="textarea" cols='50' min="0" max="1000" placeholder='Введите текст' autoFocus className="add-form__item add-form__item_type_info" name="info" id="info" />  
+              <textarea value={values.info || ''} onChange={handleChange} type="textarea" cols='50' min="0" max="1000" placeholder='Введите текст' autoFocus className="add-form__item add-form__item_type_info" name="info" id="info" />  
             </fieldset>
           </div>
           <div className="add-form__modul_class">
             <fieldset className="add-form__fieldset_type_column add-form_type_price">
               <label className="add-form__label" htmlFor="price">Цена</label>
-              <input type="number" value={values.price} onChange={handleChange} placeholder='Укажите цену' className="add-form__item add-form__item_type_price" name="price" id="price"/>
+              <input type="number" value={values.price || ''} onChange={handleChange} placeholder='Укажите цену' className="add-form__item add-form__item_type_price" name="price" id="price"/>
               {errors.price && <span className="email-error add-form__item-error">{errors.price}</span>}
             </fieldset>
             <fieldset className="add-form__fieldset add-form__type_transaction">
               <h2 className="add-form__title add-form__title_transaction">Тип сделки</h2>
-              <select name="transaction" value={values.rent} onChange={handleChange} placeholder="Выберите">
+              <select name="transaction" value={values.rent || ''} onChange={handleChange} placeholder="Выберите">
                 <option value="none" name="none">Выберите сделку</option>
                 <option value="Продажа">Продажа</option>
                 <option value="Аренда">Аренда</option>
@@ -141,25 +140,25 @@ function AddNewFlats(props) {
             </fieldset>
             <fieldset className="add-form__fieldset_type_column add-form_type_kadastr">
               <label className="add-form__label" htmlFor="kadastr">Кадастровый номер</label>
-              <input type="text"value={values.kadastr} onChange={handleChange} placeholder='Введите номер' className="add-form__item add-form__item_type_kadastr" name="kadastr" id="kadastr"/>
+              <input type="text"value={values.kadastr || ''} onChange={handleChange} placeholder='Введите номер' className="add-form__item add-form__item_type_kadastr" name="kadastr" id="kadastr"/>
             </fieldset>
             <fieldset className="add-form__fieldset add-form__type_addition">
-              <button value={values.elevator= elButtonActive} className={`add-form_button element__link ${elButtonActive ? 'add-form_button_active' : ''}`} name="elevator" id="elevator" onClick={handleElButtonClick}>Лифт</button>
-              <button value={values.repair= repButtonActive} className={`add-form_button element__link ${repButtonActive ? 'add-form_button_active' : ''}`} name="repair" onClick={handleRepButtonClick}>Ремонт</button>
-              <button value={values.balcony= balButtonActive} className={`add-form_button element__link ${balButtonActive ? 'add-form_button_active' : ''}`} name="balcony" onClick={handleBalButtonClick}>Балкон</button>
+              <button type="button" value={values.elevator= elButtonActive} className={`add-form_button element__link ${elButtonActive ? 'add-form_button_active' : ''}`} name="elevator" id="elevator" onClick={handleElButtonClick}>Лифт</button>
+              <button type="button" value={values.repair= repButtonActive} className={`add-form_button element__link ${repButtonActive ? 'add-form_button_active' : ''}`} name="repair" onClick={handleRepButtonClick}>Ремонт</button>
+              <button type="button" value={values.balcony= balButtonActive} className={`add-form_button element__link ${balButtonActive ? 'add-form_button_active' : ''}`} name="balcony" onClick={handleBalButtonClick}>Балкон</button>
             </fieldset>
             <fieldset className="add-form__fieldset_type_column add-form_type_floor">
               <label className="add-form__label" htmlFor="floor">Этаж</label>
-              <input type="text" pattern={pattern.floor} value={values.floor} onChange={handleChange} placeholder='Введите этаж' className="modal__item add-form__item_type_floor" name="floor" id="floor"/>
+              <input type="text" pattern={pattern.floor} value={values.floor || ''} onChange={handleChange} placeholder='Введите этаж в формате этаж/этажность' className="modal__item add-form__item_type_floor" name="floor" id="floor"/>
               {errors.floor && <span className="email-error add-form__item-error">{errors.floor}</span>}
             </fieldset>
             <fieldset className="add-form__fieldset_type_column add-form_type_commission">
               <label className="add-form__label" htmlFor="commission">Комиссионные</label>
-              <input type="text" pattern={pattern.commission} value={values.commission} onChange={handleChange} placeholder='Введите вознаграждение' className="modal__item add-form__item_type_commission" name="commission" id="commission"/>
+              <input type="text" pattern={pattern.commission} value={values.commission || ''} onChange={handleChange} placeholder='Введите вознаграждение' className="modal__item add-form__item_type_commission" name="commission" id="commission"/>
               {errors.commission && <span className="email-error add-form__item-error">{errors.commission}</span>}
             </fieldset>
             <fieldset className="add-form_type_image">
-              <SceletonImage selectedImage={selectedImage} imageBlob={imageBlob} onChange={uploadImage} />
+              <SceletonImage selectedImage={selectedImage} isOpen={props.isOpen} imageBlob={imageBlob} onChange={uploadImage} />
             </fieldset>
           </div>
         </div>

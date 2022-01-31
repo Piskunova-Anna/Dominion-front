@@ -6,6 +6,7 @@ import './ConfirmList.css';
 function ConfirmList(props) {
  
   const users = props.users
+  console.log(props)
   console.log(users)
   return (
     <>

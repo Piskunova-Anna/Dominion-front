@@ -3,8 +3,7 @@
   display: flex
   flex-direction: column
   flex: 1
-
-.profile__block
+.profile__nav
   display: flex
   flex-direction: row
   margin: 15px 50px 15px 60px
@@ -12,6 +11,7 @@
   line-height: 29px
   font-style: italic
   font-weight: 600
+  align-items: center
   .profile__confirm
     margin-left: auto
     align-items: center
@@ -19,7 +19,9 @@
     align-self: center
   .profile__exit
     align-self: center
-
+.profile__block
+  display: flex
+  flex-direction: column
 .profile__user
   display: flex
   margin-right: 20px
@@ -41,6 +43,7 @@
   font-style: italic
   cursor: pointer
   font-family: 'Cormorant'
+  text-decoration: none
 /*, 'Arial', 'sans-serif'*/
 
 .profile__name
@@ -90,6 +93,9 @@
 
 a:hover, button:hover
   text-decoration: underline
+
+.profile__nav_active
+  color: #f50303
 
 @media screen
   @media (max-width: 1240px)

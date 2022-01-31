@@ -1,3 +1,4 @@
+//Компонент подтверждения Юзера в доступе к ЛК
 import React from "react";
 import "./Confirm.css";
 
@@ -5,7 +6,8 @@ function Confirm(props) {
   const user=props.user
   const status=user.access ? 'Активен' : 'Не активирован'
   const [access, setAccess] = React.useState(false)
- 
+console.log('nene')
+  //Отправляем подтверждение почты на сервер
  function handleAddAccess () {
   setAccess(true)
    props.onUpdateUser({
@@ -14,6 +16,7 @@ function Confirm(props) {
     })
  }
 
+  //Отправляем отмену подтверждения почты на сервер
  function handleDeleteAccess () {
   setAccess(false)
    props.onDeleteAcces({
@@ -25,7 +28,7 @@ function Confirm(props) {
 
   return (
     <li className="confirm__card">
-      <p className={`confirm__item ${user.access ? ('confirm__item_active') : ''} `}>{user.name}</p>
+      <p className={`confirm__item ${user.access ? ('confirm__item_active') : ''} `}>{`${user.name} ${user.surname}`}</p>
       <p className={`confirm__item ${user.access ? ('confirm__item_active') : ''} `}> Email: {user.email}</p>
       <p className={`confirm__item ${user.access ? ('confirm__item_active') : ''} `}>Статус: {status}</p>
       <p className={`confirm__item ${user.access ? ('confirm__item_active') : ''} `}>Агенство: {user.agency}</p>
