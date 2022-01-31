@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch, useHistory, useLocation } from "react-router-dom";
+import { Route, Switch, useHistory, useLocation  } from "react-router-dom";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Landing from "../Landing/Landing";
@@ -13,12 +13,12 @@ import ModalInfo from "../ModalInfo/ModalInfo";
 import AddNewFlats from "../AddCard/AddNewFlats";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import "./App.css";
-import api from "../../utils/Api.js";
-import SelectObject from "../AddCard/SelectObject";
+import api from "../../utils/Api";
+import SelectObject from "../AddCard/Selectobject";
 import NotFound from "../NotFound/NotFound";
 import FlatsList from "../Flats/FlatsList";
 import ProtectedRoute from "../ProtectedRoute";
-import ConfirmList from "../Confirm/ConfirmList";
+
 import ImageBlocks from "../Auxiliary/ImageBlocks";
 import ImagePopup from "../Auxiliary/ImagePopup";
 import Menu from "../Menu/Menu";
@@ -43,44 +43,33 @@ function App() {
   //Получение Всех карточек с сервера
   React.useEffect(() => {
     if (loggedIn) {
-      Promise.all([api.getUsers(), api.getCards(), auth.getContent()])
-        .then(([userData, cardlist, currentUser]) => {
-          setCards(cardlist);
+      Promise.all([api.getUsers(), auth.getContent()])
+        .then(([userData, currentUser]) => {
           setUsers(userData);
-
-  
-//Регистрация пользователя
-function onRegister( name, email, surname, phone, agency, password ) {
-  auth.register(name, email, surname, phone, agency, password)
-  .then((res) => {
-    history.push('/');
-    setShowModal(true)
-    setIconVisual(true)
-    setTextsucces(succesOk.signinOk)
-  })
-  .catch(err => {
-    if(err === authErrors.conflictErr) { 
-      setShowModal(true)
-      setIconVisual(false)
-      setTextsucces(errorMessage.emailError)
-    } else {
-      setShowModal(true)
-      setIconVisual(false)
-      setTextsucces(errorMessage.registrError)
-      
+          setCurrentUser({
+            name: currentUser.name,
+            email: currentUser.email,
+            surname: currentUser.surname,
+            agency: currentUser.agency,
+            phone: currentUser.phone,
+            access: currentUser.access,
+            admin: currentUser.admin,
+            _id: currentUser._id,
+          });
+        })
+        .catch((err) => console.log(`Ошибка при загрузке профиля: ${err}`));
     }
   }, [loggedIn]);
 
   //Получение токена при какждом мониторовании
   React.useEffect(() => {
     tokenCheck();
+    getCards();
   }, []);
 
-  console.log(cards);
   //Регистрация пользователя
   function onRegister(name, email, surname, phone, agency, password) {
-    auth
-      .register(name, email, surname, phone, agency, password)
+    auth.register(name, email, surname, phone, agency, password)
       .then((res) => {
         history.push("/");
         setShowModal(true);
@@ -125,25 +114,40 @@ function tokenCheck() {
   })
   .catch(err => console.log(`Зарегистрируйтесь или войдите в систему: ${err}`))  
 }
-
-  //Получение данных пользователя, email
-  function tokenCheck() {
-    auth
-      .getContent()
+  //Вход в профиль
+  function onLogin(email, password) {
+    // setSubmitBlock(true)
+    auth.authorize(email, password)
       .then((res) => {
-        console.log("dghg");
-        if (res) {
-          setLoggedIn(true);
+        if (res.succes === "no") {
+          setShowModal(true);
+          setIconVisual(false);
+          setTextsucces(res.message);
+        } else if (res.succes === "ok") {
+          tokenCheck();
+          history.push("/profile");
+          setShowModal(true);
+          setIconVisual(true);
+          setTextsucces(res.message);
         }
       })
-      .catch((err) => console.log(`Зарегистрируйтесь или войдите в систему: ${err}`));
+      .catch((err) => {
+        if (err === authErrors.unauthorizedErr) {
+          setIconVisual(false);
+          setShowModal(true);
+          setTextsucces(errorMessage.emailandPasswordError);
+        } else {
+          setIconVisual(false);
+          setShowModal(true);
+          setTextsucces(errorMessage.tokenError);
+        }
+      });
   }
 
   //Выход из системы
   function onSignOut() {
-    auth
-      .signOut()
-      .then(() => {
+    auth.signOut()
+    .then(() => {
         history.push("/signin");
         setLoggedIn(false);
         localStorage.clear();
@@ -153,11 +157,9 @@ function tokenCheck() {
   }
 
   function getCards() {
-    api
-      .getCards()
+    api.getCards()
       .then((cardlist) => {
         setCards(cardlist);
-        localStorage.setItem("searchResult", JSON.stringify(cardlist));
       })
       .catch((err) => console.log(`Не удалось получить карточки: ${err}`));
   }
@@ -176,20 +178,19 @@ function tokenCheck() {
   function handlerOpenModal() {
     setShowSelectModal(true);
   }
+  
   function hanldNewcard(values) {
-    api
-      .createNewCard(values)
+    api.createNewCard(values)
       .then((newCard) => {
         setCards([newCard, ...cards]);
         setShowCardModal(false);
       })
-      .catch((err) => console.log(`Ошибка при добавлении карточки: ${err}`));
+      .catch((err) => console.log(err));
   }
 
   //функция удаления карточки
   function handleDeleteCard(card) {
-    api
-      .deleteCard(card._id)
+    api.deleteCard(card._id)
       .then(() => {
         setCards(() => cards.filter((c) => c._id !== card._id));
       })
@@ -202,8 +203,12 @@ function tokenCheck() {
   }
 
   //функция скрытия карточки
-  function handleHideCard(card) {
-    api.hideCard(card._id).then(() => {});
+  function handleHideCard(data) {
+    api.hideCard(data.card._id, data.active)
+    .then((UpdateCard) => {
+      setCards((state) => state.map((c) => (c._id === data.card._id ? UpdateCard : c)));
+    })
+    .catch((err) => console.log(`Ошибка при снятии с публикации: ${err}`));
   }
 
   function handleChange(event) {
@@ -216,14 +221,13 @@ function tokenCheck() {
 
   //Изменение права доступа юзера
   function handlerUserActive(data) {
-    console.log(data);
-    api
-      .editContent(data.access, data.user._id)
+    api.editContent(data.access, data.user._id)
       .then((UpdateUser) => {
         setUsers((state) => state.map((c) => (c._id === data.user._id ? UpdateUser : c)));
       })
       .catch((err) => console.log(`Ошибка при загрузке профиля: ${err}`));
   }
+
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -241,21 +245,23 @@ function tokenCheck() {
           </Route>
           <Route path="/flats">
             <Menu></Menu>
-            <FlatsList cards={cards} onCardDelete={handleDeleteCard} onCardEdit={handleEditCard} onCardHide={handleHideCard} />
+            <FlatsList cards={cards}  />
           </Route>
           <ProtectedRoute
             path="/profile"
             component={Profile}
             loggedIn={loggedIn}
             cards={cards}
+            users={users}
             logOut={onSignOut}
+            onCardEdit={handleEditCard} 
+            onCardHide={handleHideCard}
             onCardDelete={handleDeleteCard}
             onClick={handlerOpenModal}
+            onUpdateUser={handlerUserActive}
+            onDeleteAcces={handlerUserActive}
           />
-          <Route path="/confirm">
-            <ConfirmList onUpdateUser={handlerUserActive} onDeleteAcces={handlerUserActive} users={users} />
-          </Route>
-
+          
           <Route path="/:id">
             <CardDesc onCardClick={handleImageOpenPopup} cards={cards} />
           </Route>

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .object, .object__name, .object_mob {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -355,7 +356,42 @@
   background-position-y: center;
 }
 
-.popup__hide:hover {
-  opacity: 0.6;
+.popup__hide:hover:after {
+  content: 'Снять с публикации';
+  width: 150px;
+  height: 20px;
+  position: absolute;
+  top: -26px;
+  left: -50px;
+  font-size: 14px;
+  right: 0;
+}
+
+.popup__eyes {
+  background-image: url(../../images/eyes.svg);
+  width: 25px;
+  height: 25px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: 0;
+  background-color: transparent;
+  position: absolute;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+  padding: 0;
+  right: 75px;
+  top: 5px;
+  cursor: pointer;
+  transition: opacity 0.3s;
+  background-position-y: center;
+}
+
+.popup__eyes:hover:after {
+  content: 'Опубликовать';
+  width: 150px;
+  height: 20px;
+  position: absolute;
+  top: -26px;
+  left: -40px;
 }
 /*# sourceMappingURL=Cards.css.map */

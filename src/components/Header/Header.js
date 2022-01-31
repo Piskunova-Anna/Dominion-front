@@ -14,7 +14,7 @@ function Header(props) {
       </Link>
       {Object.keys(currentUser).length !== 0
       ?
-      <Link to="/profile" className = 'header__profile'>Профиль</Link>
+      <Link to="/profile/myflats" className = 'header__profile'>Профиль</Link>
       : ''
       }
    </header>

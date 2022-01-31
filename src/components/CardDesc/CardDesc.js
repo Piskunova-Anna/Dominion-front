@@ -8,24 +8,16 @@ function CardDesc(props) {
   let { id } = useParams();
   let cards = props.cards;
   const card = cards.find(f => f._id === id);
-  const [cardData, setCardData] = React.useState()
+  //const [cardData, setCardData] = React.useState()
   let localData = JSON.parse(localStorage.getItem('cards'))
- const newcard = props.cards.length > 0 ? card : localData
-    React.useEffect(()=>{
-      if(props.cards.length > 0) {
+  const newcard = props.cards.length > 0 ? card : localData
+    
+  React.useEffect(()=>{
+    if(cards.length > 0) {
       localStorage.setItem("cards", JSON.stringify(card))
-      setCardData(card)
-      } else {
-        setCardData(localData)
-      }
+    }
+  }, [])
 
-
-      
-    }, [])
-    console.log(cardData)
-  console.log(props.cards.length)
-  console.log(localData)
-  console.log(newcard)
   return (
     <main className="desc">
       <div className="desc__block">

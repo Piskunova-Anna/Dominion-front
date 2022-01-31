@@ -6,7 +6,7 @@ function Confirm(props) {
   const user=props.user
   const status=user.access ? 'Активен' : 'Не активирован'
   const [access, setAccess] = React.useState(false)
-
+console.log('nene')
   //Отправляем подтверждение почты на сервер
  function handleAddAccess () {
   setAccess(true)
@@ -34,13 +34,8 @@ function Confirm(props) {
       <p className={`confirm__item ${user.access ? ('confirm__item_active') : ''} `}>Агенство: {user.agency}</p>
       <p className={`confirm__item ${user.access ? ('confirm__item_active') : ''} `}>тел: {user.phone}</p>
       <div>
-<<<<<<< HEAD
-        <button disabled={access ? true : ''} onClick={handleAddAccess} className="confirm__button confirm__ok"></button>
-        <button disabled={!access ? true : ''} onClick={handleDeleteAccess} className="confirm__button confirm__no"></button>
-=======
         <button onClick={handleAddAccess} className={`confirm__button confirm__ok ${user.access ? ('confirm__ok-no_active') : ''}`}></button>
         <button onClick={handleDeleteAccess} className={`confirm__button confirm__no ${user.access ? ('confirm__ok-no_active') : ''}`}></button>
->>>>>>> 8d0e31d1a21c6c784358fc63e820238cfd916e3c
       </div>
     </li>
 
