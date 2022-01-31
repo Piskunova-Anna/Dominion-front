@@ -59,10 +59,6 @@
 
 @media screen and (max-width: 950px) {
   .object {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
     height: 100%;
     /*max-width: 687px*/
     margin: 50px;
@@ -75,19 +71,20 @@
   }
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 750px) {
   .object {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
     max-width: 260px;
-    margin: 30px;
+    margin: 30px auto;
   }
 }
 
 .object__name {
   max-width: 250px;
+  word-wrap: break-word;
 }
 
 @media screen and (max-width: 1024px) {
@@ -171,6 +168,10 @@
   }
 }
 
+.object__block {
+  word-wrap: break-word;
+}
+
 @media screen and (max-width: 1024px) {
   .object__block {
     font: 18px/22px;
@@ -237,6 +238,10 @@
   .object__head {
     font: 18px/22px;
   }
+}
+
+.object__text {
+  word-wrap: break-word;
 }
 
 @media screen and (max-width: 1240px) {

@@ -1,15 +1,16 @@
 import React from "react";
 import './Menu.css';
+import { NavLink } from "react-router-dom";
 
 function Menu(props) {
   return (
     <ul className = "menu__list">
-      <li className = "menu__item">Главная</li>
-      <li className = "menu__item">Квартиры</li>
-      <li className = "menu__item">Новостройки</li>
-      <li className = "menu__item">Комнаты</li>
-      <li className = "menu__item">Новости</li>
-      <li className = "menu__item">Прочее</li>
+      <NavLink exact to = "/" target="_self" activeClassName="menu__item_active" className = "menu__item">Главная</NavLink>
+      <NavLink to = "flats" target="_self" activeClassName="menu__item_active" className = "menu__item">Квартиры</NavLink>
+      <NavLink to = "new-flats" target="_self" activeClassName="menu__item_active" className = "menu__item none">Новостройки</NavLink>
+      <NavLink to = "houses" target="_self" activeClassName="menu__item_active" className = "menu__item none">Комнаты</NavLink>
+      <NavLink to = "news" target="_self" activeClassName="menu__item_active" className = "menu__item none">Новости</NavLink>
+      <li className = "menu__item none">Прочее</li>
     </ul>
   )
 }

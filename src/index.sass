@@ -83,7 +83,8 @@
   @media screen
     @media (max-width:1320px)
       max-width: 1041px
-      @extend %fontM
+      font-size: 48px
+      line-height: 58px
     @media (max-width:1120px)
       max-width: 780px
 .news__text
@@ -98,7 +99,8 @@
     @media (max-width: 1320px)
       max-width: 1041px
       max-height: 360px
-      @extend %fontXS
+      font-size: 16px
+      line-height: 24px
       overflow: hidden
     @media (max-width: 1120px)
       max-width: 780px
@@ -133,9 +135,11 @@
   @extend %fontL
   @media screen
     @media (max-width: 787px)
-      @extend %fontM
+      font-size: 48px
+      line-height: 58px
     @media (max-width: 550px)
-      @extend %fontXS
+      font: 16px
+      line-height: 24px
 .page-dev__back
   /*display: flex*/
   position: absolute
@@ -150,11 +154,15 @@
   text-align: center
   @media screen
     @media (max-width: 787px)
-      @extend %fontM
+      font-size: 48px
+      line-height: 58px
       margin: 80px auto
       width: 150px
     @media (max-width: 550px)
-      @extend %fontS
+      font-size: 24px
+      line-height: 29px
+      style: italic
+      weight: 600
       margin: 60px auto
       width: 100px
 .flex-table

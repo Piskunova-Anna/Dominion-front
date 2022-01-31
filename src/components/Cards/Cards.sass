@@ -32,21 +32,21 @@
       /*max-width: 1134px*/
       margin: 50px 55px
     @media (max-width: 950px)
-      flex-direction: column
       height: 100%
       /*max-width: 687px*/
       margin: 50px
       display: flex
       align-self: center
       width: 80vw
-    @media (max-width: 650px)
+    @media (max-width: 750px)
       flex-direction: column
       max-width: 260px
-      margin: 30px
+      margin: 30px auto
 .object__name
   @extend %flexRow
   max-width: 250px
   @extend %fontS
+  word-wrap: break-word
   @media screen
     @media (max-width: 1024px)
         //margin: 10px auto
@@ -88,6 +88,7 @@
   @extend %margin
   //align-self: baseline
   @extend  %fontS
+  word-wrap: break-word
   @media screen
     @media (max-width: 1024px)
         font: 18px/22px
@@ -131,6 +132,7 @@
 .object__text
   @extend %margin
   @extend %fontS
+  word-wrap: break-word
   @media screen
     @media (max-width: 1240px)
       height: 100%

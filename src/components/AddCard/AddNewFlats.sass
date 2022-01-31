@@ -31,6 +31,7 @@
   margin-block-end: 0
   font-weight: normal
   font-style: italic
+  text-decoration: underline
 .add-form__modul
   display: flex
   justify-content: space-between
@@ -58,9 +59,9 @@
   padding: 10px 0 5px 0
   font-weight: normal
   font-size: 20px
-  line-height: 12px
-  padding-right: 10px
+  line-height: 24px
   font-style: italic
+  text-decoration: underline 
 
 .add-form__type_info
   display: flex
@@ -85,7 +86,7 @@
   width: 100%
   padding: 5px
   border-radius: 5px
-  border: 1px solid  
+  border: 1px solid 
 
 .add-form__fieldset_type_column
   border: 0
@@ -158,7 +159,21 @@
     @media (max-width: 550px)
       width: 250px
 
-
+.popup__title_object
+  margin: 10px 20px
+  align-self: auto
 
 .add-form__type_rooms
   flex-direction: column
+  ul
+    display: flex
+    flex-direction: row
+    list-style-type: none
+    margin-block-start: 0
+    margin-block-end: 0
+    padding-inline-start: 0
+    li
+      display: flex
+
+.add-form__label_num
+  padding: 0 0 0 10px
