@@ -117,4 +117,14 @@
   cursor: pointer;
   opacity: 0.3;
 }
+
+.display__none {
+  display: none;
+}
+
+.flats__text {
+  font-size: 20px;
+  margin-left: 40px;
+  font-weight: 600;
+}
 /*# sourceMappingURL=App.css.map */

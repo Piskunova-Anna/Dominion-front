@@ -8,18 +8,27 @@ function CardDesc(props) {
   let { id } = useParams();
   let cards = props.cards;
   const card = cards.find(f => f._id === id);
-  console.log(card)
+  //const [cardData, setCardData] = React.useState()
+  let localData = JSON.parse(localStorage.getItem('cards'))
+  const newcard = props.cards.length > 0 ? card : localData
+    
+  React.useEffect(()=>{
+    if(cards.length > 0) {
+      localStorage.setItem("cards", JSON.stringify(card))
+    }
+  }, [])
+
   return (
     <main className="desc">
       <div className="desc__block">
-        <ImageBlocks onCardClick={props.onCardClick} image={card.image}/>
+        <ImageBlocks onCardClick={props.onCardClick} image={newcard.image}/>
         <div className="desc__list">
-          <CardList card={card} />
+          <CardList card={newcard} />
         </div>
       </div>
       <div>
         <h2 className="desc__title">Описание:</h2>
-        <p className="desc__text">{card.description}</p>
+        <p className="desc__text">{newcard.description}</p>
       </div>
     </main>
   );

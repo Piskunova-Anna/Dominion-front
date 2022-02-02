@@ -7,6 +7,7 @@ export function useFormValidation(namevalues) {
   const [ isValid, setIsValid ] = useState(true);
 
   const handleChange = (e) => {
+  //  e.target.setCustomValidity(e.target.name==='floor' ? 'Введите этаж в формате 5/25' : e.target.validationMessage)
     const {name, value} = e.target
     setValues({...values, [name]: value});
     setErrors({...errors, [name]: e.target.validationMessage})

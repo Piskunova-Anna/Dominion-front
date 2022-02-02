@@ -1,26 +1,47 @@
 import React from "react";
-import {Link} from 'react-router-dom';
+import {Link, useLocation} from 'react-router-dom';
 import "./Cards.css";
 import { CurrentUserContext } from '../../contexts/CurrentUserContext.js';
 
 //Шаблон карточек на странице квартир
 function Card(props) {
+  const card = props.card
+  const eyesbutton = props.card.active ? true: false;
   const currentUser = React.useContext(CurrentUserContext);
+  const location = useLocation();
+  const editbutton = location.pathname === '/profile' || location.pathname === '/profile/myflats' || location.pathname === '/profile/public' ||
+  location.pathname === '/profile/nopublic' ? true : false 
+  const [isActive, setIsActive] = React.useState(false)
 
+  //удаление карточки
   function handleDeleteClick () {
     props.onCardDelete(props.card) 
   }
+
+  //редактирование карточки
   function handleEditCard() {
     props.onCardEdit(props.card)
   }
+
+  //снятие с публикации карточки
   function handleHideCard() {
-    props.onCardHide(props.card)
+    setIsActive(!isActive)
+    props.onCardHide({
+      card,
+      active: !isActive,
+    })
   }
+
   return (
   <article className="object">
+    {editbutton ?
+    <>
       <button onClick={handleDeleteClick} type="button" className={` ${currentUser.name ? 'popup__close card__close' : ''}`} aria-label="Закрыть форму"></button>
       <button onClick={handleEditCard} type="button" className='popup__edit'></button>
-      <button onClick={handleHideCard} type="button" className='popup__hide'></button>
+      <button onClick={handleHideCard} type="button" className={`${eyesbutton ? 'popup__hide': 'popup__eyes'}`}></button>
+    </>
+      : ''
+      }
       <Link to={`/${props.card._id}`}>
       <img src={props.card.image[0]} alt={props.card.adress} className="object__photo" />
       </Link>
