@@ -5,14 +5,19 @@ import {useFormValidation} from '../../utils/Validator.js';
 
 function Login(props) {
   const submitAuth = props.submitAuth;
-  const { values, handleChange, errors, isValid } = useFormValidation({
-    email: '', password: '' });
-  const submitDisabled = values.email === '' || values.password === '' || !isValid || submitAuth;
+  const { values, 
+    handleChange, 
+    emailError, 
+    passwordError, 
+  } = useFormValidation({
+    email: '', password: ''});
+  const submitDisabled = emailError || passwordError ||submitAuth;
  
   function handleSubmit(e) {
     e.preventDefault();
     props.onLogin(values.email, values.password);
   } 
+ 
 
   return (
     <Form 
@@ -26,10 +31,10 @@ function Login(props) {
     password={values.password}
     onSubmit={handleSubmit}
     onChange={handleChange}
-    errorsEmail={errors.email}
-    errorsPassword={errors.password}
-    submitDisabled={submitDisabled}
+    errorsEmail = {emailError}
+    errorsPassword={passwordError}
     serverError={props.serverError}
+    submitDisabled={submitDisabled}
     >
     </Form>   
   )

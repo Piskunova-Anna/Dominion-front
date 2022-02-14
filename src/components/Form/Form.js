@@ -4,9 +4,8 @@ import { Link } from 'react-router-dom';
 import {pattern} from '../../utils/constants';
 
 function Form(props) {
-
-  
- return (
+ 
+  return (
     <div className="form__container">
       <h2 className="form__title">{props.title}</h2>
       <form className="form__info" onSubmit={props.onSubmit} disabled={props.submitDisabled ? true : ''}>
@@ -17,28 +16,27 @@ function Form(props) {
           autoComplete="off" 
           type="email" 
           onChange={props.onChange} 
-          value={props.email} 
-          placeholder="" 
+          value={props.email}
           className="form__item form__item_type_email" 
           name="email" 
-          id="email" 
+          id="email"
+          placeholder="Введите эл.почту" 
           pattern={pattern.email}
           required/>
-          {props.errorsEmail && <span className="email-error form__item-error">{props.errorsEmail}</span>}
-          
+          {props.errorsEmail && <span className="password-error form__item-error">{props.errorsEmail}</span>}
           <label className="input__label" htmlFor="password">Пароль</label>
           <input 
           autoComplete="off" 
           type="password" 
           onChange={props.onChange} 
           value={props.password} 
-          placeholder="" 
+          placeholder="Введите пароль" 
           className="form__item form__item_type_password" 
           name="password" 
           id="password" 
           required minLength="8" 
           maxLength="40"/>
-          {props.errorsPassword && <span className="password-error form__item-error">{props.errorsPassword}</span>}
+         {props.errorsPassword && <span className="password-error form__item-error">{props.errorsPassword}</span>}
           
 
         </fieldset>

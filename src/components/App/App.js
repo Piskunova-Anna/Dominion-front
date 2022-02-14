@@ -8,17 +8,19 @@ import Login from "../Login/Login";
 import Profile from "../Profile/Profile";
 import CardDesc from "../CardDesc/CardDesc";
 import * as auth from "../../utils/Auth.js";
-import { infoMessage, errorMessage, authErrors, succesOk } from "../../utils/constants";
+import { errorMessage, authErrors, succesOk } from "../../utils/constants";
 import ModalInfo from "../ModalInfo/ModalInfo";
 import AddNewFlats from "../AddCard/AddNewFlats";
+import EditFlats from "../AddCard/EditFlats";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import "./App.css";
 import api from "../../utils/Api";
-import SelectObject from "../AddCard/SelectObject";
+import SelectObject from "../AddCard/Selectobject";
 import NotFound from "../NotFound/NotFound";
 import FlatsList from "../Flats/FlatsList";
 import ProtectedRoute from "../ProtectedRoute";
-import ImageBlocks from "../Auxiliary/ImageBlocks";
+import Skeleton from '../Skeleton/Skeleton';
+//import ImageBlocks from "../Auxiliary/ImageBlocks";
 import ImagePopup from "../Auxiliary/ImagePopup";
 import Menu from "../Menu/Menu";
 
@@ -28,18 +30,19 @@ function App() {
   const location = useLocation();
   const [showImagePopup,setShowImagePopup] = React.useState('');
   const [currentUser, setCurrentUser] = React.useState({});
-  const [upDateUser, setUpDateUser] = React.useState({});
+  //const [upDateUser, setUpDateUser] = React.useState({});
   const [showModal, setShowModal] = React.useState(false);
   const [iconVisual, setIconVisual] = React.useState(false);
   const [textsucces, setTextsucces] = React.useState("");
   const [users, setUsers] = React.useState([]);
   const [cards, setCards] = React.useState([]);
   const [showCardModal,setShowCardModal] = React.useState(false);
+  const [showEditCard,setShowEditCard] = React.useState(false);
   const [showSelectModal,setShowSelectModal] = React.useState(false);
   const [object, setObject ] = React.useState('') 
-  
-
-  //Получение Всех карточек с сервера
+  const [skeleton, setSkeleton] =  React.useState(false);
+  const [selectedCardUpdate, setSelectedCardUpdate] = React.useState(false)
+  //Получение данных пользователя с сервера
   React.useEffect(() => {
     if (loggedIn) {
       Promise.all([api.getUsers(), auth.getContent()])
@@ -56,14 +59,24 @@ function App() {
             _id: currentUser._id,
           });
         })
-        .catch((err) => console.log(`Ошибка при загрузке профиля: ${err}`));
+        .catch((err) => {
+          if (err === authErrors.notFoundErr) {
+            setShowModal(true);
+            setIconVisual(false);
+            setTextsucces(errorMessage.profilrError);
+          } else {
+            setShowModal(true);
+            setIconVisual(false);
+            setTextsucces(errorMessage.internalServerErr);
+          }
+        })
     }
   }, [loggedIn]);
 
   //Получение токена при какждом мониторовании
   React.useEffect(() => {
-    tokenCheck();
-    getCards();
+    getCards()
+    tokenCheck()
   }, []);
 
   //Регистрация пользователя
@@ -152,15 +165,32 @@ function tokenCheck() {
         localStorage.clear();
         setCurrentUser({});
       })
-      .catch((err) => console.log(`Не удалось выйти из системы: ${err}`));
+      .catch((err) => {
+          setIconVisual(false);
+          setShowModal(true);
+          setTextsucces(errorMessage.signoutErr);
+      })
   }
 
+  //Запрос на получение всех карточек с сервера
   function getCards() {
+    setSkeleton(true)
     api.getCards()
       .then((cardlist) => {
         setCards(cardlist);
+        setSkeleton(false)
       })
-      .catch((err) => console.log(`Не удалось получить карточки: ${err}`));
+      .catch((err) => {
+        if (err === authErrors.requestTimeout) {
+          setIconVisual(false);
+          setShowModal(true);
+          setTextsucces(errorMessage.requestTimeout);
+        } else {
+          setIconVisual(false);
+          setShowModal(true);
+          setTextsucces(errorMessage.cardsError);
+        }
+      })
   }
   //закрытие модального окна
   function handlerClose() {
@@ -168,7 +198,10 @@ function tokenCheck() {
     setShowCardModal(false);
     setShowSelectModal(false);
     setShowImagePopup(false);
+    setSelectedCardUpdate(false)
+    setShowEditCard(false)
   }
+
   function handlerOpenAddModal() {
     setShowSelectModal(false);
     setShowCardModal(true);
@@ -178,36 +211,71 @@ function tokenCheck() {
     setShowSelectModal(true);
   }
   
+  //Создание новой карточки
   function hanldNewcard(values) {
     api.createNewCard(values)
       .then((newCard) => {
         setCards([newCard, ...cards]);
+        history.push("/profile/myflats");
         setShowCardModal(false);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        if (err === authErrors.badRequestErr) {
+          setIconVisual(false);
+          setShowModal(true);
+          setTextsucces(errorMessage.ValidationErr);
+        } else {
+          setIconVisual(false);
+          setShowModal(true);
+          setTextsucces(errorMessage.internalServerErr);
+        }
+      })
   }
 
   //функция удаления карточки
   function handleDeleteCard(card) {
     api.deleteCard(card._id)
-      .then(() => {
+      .then((card) => {
         setCards(() => cards.filter((c) => c._id !== card._id));
       })
-      .catch((err) => console.log(`Ошибка при загрузке профиля: ${err}`));
+      .catch((err) => {
+        if (err === authErrors.forbiddenErr) {
+          setIconVisual(false);
+          setShowModal(true);
+          setTextsucces(errorMessage.forbiddenErr);
+        } else {
+          setIconVisual(false);
+          setShowModal(true);
+          setTextsucces(errorMessage.cardsDeleteError);
+        }
+      })
+  }
+
+  function handleEditCard(card) {
+    setShowEditCard(true)
+    setSelectedCardUpdate(card)
   }
 
   //функция редактирования карточки
-  function handleEditCard(card) {
-    api.editCard(card._id).then(() => {
-      <AddNewFlats
-      isOpen={showCardModal}
-      onClose={handlerClose}
-      title="Редактировать объект"
-      name="flats"
-      onCardData={hanldNewcard}
-      object={object}
-    />
-    });
+  function handleEditCard2(card) {
+    api.editCard(card)
+    .then((updateCard) => {
+      console.log(updateCard)
+      console.log(cards)
+      setCards(() => cards.map((c) => c._id === updateCard._id ? updateCard : c));
+      setShowEditCard(false);
+    })
+    .catch((err) => {
+      if (err === authErrors.badRequestErr) {
+        setIconVisual(false);
+        setShowModal(true);
+        setTextsucces(errorMessage.ValidationErr);
+      } else {
+        setIconVisual(false);
+        setShowModal(true);
+        setTextsucces(errorMessage.internalServerErr);
+      }
+    })
   }
 
   //функция скрытия карточки
@@ -219,7 +287,7 @@ function tokenCheck() {
     .catch((err) => console.log(`Ошибка при снятии с публикации: ${err}`));
   }
 
-  function handleChange(event) {
+  function handleChangeObject(event) {
     setObject(event.target.value);
   }
 
@@ -233,13 +301,24 @@ function tokenCheck() {
       .then((UpdateUser) => {
         setUsers((state) => state.map((c) => (c._id === data.user._id ? UpdateUser : c)));
       })
-      .catch((err) => console.log(`Ошибка при загрузке профиля: ${err}`));
+      .catch((err) => {
+        if (err === authErrors.notFoundErr) {
+          setIconVisual(false);
+          setShowModal(true);
+          setTextsucces(errorMessage.userNotFound);
+        } else {
+          setIconVisual(false);
+          setShowModal(true);
+          setTextsucces(errorMessage.internalServerErr);
+        }
+      })
   }
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
         <Header />
+        <Menu></Menu>
         <Switch>
           <Route exact path="/">
             <Landing />
@@ -251,8 +330,11 @@ function tokenCheck() {
             <Login onLogin={onLogin} />
           </Route>
           <Route path="/flats">
-            <Menu></Menu>
+          {skeleton && <Skeleton isOpen={skeleton} />}
+           
+          {!skeleton  && 
             <FlatsList cards={cards}  />
+          }
           </Route>
           <ProtectedRoute
             path="/profile"
@@ -267,6 +349,7 @@ function tokenCheck() {
             onClick={handlerOpenModal}
             onUpdateUser={handlerUserActive}
             onDeleteAcces={handlerUserActive}
+            skeleton={skeleton}
           />
           
           <Route path="/:id">
@@ -280,9 +363,15 @@ function tokenCheck() {
         <AddNewFlats
           isOpen={showCardModal}
           onClose={handlerClose}
-          title="Добавить новый объект"
           name="flats"
           onCardData={hanldNewcard}
+          object={object}
+        />
+        <EditFlats
+          isOpen={showEditCard}
+          onEditCard={handleEditCard2}
+          onClose={handlerClose}
+          card={selectedCardUpdate && selectedCardUpdate}
           object={object}
         />
         <SelectObject
@@ -290,7 +379,7 @@ function tokenCheck() {
           onClose={handlerClose}
           onNext={handlerOpenAddModal}
           object={object}
-          onChange={handleChange}
+          onChange={handleChangeObject}
           name="object"
         />
         <ModalInfo isOpen={showModal} textError={textsucces} onClose={handlerClose} icon={iconVisual} name="modal-info" />

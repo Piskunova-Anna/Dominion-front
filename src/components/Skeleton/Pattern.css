@@ -1,0 +1,109 @@
+@-webkit-keyframes flareAnimation {
+  0% {
+    left: -150%;
+  }
+  100% {
+    left: 150%;
+  }
+}
+
+@keyframes flareAnimation {
+  0% {
+    left: -150%;
+  }
+  100% {
+    left: 150%;
+  }
+}
+
+.pattern__icon, .pattern__icon3, .pattern__icon2 {
+  background-color: #fffefe;
+  height: 30px;
+  border-radius: 10px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.pattern {
+  height: 475px;
+  background-color: #FEE0D4;
+  width: 90%;
+  margin: 50px 55px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-shadow: 0px 10px 20px 5px rgba(191, 191, 191, 0.8);
+          box-shadow: 0px 10px 20px 5px rgba(191, 191, 191, 0.8);
+}
+
+.pattern__image {
+  width: 230px;
+  height: 308px;
+  margin: auto 24px;
+  background-color: #fffefe;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.flare {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 45px;
+  -webkit-transform: skewX(-45deg);
+          transform: skewX(-45deg);
+  -webkit-animation: flareAnimation;
+          animation: flareAnimation;
+  left: -150%;
+  background: -webkit-gradient(linear, left top, right top, from(rgba(254, 224, 212, 0.1)), to(rgba(255, 224, 212, 0.4)));
+  background: linear-gradient(90deg, rgba(254, 224, 212, 0.1), rgba(255, 224, 212, 0.4));
+  -webkit-animation: flareAnimation 2s infinite linear;
+          animation: flareAnimation 2s infinite linear;
+}
+
+.pattern__info {
+  width: 70%;
+  height: 308px;
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.pattern__feat {
+  width: 90%;
+  background-color: #fffefe;
+  height: 30px;
+  border-radius: 10px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.pattern__icon {
+  width: 300px;
+}
+
+.pattern__icon3 {
+  width: 200px;
+}
+
+.pattern__icon2 {
+  width: 150px;
+}
+
+.pattern__desc {
+  width: 90%;
+  background-color: #fffefe;
+  height: 100px;
+  border-radius: 10px;
+  position: relative;
+  overflow-x: hidden;
+}
+/*# sourceMappingURL=Pattern.css.map */

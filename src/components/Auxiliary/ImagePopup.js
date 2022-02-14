@@ -17,7 +17,7 @@ function ImagePopup(props) {
         <div onClick={handlerCounterBefore} className="object__arrow object__arrow_left"></div>
         <div onClick={handlerCounterAfter} className="object__arrow object__arrow_right"></div>
         <button onClick={props.onClose} type="button" className="popup__close" aria-label="Закрыть форму"></button>
-        <img className="popup__image" src={props.card} alt="Увеличенное фото" />
+        <img className="popup__image" src={props.card ? props.card : ''} alt="Увеличенное фото" />
       </div>
     </div>
   )
