@@ -19,12 +19,8 @@ import SelectObject from "../AddCard/SelectObject";
 import NotFound from "../NotFound/NotFound";
 import FlatsList from "../Flats/FlatsList";
 import ProtectedRoute from "../ProtectedRoute";
-<<<<<<< HEAD
 import Skeleton from '../Skeleton/Skeleton';
 //import ImageBlocks from "../Auxiliary/ImageBlocks";
-=======
-import ImageBlocks from "../Auxiliary/ImageBlocks";
->>>>>>> 9510f6e37a4dd0fd79fb6781bc2041258f9cf96b
 import ImagePopup from "../Auxiliary/ImagePopup";
 import Menu from "../Menu/Menu";
 
@@ -256,7 +252,6 @@ function tokenCheck() {
   }
 
   function handleEditCard(card) {
-<<<<<<< HEAD
     setShowEditCard(true)
     setSelectedCardUpdate(card)
   }
@@ -281,18 +276,6 @@ function tokenCheck() {
         setTextsucces(errorMessage.internalServerErr);
       }
     })
-=======
-    api.editCard(card._id).then(() => {
-      <AddNewFlats
-      isOpen={showCardModal}
-      onClose={handlerClose}
-      title="Редактировать объект"
-      name="flats"
-      onCardData={hanldNewcard}
-      object={object}
-    />
-    });
->>>>>>> 9510f6e37a4dd0fd79fb6781bc2041258f9cf96b
   }
 
   //функция скрытия карточки
