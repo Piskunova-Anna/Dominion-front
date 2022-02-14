@@ -59,6 +59,10 @@
   position: relative;
 }
 
+.popup__container__type_edit {
+  height: 90%;
+}
+
 .popup__close {
   background-image: url(../../images/close-icon.svg);
   background-repeat: no-repeat;

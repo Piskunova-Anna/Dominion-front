@@ -15,7 +15,7 @@ import EditFlats from "../AddCard/EditFlats";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import "./App.css";
 import api from "../../utils/Api";
-import SelectObject from "../AddCard/Selectobject";
+import SelectObject from "../AddCard/SelectObject";
 import NotFound from "../NotFound/NotFound";
 import FlatsList from "../Flats/FlatsList";
 import ProtectedRoute from "../ProtectedRoute";
@@ -373,6 +373,7 @@ function tokenCheck() {
           onClose={handlerClose}
           card={selectedCardUpdate && selectedCardUpdate}
           object={object}
+          name="edit"
         />
         <SelectObject
           isOpen={showSelectModal}

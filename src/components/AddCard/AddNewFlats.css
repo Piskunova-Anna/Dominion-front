@@ -224,6 +224,15 @@
           flex-direction: row;
 }
 
+@media screen and (max-width: 850px) {
+  .button__row {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+  }
+}
+
 .add-form__button_disabled {
   background: #c6c7cc;
 }
