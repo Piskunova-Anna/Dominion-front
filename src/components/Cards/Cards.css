@@ -150,6 +150,14 @@
           align-items: center;
   justify-items: flex-start;
   max-height: 365px;
+  list-style-type: none;
+  -webkit-margin-before: 0;
+          margin-block-start: 0;
+  -webkit-margin-after: 0;
+          margin-block-end: 0;
+  -webkit-padding-start: 0;
+          padding-inline-start: 0;
+  word-break: break-all;
 }
 
 @media screen and (max-width: 1240px) {
@@ -229,7 +237,7 @@
 
 @media screen and (max-width: 650px) {
   .object__photo {
-    height: 400px;
+    max-height: 400px;
   }
 }
 
@@ -363,6 +371,7 @@
   top: 5px;
   cursor: pointer;
   transition: opacity 0.3s;
+  z-index: 5;
 }
 
 .popup__edit:hover {

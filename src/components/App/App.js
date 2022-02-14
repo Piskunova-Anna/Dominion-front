@@ -294,7 +294,7 @@ function tokenCheck() {
           name="object"
         />
         <ModalInfo isOpen={showModal} textError={textsucces} onClose={handlerClose} icon={iconVisual} name="modal-info" />
-        <ImagePopup onClose={handlerClose} card={showImagePopup !== null && showImagePopup} />
+        <ImagePopup onClose={handlerClose} name="image" card={showImagePopup !== null && showImagePopup} />
       </div>
     </CurrentUserContext.Provider>
   );

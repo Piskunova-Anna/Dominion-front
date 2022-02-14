@@ -45,28 +45,28 @@ function Card(props) {
       <Link to={`/${props.card._id}`}>
       <img src={props.card.image[0]} alt={props.card.adress} className={`object__photo ${location.pathname === '/profile' || location.pathname === '/profile/myflats' || location.pathname === '/profile/public' || location.pathname === '/profile/nopublic' ? 'object__photo-item' : ''}`} />
       
-      <div className="object__about">
-        <div className="object__price object__cost">{props.card.price}</div>
-        <div className="object__name object_a">
+      <ul className="object__about">
+        <li className="object__price object__cost">{props.card.price}</li>
+        <li className="object__name object_a">
           М.
           <p className="object__block object__metro">{props.card.metro}</p>
-        </div>
-        <div className="object__name object_b">
+        </li>
+        <li className="object__name object_b">
           Этаж:
           <p className="object__block object__level">{props.card.floor}</p>
-        </div>
-        <div className="object__block object__area">50<div className="object__name">кв.м.</div></div>  
-        <div className="object__block object__address">{props.card.adress}</div>
-        <div className="object__name object_c">район:<div className = "object__block">{props.card.district}</div></div>  
-        <div className="object__name object_d">
+        </li>
+        <li className="object__block object__area">50<li className="object__name">кв.м.</li></li>  
+        <li className="object__block object__address">{props.card.adress}</li>
+        <li className="object__name object_c">район:<li className = "object__block">{props.card.district}</li></li>  
+        <li className="object__name object_d">
           Кол-во комнат:
           <p className="object__block object__num">{props.card.rooms}</p>
-        </div>
-        <div className="object__text-block">
+        </li>
+        <li className="object__text-block">
           <h2 className="object__head">Описание</h2>
           <p className="object__text">{props.card.description}</p>
-        </div>
-        </div>
+        </li>
+        </ul>
         </Link>
       
   </article>
