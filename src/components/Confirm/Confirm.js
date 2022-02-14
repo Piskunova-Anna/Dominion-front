@@ -35,7 +35,7 @@ console.log('nene')
       <p className={`confirm__item ${user.access ? ('confirm__item_active') : ''} `}>тел: {user.phone}</p>
       <div>
         <button onClick={handleAddAccess} className={`confirm__button confirm__ok ${user.access ? ('confirm__ok-no_active') : ''}`}></button>
-        <button onClick={handleDeleteAccess} className={`confirm__button confirm__no ${user.access ? ('confirm__ok-no_active') : ''}`}></button>
+        <button onClick={handleDeleteAccess} className={'confirm__button confirm__no'}></button>
       </div>
     </li>
 

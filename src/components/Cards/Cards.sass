@@ -21,32 +21,41 @@
     block-end: 0
 .object
   @extend %flexRow
-  max-width: 91,7%
+  max-width: 91.7%
   height: 475px
   margin: 50px 60px
   box-shadow: 0px 10px 20px 5px rgba(191, 191, 191, 0.8)
   background: #FEE0D4
   position: relative
+  border-radius: 30px
+  a 
+    color: #000
+    text-decoration: none
+    display: inherit
+    flex-direction: inherit
+    width: 100%
   @media screen
+    @media (min-width: 1440px)
+      margin: 50px auto
     @media (max-width: 1240px)
       /*max-width: 1134px*/
       margin: 50px 55px
     @media (max-width: 950px)
-      flex-direction: column
       height: 100%
       /*max-width: 687px*/
       margin: 50px
       display: flex
       align-self: center
       width: 80vw
-    @media (max-width: 650px)
+    @media (max-width: 750px)
       flex-direction: column
       max-width: 260px
-      margin: 30px
+      margin: 30px auto
 .object__name
   @extend %flexRow
   max-width: 250px
   @extend %fontS
+  word-wrap: break-word
   @media screen
     @media (max-width: 1024px)
         //margin: 10px auto
@@ -80,6 +89,7 @@
       display: flex
       flex-direction: column
       margin: 10px 15px 30px
+      align-items: flex-start
     @media (max-width: 650px)
       align-items: center
     @media (min-width: 950px)
@@ -88,6 +98,7 @@
   @extend %margin
   //align-self: baseline
   @extend  %fontS
+  word-wrap: break-word
   @media screen
     @media (max-width: 1024px)
         font: 18px/22px
@@ -105,13 +116,13 @@
     @media (max-width: 950px)
       display: flex
       align-self: center
-      margin: auto 22px
+      margin: 22px
     @media (max-width: 650px)
       height: 400px
     @media (max-width: 550px)
       width: 200px
       height: 260px
-      margin: auto
+      margin: 20px auto 10px
 .object__price
   @extend %margin
   @extend %fontM
@@ -122,6 +133,9 @@
   @extend %flexCol
   grid-area: 5/1/6/5
   overflow: hidden 
+  @media screen
+    @media (max-width: 550px)
+      width: 90%
 .object__head
   @extend %margin
   @extend %fontS
@@ -131,6 +145,7 @@
 .object__text
   @extend %margin
   @extend %fontS
+  word-wrap: break-word
   @media screen
     @media (max-width: 1240px)
       height: 100%
@@ -223,3 +238,7 @@
     top: -26px
     left: -40px
 
+.object__photo-item
+  @media screen
+    @media (max-width: 750px)
+      margin-top: 40px

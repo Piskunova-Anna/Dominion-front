@@ -18,6 +18,10 @@
   margin: 0 auto;
 }
 
+.footer__back {
+  background-color: #000;
+}
+
 .footer div {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -30,12 +34,12 @@
           justify-content: space-between;
 }
 
-@media screen and (max-width: 580px) {
+@media screen and (max-width: 650px) {
   .footer div {
     -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
   }
 }
 
@@ -54,16 +58,21 @@
   margin-top: 45px;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1440px) {
   .footer__logo {
-    font: 64px/78px;
+    font-size: 64px;
+    line-height: 78px;
   }
 }
 
-@media screen and (max-width: 580px) {
+@media screen and (max-width: 650px) {
   .footer__logo {
-    font: 36px/44px;
-    margin-top: 27px;
+    font-size: 36px;
+    line-height: 48px;
+    margin-top: 0;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
   }
 }
 
@@ -75,6 +84,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  margin-left: 50px;
 }
 
 @media screen and (max-width: 1024px) {
@@ -89,9 +99,9 @@
   }
 }
 
-@media screen and (max-width: 580px) {
+@media screen and (max-width: 650px) {
   .footer__block {
-    margin: auto;
+    margin: 0px auto 30px;
   }
 }
 
@@ -110,9 +120,10 @@
   margin: 25px 0 15px;
 }
 
-@media screen and (max-width: 580px) {
+@media screen and (max-width: 1440px) {
   .footer__author {
-    display: none;
+    font-size: 16px;
+    line-height: 20px;
   }
 }
 
@@ -140,11 +151,11 @@
   white-space: nowrap;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1440px) {
   .contacts {
-    font-size: 24px;
-    line-height: 29px;
-    margin: 15px 180px 0 0;
+    font-size: 28px;
+    line-height: 36px;
+    margin: 15px 50px 0 0;
   }
 }
 
@@ -154,9 +165,9 @@
   }
 }
 
-@media screen and (max-width: 580px) {
+@media screen and (max-width: 650px) {
   .contacts {
-    margin: auto;
+    margin: 20px auto 30px;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;

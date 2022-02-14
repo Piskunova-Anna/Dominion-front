@@ -42,13 +42,31 @@
 }
 
 .object {
-  max-width: 91,7%;
+  max-width: 91.7%;
   height: 475px;
   margin: 50px 60px;
   -webkit-box-shadow: 0px 10px 20px 5px rgba(191, 191, 191, 0.8);
           box-shadow: 0px 10px 20px 5px rgba(191, 191, 191, 0.8);
   background: #FEE0D4;
   position: relative;
+  border-radius: 30px;
+}
+
+.object a {
+  color: #000;
+  text-decoration: none;
+  display: inherit;
+  -webkit-box-orient: inherit;
+  -webkit-box-direction: inherit;
+      -ms-flex-direction: inherit;
+          flex-direction: inherit;
+  width: 100%;
+}
+
+@media screen and (min-width: 1440px) {
+  .object {
+    margin: 50px auto;
+  }
 }
 
 @media screen and (max-width: 1240px) {
@@ -60,10 +78,6 @@
 
 @media screen and (max-width: 950px) {
   .object {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
     height: 100%;
     /*max-width: 687px*/
     margin: 50px;
@@ -76,19 +90,20 @@
   }
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 750px) {
   .object {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
     max-width: 260px;
-    margin: 30px;
+    margin: 30px auto;
   }
 }
 
 .object__name {
   max-width: 250px;
+  word-wrap: break-word;
 }
 
 @media screen and (max-width: 1024px) {
@@ -155,6 +170,9 @@
         -ms-flex-direction: column;
             flex-direction: column;
     margin: 10px 15px 30px;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
   }
 }
 
@@ -170,6 +188,10 @@
   .object__about {
     width: 100%;
   }
+}
+
+.object__block {
+  word-wrap: break-word;
 }
 
 @media screen and (max-width: 1024px) {
@@ -201,7 +223,7 @@
     display: flex;
     -ms-flex-item-align: center;
         align-self: center;
-    margin: auto 22px;
+    margin: 22px;
   }
 }
 
@@ -215,7 +237,7 @@
   .object__photo {
     width: 200px;
     height: 260px;
-    margin: auto;
+    margin: 20px auto 10px;
   }
 }
 
@@ -234,10 +256,20 @@
   overflow: hidden;
 }
 
+@media screen and (max-width: 550px) {
+  .object__text-block {
+    width: 90%;
+  }
+}
+
 @media screen and (max-width: 650px) {
   .object__head {
     font: 18px/22px;
   }
+}
+
+.object__text {
+  word-wrap: break-word;
 }
 
 @media screen and (max-width: 1240px) {
@@ -393,5 +425,11 @@
   position: absolute;
   top: -26px;
   left: -40px;
+}
+
+@media screen and (max-width: 750px) {
+  .object__photo-item {
+    margin-top: 40px;
+  }
 }
 /*# sourceMappingURL=Cards.css.map */

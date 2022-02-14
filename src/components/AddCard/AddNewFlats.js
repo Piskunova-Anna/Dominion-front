@@ -85,12 +85,17 @@ function AddNewFlats(props) {
     <div className={`popup popup__type_${props.name} ${props.isOpen ? ('popup_opened') : ''}`} >
     <div className={`popup__container popup__container__type_${props.name}`}>
       <button onClick={props.onClose} type="button" className={`popup__close popup__close_type_${props.name}`} aria-label="Закрыть форму"></button>
+<<<<<<< HEAD
       <h2 className="popup__title">Добавить новый объект</h2>
+=======
+      <h2 className="popup__title popup__title_object">{props.title}</h2>
+>>>>>>> 9510f6e37a4dd0fd79fb6781bc2041258f9cf96b
       <form ref={form} className="add-form"  onSubmit={handleSubmit} encType="multipart/form-data" name="fileinfo">
         <div className="add-form__modul">
           <div className="add-form__modul_class"> 
             <fieldset className="add-form__fieldset add-form__type_rooms">
               <h2 className="add-form__title add-form__title_rooms">Количество комнат</h2>
+<<<<<<< HEAD
               <label className="add-form__label" htmlFor="studio">Студия</label>
               <input type="radio" value='studio' checked={values.rooms ==='studio' ? true : false} onChange={handleChange} className="add-form__item_type_rooms" name="rooms" id="studio"/>
               <label className="add-form__label" htmlFor="one">1</label>
@@ -103,6 +108,34 @@ function AddNewFlats(props) {
               <input type="radio" value={'4' || ''} checked={values.rooms ==='4' ? true : false} onChange={handleChange} className="add-form__item_type_rooms" name="rooms" id="four"/>
               <label className="add-form__label" htmlFor="five">5+</label>
               <input type="radio" value={'5' || ''} checked={values.rooms ==='5' ? true : false} onChange={handleChange} className="add-form__item_type_rooms" name="rooms" id="five"/>
+=======
+              <ul>
+                <li>  
+                  <label className="add-form__label add-form__label_num" htmlFor="studio">Студия</label>
+                  <input type="radio" value={'studio'} onChange={handleChange} className="add-form__item_type_rooms" name="rooms" id="studio" />
+                </li>
+                <li>
+                  <label className="add-form__label add-form__label_num" htmlFor="one">1</label>
+                  <input type="radio" value={'1'} onChange={handleChange} className="add-form__item_type_rooms" name="rooms" id="one"/>
+                </li>
+                <li>
+                  <label className="add-form__label add-form__label_num" htmlFor="two">2</label>
+                  <input type="radio" value={'2'} onChange={handleChange} className="add-form__item_type_rooms" name="rooms" id="two"/>
+                </li>
+                <li>
+                  <label className="add-form__label add-form__label_num" htmlFor="three">3</label>
+                  <input type="radio" value={'3'} onChange={handleChange} className="add-form__item_type_rooms" name="rooms" id="three"/>
+                </li>
+                <li>
+                  <label className="add-form__label add-form__label_num" htmlFor="four">4</label>
+                  <input type="radio" value={'4'} onChange={handleChange} className="add-form__item_type_rooms" name="rooms" id="four"/>
+                </li>
+                <li>
+                  <label className="add-form__label add-form__label_num" htmlFor="five">5+</label>
+                  <input type="radio" value={'5'} onChange={handleChange} className="add-form__item_type_rooms" name="rooms" id="five"/>
+                </li>
+              </ul>
+>>>>>>> 9510f6e37a4dd0fd79fb6781bc2041258f9cf96b
             </fieldset>  
             <fieldset className="add-form__fieldset add-form__type_area">
               <h2 className="add-form__title add-form__title_total-area">Площадь квартиры</h2>

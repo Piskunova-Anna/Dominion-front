@@ -3,6 +3,14 @@
   display: flex
   flex-direction: column
   flex: 1
+.profile__nav-list
+  @media screen
+    @media (max-width: 950px)
+      display: inherit
+      flex-direction: row-reverse
+      margin: 0 auto
+    @media (max-width: 750px)
+      flex-direction: column
 .profile__nav
   display: flex
   flex-direction: row
@@ -10,41 +18,77 @@
   font-size: 24px
   line-height: 29px
   font-style: italic
-  font-weight: 600
+  font-weight: 500
   align-items: center
+  @media screen
+    @media (max-width: 950px)
+      flex-direction: column
+      height: -webkit-fill-available
+      justify-content: space-around
+      margin: 15px 30px
   .profile__confirm
     margin-left: auto
     align-items: center
-  .profile__user
-    align-self: center
-  .profile__exit
+  .profile__user, .profile__exit
     align-self: center
 .profile__block
   display: flex
   flex-direction: column
+  @media screen
+    @media (max-width: 1024px)
+      margin: 10px 40px
+      font-size: 18px
+      line-height: 22px
+      font-weight: 400
+    @media (max-width: 850px)
+      flex-direction: column
+      font-size: 18px
+      line-height: 22px
+      font-weight: 400
 .profile__user
   display: flex
   margin-right: 20px
+  font-weight: 600
+  font-style: normal
+  @media screen
+    @media (max-width: 850px)
+      margin-right: 0
 
 .profile__exit
   display: flex
   text-decoration: none
   color: #000
+  @media screen
+    @media (max-width: 950px)
+      margin-top: 20px
+      height: 60px 
+    @media (max-width: 850px)
+      justify-content: end
 
 .profile__button
   display: flex
   align-items: center
   height: 60px
-  padding: 0 20px
+  padding: 0 5px
   background-color: #FEE0D4
   border-width: 0
   font-size: 24px
   line-height: 29px
   font-style: italic
   cursor: pointer
-  font-family: 'Cormorant'
   text-decoration: none
-/*, 'Arial', 'sans-serif'*/
+  font-family: 'Cormorant'
+  @media screen
+    @media (max-width: 1280px)
+      font-size: 18px
+      line-height: 22px
+    @media (max-width: 950px)
+      width: -webkit-fill-available
+    @media (max-width: 850px)
+      padding: 0 10px
+      font-size: 18px
+      line-height: 22px
+
 
 .profile__name
   display: flex
@@ -54,6 +98,14 @@
   font-size: 48px
   line-height: 58px
   margin-right: auto
+  @media screen
+    @media (max-width: 1024px)
+      font-weight: 400
+      font-size: 36px
+      line-height: 42px
+    @media (max-width: 850px)
+      font-size: 36px
+      line-height: 43px
 
 .profile__object
   align-items: center
@@ -66,11 +118,30 @@
   font-size: 36px
   line-height: 43px
   font-style: italic
-  font-weight: 600
+  font-weight: 500
   border-radius: 20px
   border: 2px solid black
   background-color: transparent
   cursor: pointer
+  @media screen
+    @media (max-width: 1280px)
+      font-size: 24px
+      line-height: 29px
+      font-weight: 400
+    @media (max-width: 1024px)
+      padding: 0 20px
+      height: 60px
+    @media (max-width: 950px)
+      margin-top: 20px
+    @media (max-width: 850px)
+      padding: 0 10px
+      font-size: 24px
+      line-height: 29px
+    @media (max-width: 750px)
+      margin: 20px auto
+      font-size: 18px
+      line-height: 22px
+      font-weight: 400
 
 .profile__main
   display: flex
@@ -80,7 +151,7 @@
 
 .profile__confirm
     font-style: italic
-    font-weight: 600
+    font-weight: 500
     font-size: 24px 
     //font-family:
     line-height: 36px 
@@ -90,75 +161,33 @@
     margin-right: 20px
     text-decoration: none
     color: black
+    @media screen
+      @media (max-width: 1280px)
+        font-size: 18px
+        line-height: 24px
+        font-weight: 400
+
+a
+  color: black
 
 a:hover, button:hover
   text-decoration: underline
 
 .profile__nav_active
-  color: #f50303
+  text-decoration: underline
 
-@media screen
-  @media (max-width: 1240px)
-    .profile__object
-      font-size: 24px
-      line-height: 29px
-      font-weight: 400
-    .profile__confirm
-      font-size: 18px
-      line-height: 24px
-      font-weight: 400
+.profile__home
+  display: flex
+  text-decoration: none
 
-  @media (max-width: 1024px)
-    .profile__block
-      margin: 10px 40px
-      font-size: 18px
-      line-height: 22px
-      font-weight: 400
 
-    .profile__name
-      font-weight: 400
-      font-size: 36px
-      line-height: 42px
-
-    .profile__object
-      padding: 0 20px
-      height: 60px
 
   @media (max-width: 850px)
-
-    .profile__button
-      height: 50px
-      padding: 0 10px
-      font-size: 18px
-      line-height: 22px
-
-    .profile__name
-      font-size: 36px
-      line-height: 43px
-
-    .profile__object
-      padding: 0 10px
-      height: 50px
-      font-size: 24px
-      line-height: 29px
-
-  @media (max-width: 850px)
-
-    .profile__block
-      flex-direction: column
-      font-size: 18px
-      line-height: 22px
-      font-weight: 400
-
-    .profile__user
-      margin-right: 0
 
     .profile__exit
-      justify-content: end
 
     .profile__button
       justify-content: center
-      height: 50px
       padding: 0
       font-size: 18px
       line-height: 22px
@@ -172,8 +201,28 @@ a:hover, button:hover
       margin-right: auto
       margin-bottom: 20px
 
-    .profile__object
-      margin: 20px auto
-      font-size: 18px
-      line-height: 22px
-      font-weight: 400
+  
+@media screen
+  @media (max-width: 950px)
+    .profile__home, .profile__confirm, .profile__user, .profile__exit
+      height: 60px
+      align-items: center
+    .profile__confirm
+      margin: auto
+      text-align: center
+    .profile__user
+      margin-right: 0
+
+.profile__go-back
+  font-style: italic
+  font-weight: 600
+  font-size: 24px
+  font-family: 'Cormorant'
+  color: #000
+  line-height: 29px
+  display: flex
+  cursor: pointer
+  background-color: transparent
+  margin-left: 10px
+  padding: 0
+  border: none
