@@ -50,27 +50,6 @@ function Profile(props) {
           <Route path="/profile/confirm">
             <ConfirmList onUpdateUser={props.onUpdateUser} onDeleteAcces={props.onDeleteAcces} users={props.users} />
           </Route>
-          <Route path="/profile/myflats">
-            <Flats cards={newcards} onCardDelete={props.onCardDelete} onCardEdit={props.handleEditCard} onCardHide={props.onCardHide} />
-          </Route>
-          <Route path="/profile/public">
-            <Flats
-              cards={newcards}
-              onCardDelete={props.onCardDelete}
-              onCardEdit={props.handleEditCard}
-              onCardHide={props.onCardHide}
-              public="public"
-            />
-          </Route>
-          <Route path="/profile/nopublic">
-            <Flats
-              cards={newcards}
-              onCardDelete={props.onCardDelete}
-              onCardEdit={props.handleEditCard}
-              onCardHide={props.onCardHide}
-              public="hidePublic"
-            />
-          </Route>
         <Route path='/profile/myflats'>
         {props.skeleton && <Skeleton isOpen={props.skeleton} />}
         {!props.skeleton  && 

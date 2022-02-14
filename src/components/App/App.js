@@ -15,7 +15,7 @@ import EditFlats from "../AddCard/EditFlats";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import "./App.css";
 import api from "../../utils/Api";
-import SelectObject from "../AddCard/SelectObject";
+import SelectObject from "../AddCard/Selectobject";
 import NotFound from "../NotFound/NotFound";
 import FlatsList from "../Flats/FlatsList";
 import ProtectedRoute from "../ProtectedRoute";
@@ -235,7 +235,7 @@ function tokenCheck() {
   //функция удаления карточки
   function handleDeleteCard(card) {
     api.deleteCard(card._id)
-      .then(() => {
+      .then((card) => {
         setCards(() => cards.filter((c) => c._id !== card._id));
       })
       .catch((err) => {
