@@ -55,7 +55,7 @@ function Card(props) {
           Этаж:
           <p className="object__block object__level">{props.card.floor}</p>
         </div>
-        <div className="object__block object__area">50<div className="object__name">кв.м.</div></div>  
+        <div className="object__block object__area">{props.card.totalarea}<div className="object__name">кв.м.</div></div>  
         <div className="object__block object__address">{props.card.adress}</div>
         <div className="object__name object_c">район:<div className = "object__block">{props.card.district}</div></div>  
         <div className="object__name object_d">

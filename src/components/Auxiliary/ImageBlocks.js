@@ -13,7 +13,7 @@ const arrLength = arr.length-1 > counter
 
   React.useEffect(()=> {
     quantityMovies(arr, startIndex, startIndex+3)
-  },[startIndex])
+  },[startIndex, arr])
 
   function handlerCounterUp() {
     arrLength ? setCounter(counter+1) : setCounter(0) 
