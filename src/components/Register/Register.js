@@ -6,16 +6,7 @@ import {pattern} from '../../utils/constants';
 
 function Register(props) {
   const submitAuth = props.submitAuth;
-  const { values, 
-    handleChange, 
-    isValid, 
-    emailError, 
-    passwordError, 
-    nameError, 
-    surnameError,
-    agencyError,
-    phoneError
-  } = useFormValidation({
+  const { values, handleChange, errors, isValid } = useFormValidation({
     email: '', password: '', surname:'', phone: '', agency: '' });
   const submitDisabled = values.email === '' || values.password === '' || values.agency === '' || values.surname === '' || values.phone === '' || !isValid || submitAuth;
       
@@ -37,8 +28,8 @@ function Register(props) {
     password={values.password}
     onSubmit={handleSubmit}
     onChange={handleChange}
-    errorsEmail={emailError}
-    errorsPassword={passwordError}
+    errorsEmail={errors.email}
+    errorsPassword={errors.password}
     submitDisabled={submitDisabled}
     >
     <label className="input__label" htmlFor="name">Имя</label>
@@ -55,7 +46,7 @@ function Register(props) {
     maxLength="40"
     pattern={pattern.name}
     />
-    {nameError && <span className="email-error form__item-error">{nameError}</span>}
+    {errors.name && <span className="email-error form__item-error">{errors.name}</span>}
     <label className="input__label" htmlFor="surname">Фамилия</label>
     <input 
     onChange={handleChange} 
@@ -70,7 +61,7 @@ function Register(props) {
     maxLength="40"
     pattern={pattern.name}
     />
-    {surnameError && <span className="email-error form__item-error">{surnameError}</span>} 
+    {errors.surname && <span className="email-error form__item-error">{errors.surname}</span>} 
     <label className="input__label" htmlFor="agency">Агенство</label>
     <input 
     onChange={handleChange} 
@@ -85,7 +76,7 @@ function Register(props) {
     maxLength="40"
     pattern={pattern.name}
     />
-    {agencyError && <span className="email-error form__item-error">{agencyError}</span>} 
+    {errors.agency && <span className="email-error form__item-error">{errors.agency}</span>} 
     <label className="input__label" htmlFor="phone">Телефон</label>
     <input 
     onChange={handleChange} 
@@ -98,7 +89,7 @@ function Register(props) {
     required 
     pattern={pattern.phone}
     />
-    {phoneError && <span className="email-error form__item-error">{phoneError}</span>}    
+    {errors.phone && <span className="email-error form__item-error">{errors.phone}</span>}    
     </Form>    
   )
 }

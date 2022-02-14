@@ -5,7 +5,6 @@ import Flats from "../Flats/Flats.js";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext.js";
 import CurrentCards from "../Auxiliary/auxiliary";
 import ConfirmList from "../Confirm/ConfirmList";
-import Skeleton from '../Skeleton/Skeleton';
 
 //Страничка профиля
 function Profile(props) {
@@ -71,34 +70,8 @@ function Profile(props) {
               public="hidePublic"
             />
           </Route>
-        <Route path='/profile/myflats'>
-        {props.skeleton && <Skeleton isOpen={props.skeleton} />}
-        {!props.skeleton  && 
-           <Flats 
-           cards={newcards} 
-           onCardDelete={props.onCardDelete} 
-           onCardEdit={props.onCardEdit}  
-           onCardHide={props.onCardHide}/>
-          }
-          
-        </Route>
-        <Route path='/profile/public'>
-        {props.skeleton && <Skeleton isOpen={props.skeleton} />}
-        {!props.skeleton  && 
-          <Flats cards={newcards} onCardDelete={props.onCardDelete} onCardEdit={props.onCardEdit} 
-          onCardHide={props.onCardHide} public='public' />
-          }
-        </Route>
-        <Route path='/profile/nopublic'>
-        {props.skeleton && <Skeleton isOpen={props.skeleton} />}
-        {!props.skeleton  && 
-        <Flats cards={newcards} onCardDelete={props.onCardDelete} onCardEdit={props.onCardEdit} 
-        onCardHide={props.onCardHide} public='hidePublic' />
-        }
-        </Route>
-       
-      </div>
-    </main>
+        </div>
+      </main>
     </>
   );
 }

@@ -15,16 +15,7 @@ export const pattern = {
     badRequestErr: 'При обновлении профиля произошла ошибка.',
     internalServerErr: 'На сервере произошла ошибка.',
     emailError: 'Пользователь с таким email уже существует',
-    registrError: 'При регистрации пользователя произошла ошибка.',
-    unauthorizedErr: 'Зарегистрируйтесь или войдите в систему.',
-    cardsError: `Внутренняя ошибка сервера.Не удалось получить карточки`,
-    requestTimeout: 'Истекло время ожидания ответа на запрос',
-    forbiddenErr: 'Невозможно удалить чужую карточку',
-    cardsDeleteError: `Внутренняя ошибка сервера.Не удалось удалить карточки`,
-    userNotFound: 'Пользователь с указанным id не найден!',
-    profilrError: 'Ошибка при загрузке профиля. Попробуйте позже',
-    signoutErr: 'Не удалось выйти из системы',
-    ValidationErr: 'Переданы некорректные данные'
+    registrError: 'При регистрации пользователя произошла ошибка.'
   }
   
   
@@ -43,12 +34,10 @@ export const pattern = {
     unauthorizedErr: 401,
     forbiddenErr: 403,
     notFoundErr: 404,
-    requestTimeout: 408,
     conflictErr: 409,
     internalServerErr: 500,
     mongoErr: 11000,
   }
-
 
   export const metro = [
     'Автово',
