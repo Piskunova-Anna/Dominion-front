@@ -1,10 +1,13 @@
 import React from "react";
+import { useLocation } from "react-router-dom"; 
 
 import "./Footer.css";
 
 function Footer(props) {
+  const location = useLocation();
+  
   return (
-    <footer className="footer">
+    <footer className={`footer ${location.pathname === '/' ? 'footer__back' : ''}`}>
       <div>
         <article className="footer__block">
           <p className="footer__logo">Доминион</p>

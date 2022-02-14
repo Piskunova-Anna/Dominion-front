@@ -14,11 +14,10 @@ import AddNewFlats from "../AddCard/AddNewFlats";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import "./App.css";
 import api from "../../utils/Api";
-import SelectObject from "../AddCard/Selectobject";
+import SelectObject from "../AddCard/SelectObject";
 import NotFound from "../NotFound/NotFound";
 import FlatsList from "../Flats/FlatsList";
 import ProtectedRoute from "../ProtectedRoute";
-
 import ImageBlocks from "../Auxiliary/ImageBlocks";
 import ImagePopup from "../Auxiliary/ImagePopup";
 import Menu from "../Menu/Menu";
@@ -106,7 +105,7 @@ function tokenCheck() {
       })
       setLoggedIn(true)
       if (location.pathname === '/signin' || location.pathname === '/signup') {
-        history.push('/profile');
+        history.push('/profile/myflats');
       } else {
         history.push(location.pathname);
       }
@@ -125,7 +124,7 @@ function tokenCheck() {
           setTextsucces(res.message);
         } else if (res.succes === "ok") {
           tokenCheck();
-          history.push("/profile");
+          history.push("/profile/myflats");
           setShowModal(true);
           setIconVisual(true);
           setTextsucces(res.message);
@@ -199,7 +198,16 @@ function tokenCheck() {
 
   //функция редактирования карточки
   function handleEditCard(card) {
-    api.editCard(card._id).then(() => {});
+    api.editCard(card._id).then(() => {
+      <AddNewFlats
+      isOpen={showCardModal}
+      onClose={handlerClose}
+      title="Редактировать объект"
+      name="flats"
+      onCardData={hanldNewcard}
+      object={object}
+    />
+    });
   }
 
   //функция скрытия карточки
@@ -227,7 +235,6 @@ function tokenCheck() {
       })
       .catch((err) => console.log(`Ошибка при загрузке профиля: ${err}`));
   }
-
 
   return (
     <CurrentUserContext.Provider value={currentUser}>

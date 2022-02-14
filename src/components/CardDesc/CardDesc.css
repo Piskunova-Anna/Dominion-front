@@ -21,6 +21,7 @@
 .desc {
   max-width: 93%;
   margin: 50px auto;
+  position: relative;
 }
 
 @media screen and (min-width: 1441px) {

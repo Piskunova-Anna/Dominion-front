@@ -43,8 +43,8 @@ function Card(props) {
       : ''
       }
       <Link to={`/${props.card._id}`}>
-      <img src={props.card.image[0]} alt={props.card.adress} className="object__photo" />
-      </Link>
+      <img src={props.card.image[0]} alt={props.card.adress} className={`object__photo ${location.pathname === '/profile' || location.pathname === '/profile/myflats' || location.pathname === '/profile/public' || location.pathname === '/profile/nopublic' ? 'object__photo-item' : ''}`} />
+      
       <div className="object__about">
         <div className="object__price object__cost">{props.card.price}</div>
         <div className="object__name object_a">
@@ -66,7 +66,8 @@ function Card(props) {
           <h2 className="object__head">Описание</h2>
           <p className="object__text">{props.card.description}</p>
         </div>
-      </div>
+        </div>
+        </Link>
       
   </article>
   )
