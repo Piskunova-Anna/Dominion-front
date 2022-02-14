@@ -1,6 +1,7 @@
 import React from "react";
 import Cards from '../Cards/Cards';
 import { filtrPublic } from '../Auxiliary/auxiliary'
+import Sceleton from '../Skeleton/Skeleton'
 
 //Список для страницы квартиры
 function FlatsList(props) {
@@ -17,7 +18,7 @@ function FlatsList(props) {
         {cards.map((card)=> (
         <Cards card={card} 
         onCardDelete={props.onCardDelete} 
-        onCardEdit={props.handleEditCard} 
+        onCardEdit={props.onCardEdit} 
         onCardHide={props.handleHideCard} 
         key={card._id}/>
       ))}

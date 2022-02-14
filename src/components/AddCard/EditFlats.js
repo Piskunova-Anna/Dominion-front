@@ -1,4 +1,4 @@
-//Компонент модального окна для добавления квартир
+//Компонент модального окна для редактирования квартир
 
 import React, { useRef} from 'react';
 import './AddNewFlats.css';
@@ -8,10 +8,12 @@ import {SelectedMetro} from './SelectedMetro'
 import SceletonImage from './SceletonImage'
 import {pattern} from '../../utils/constants';
 
-function AddNewFlats(props) {
+function EditFlats(props) {
+  const editCardData = props.card
   const { 
     values, 
     handleChange,
+    setValues,
     resetForm,
     isValid,
     floorError,
@@ -24,7 +26,6 @@ function AddNewFlats(props) {
   const form = useRef()
   const [imageBlob, setImageBlob] = React.useState([]);
   let copy = Object.assign([], imageBlob);
-  const object= props.object;
   const submitDisabled = 
     values.rooms === undefined || values.rooms === '' ||  
     values.totalArea === undefined || values.totalArea === '' || 
@@ -38,12 +39,32 @@ function AddNewFlats(props) {
     values.floor === undefined || values.floor === '' || 
     values.kadastr === undefined ||  values.kadastr === '' ||
     selectedImage === 0 ||
-    !isValid;
-
-    React.useEffect(()=> {
+     !isValid;
+    
+     React.useEffect(()=> {
       resetForm()
       setSelectedImage({})
-    },  [props.isOpen, setSelectedImage, resetForm])
+      if(editCardData) {
+        setValues({
+          rooms: editCardData.rooms,
+          totalArea: editCardData.totalarea,
+          kitchenArea: editCardData.kitchenarea,
+          adress: editCardData.adress,
+          district: editCardData.district,
+          metro: editCardData.metro,
+          info: editCardData.description,
+          price: editCardData.price,
+          transaction: editCardData.transaction,
+          floor: editCardData.floor,
+          kadastr: editCardData.cadastre,
+          elevator: editCardData.elevator,
+          balcony: editCardData.balcony,
+          repair: editCardData.repair,
+          id: editCardData._id
+        })
+        setImageBlob(editCardData.image)  
+      }
+    },  [props.isOpen, setValues, setSelectedImage, resetForm, editCardData])
     
     //форматирование фотографий для бэка
   function  uploadImage(e) {
@@ -62,12 +83,13 @@ function AddNewFlats(props) {
     setImageBlob(copy)
   }
  
+  
   function handleSubmit(event) {
     event.preventDefault();
-    props.onCardData({
-      values, 
-      imageBlob, 
-      object
+    props.onEditCard({
+        values, 
+        imageBlob,
+        id: editCardData._id
     })
   } 
 
@@ -85,7 +107,7 @@ function AddNewFlats(props) {
     <div className={`popup popup__type_${props.name} ${props.isOpen ? ('popup_opened') : ''}`} >
     <div className={`popup__container popup__container__type_${props.name}`}>
       <button onClick={props.onClose} type="button" className={`popup__close popup__close_type_${props.name}`} aria-label="Закрыть форму"></button>
-      <h2 className="popup__title">Добавить новый объект</h2>
+      <h2 className="popup__title">Редактировать объект</h2>
       <form ref={form} className="add-form"  onSubmit={handleSubmit} encType="multipart/form-data" name="fileinfo">
         <div className="add-form__modul">
           <div className="add-form__modul_class"> 
@@ -172,12 +194,13 @@ function AddNewFlats(props) {
               <input type="text" pattern={pattern.commission} value={values.commission || ''} onChange={handleChange} placeholder='Введите вознаграждение(необязательное)' className="modal__item add-form__item_type_commission" name="commission" id="commission"/>
             </fieldset>
             <fieldset className="add-form_type_image">
-              <SceletonImage selectedImage={selectedImage} isOpen={props.isOpen} imageBlob={imageBlob} onChange={uploadImage} />
+              <SceletonImage selectedImage={selectedImage} isOpen={props.isOpen} imageBlob={imageBlob} editCardData={editCardData && editCardData} onChange={uploadImage} />
             </fieldset>
           </div>
         </div>
-      
+       <div className='button__row'>
         <button className={`add-form__button  ${submitDisabled ? ('add-form__button_disabled') : 'element__link'}`} type="submit" disabled={submitDisabled ? true : ''} aria-label='Сохранить'>Сохранить</button>
+        
         {values.rooms === undefined && <span className="email-error add-form__item-error">Заполните количество комнат</span>}
         {values.totalArea === undefined && <span className="email-error add-form__item-error">Заполните площадь объекта</span>}
         {values.kitchenArea === undefined && <span className="email-error add-form__item-error">Заполните площадь кухни</span>}
@@ -189,12 +212,15 @@ function AddNewFlats(props) {
         {values.transaction === undefined && <span className="email-error add-form__item-error">Выберите тип сделки</span>}
         {values.kadastr === undefined && <span className="email-error add-form__item-error">Заполните кадастровый номер</span>}
         {values.floor === undefined && <span className="email-error add-form__item-error">Заполните этаж</span>}
-        {Object.keys(selectedImage).length === 0 && <span className="email-error add-form__item-error">Добавьте фотографию</span>}
-        
+        {!editCardData 
+        ? Object.keys(selectedImage).length === 0 && <span className="email-error add-form__item-error">Добавьте фотографию</span>
+        : <button className="add-form__button element__link" type="button" onClick={props.onClose} aria-label='Отменить'>Отменить</button>
+        }
+        </div>
       </form>
     </div>
     </div>
   )
 }
 
-export default AddNewFlats;
+export default EditFlats;

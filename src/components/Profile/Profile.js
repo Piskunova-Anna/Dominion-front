@@ -5,14 +5,15 @@ import Flats from '../Flats/Flats.js'
 import { CurrentUserContext } from '../../contexts/CurrentUserContext.js';
 import CurrentCards from '../Auxiliary/auxiliary'
 import ConfirmList from "../Confirm/ConfirmList";
+import Skeleton from '../Skeleton/Skeleton';
 
 //Страничка профиля
 function Profile(props) {
-  
   const currentUser = React.useContext(CurrentUserContext);
   const [userCards, setUserCards] = React.useState(CurrentCards(props.cards))
   const newcards = userCards.length !==0 ? userCards : CurrentCards(props.cards)
   
+
   return (
     <>
     <main className = "profile">
@@ -36,19 +37,29 @@ function Profile(props) {
             users={props.users} />
           </Route>
         <Route path='/profile/myflats'>
-          <Flats 
-          cards={newcards} 
-          onCardDelete={props.onCardDelete} 
-          onCardEdit={props.handleEditCard} 
-          onCardHide={props.onCardHide}/>
+        {props.skeleton && <Skeleton isOpen={props.skeleton} />}
+        {!props.skeleton  && 
+           <Flats 
+           cards={newcards} 
+           onCardDelete={props.onCardDelete} 
+           onCardEdit={props.onCardEdit}  
+           onCardHide={props.onCardHide}/>
+          }
+          
         </Route>
         <Route path='/profile/public'>
-          <Flats cards={newcards} onCardDelete={props.onCardDelete} onCardEdit={props.handleEditCard} 
+        {props.skeleton && <Skeleton isOpen={props.skeleton} />}
+        {!props.skeleton  && 
+          <Flats cards={newcards} onCardDelete={props.onCardDelete} onCardEdit={props.onCardEdit} 
           onCardHide={props.onCardHide} public='public' />
+          }
         </Route>
         <Route path='/profile/nopublic'>
-          <Flats cards={newcards} onCardDelete={props.onCardDelete} onCardEdit={props.handleEditCard} 
-          onCardHide={props.onCardHide} public='hidePublic' />
+        {props.skeleton && <Skeleton isOpen={props.skeleton} />}
+        {!props.skeleton  && 
+        <Flats cards={newcards} onCardDelete={props.onCardDelete} onCardEdit={props.onCardEdit} 
+        onCardHide={props.onCardHide} public='hidePublic' />
+        }
         </Route>
        
       </div>

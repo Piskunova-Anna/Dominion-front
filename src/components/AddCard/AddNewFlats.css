@@ -21,6 +21,10 @@
   height: 50px;
 }
 
+.add-form__item-error {
+  color: red;
+}
+
 .add-form {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -199,6 +203,26 @@
           box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.35);
 }
 
+.button__column {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.button__row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
 .add-form__button_disabled {
   background: #c6c7cc;
 }
@@ -261,12 +285,5 @@
   .popup__container_type_object {
     width: 250px;
   }
-}
-
-.add-form__type_rooms {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
 }
 /*# sourceMappingURL=AddNewFlats.css.map */

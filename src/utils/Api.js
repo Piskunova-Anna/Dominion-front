@@ -52,12 +52,34 @@ class Api {
     })
   }
 
-  editCard(id) {
-    return fetch(`${this._address}/profile/cards/${id}`, {
-      method: 'PATCH',
-      headers: this.headers,
 
+  editCard(data) {
+    return fetch(`${this._address}/profile/cards/${data.id}`, {
+      method: 'PATCH',
+      headers: this._headers,
+      credentials: "include",
+      body: JSON.stringify({
+        name: 'Квартира',
+        image: data.imageBlob,
+        description: data.values.info,
+        price: data.values.price,
+        adress: data.values.adress,
+        transaction: data.values.transaction,
+        floor: data.values.floor,
+        rooms: data.values.rooms,
+        cadastre: data.values.kadastr,
+        balcony: data.values.balcony,
+        elevator: data.values.elevator,
+        repair: data.values.repair,
+        metro: data.values.metro,
+        totalarea: data.values.totalArea,
+        kitchenarea: data.values.kitchenArea,
+        district: data.values.district,
+        commission: data.values.commission,
+        active: true,
+      })
     })
+    .then(this._getResponseData)
   }
 
 //Скрытие карточек
@@ -78,23 +100,23 @@ class Api {
       headers: this._headers,
       credentials: 'include',
       body: JSON.stringify({
-        name: data[2],
-        image: data[1],
-        description: data[0].info,
-        price: data[0].price,
-        adress: data[0].adress,
-        transaction: data[0].transaction,
-        floor: data[0].floor,
-        rooms: data[0].rooms,
-        cadastre: data[0].kadastr,
-        balcony: data[0].balcony,
-        elevator: data[0].elevator,
-        repair: data[0].repair,
-        metro: data[0].metro,
-        totalarea: data[0].totalArea,
-        kitchenarea: data[0].kitchenArea,
-        district: data[0].district,
-        commission: data[0].commission,
+        name: data.object,
+        image: data.imageBlob,
+        description: data.values.info,
+        price: data.values.price,
+        adress: data.values.adress,
+        transaction: data.values.transaction,
+        floor: data.values.floor,
+        rooms: data.values.rooms,
+        cadastre: data.values.kadastr,
+        balcony: data.values.balcony,
+        elevator: data.values.elevator,
+        repair: data.values.repair,
+        metro: data.values.metro,
+        totalarea: data.values.totalArea,
+        kitchenarea: data.values.kitchenArea,
+        district: data.values.district,
+        commission: data.values.commission,
         active: true,
       })
     })
