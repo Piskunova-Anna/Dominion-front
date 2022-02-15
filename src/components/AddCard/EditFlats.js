@@ -61,12 +61,14 @@ function EditFlats(props) {
           repair: editCardData.repair,
           id: editCardData._id
         })
-        setImageBlob([])   
+        setImageBlob(editCardData.image)  
       }
     },  [props.isOpen, setValues, setSelectedImage, resetForm, editCardData])
     
     //форматирование фотографий для бэка
   function  uploadImage(e) {
+    copy.length=0
+    setImageBlob([]) 
     setSelectedImage(e.target.files);
     const imgarr = Object.values(e.target.files);
     imgarr.map((item) => {
@@ -81,6 +83,8 @@ function EditFlats(props) {
     })
     setImageBlob(copy)
   }
+  console.log(imageBlob)
+  console.log(copy)
   
   function handleSubmit(event) {
     event.preventDefault();

@@ -260,8 +260,6 @@ function tokenCheck() {
   function handleEditCard2(card) {
     api.editCard(card)
     .then((updateCard) => {
-      console.log(updateCard)
-      console.log(cards)
       setCards(() => cards.map((c) => c._id === updateCard._id ? updateCard : c));
       setShowEditCard(false);
     })
