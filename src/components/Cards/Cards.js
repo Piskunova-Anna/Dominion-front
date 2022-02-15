@@ -11,7 +11,7 @@ function Card(props) {
   const location = useLocation();
   const editbutton = location.pathname === '/profile' || location.pathname === '/profile/myflats' || location.pathname === '/profile/public' ||
   location.pathname === '/profile/nopublic' ? true : false 
-  const [isActive, setIsActive] = React.useState(false)
+  const [isActive, setIsActive] = React.useState(props.card.active)
 
   //удаление карточки
   function handleDeleteClick () {

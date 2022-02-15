@@ -50,6 +50,7 @@ class Api {
       headers: this._headers,
       credentials: 'include'
     })
+    .then(this._getResponseData)
   }
 
 

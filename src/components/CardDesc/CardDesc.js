@@ -8,7 +8,7 @@ function CardDesc(props) {
   let { id } = useParams();
   let cards = props.cards;
   const card = cards.find(f => f._id === id);
-  const [cardData, setCardData] = React.useState()
+  //const [cardData, setCardData] = React.useState()
   let localData = JSON.parse(localStorage.getItem('cards'))
   const newcard = props.cards.length > 0 ? card : localData
     
@@ -20,8 +20,9 @@ function CardDesc(props) {
 
     //редактирование карточки
     function handleEditCard() {
-      props.onCardEdit(props.card)
+      props.onCardEdit(newcard)
     }
+
 
   return (
     <main className="desc">
