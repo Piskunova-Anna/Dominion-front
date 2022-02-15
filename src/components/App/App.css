@@ -42,7 +42,7 @@
   display: -ms-flexbox;
   display: flex;
   opacity: 1;
-  z-index: 1;
+  z-index: 10;
 }
 
 .popup__container {
@@ -57,6 +57,10 @@
           flex-direction: column;
   z-index: 1;
   position: relative;
+}
+
+.popup__container__type_edit {
+  height: 90%;
 }
 
 .popup__close {

@@ -10,8 +10,8 @@ import Skeleton from '../Skeleton/Skeleton';
 //Страничка профиля
 function Profile(props) {
   const currentUser = React.useContext(CurrentUserContext);
-  const [userCards, setUserCards] = React.useState(CurrentCards(props.cards));
-  const newcards = userCards.length !== 0 ? userCards : CurrentCards(props.cards);
+  //const [userCards, setUserCards] = React.useState(CurrentCards(props.cards));
+  const userCards = CurrentCards(props.cards);
   const history = useHistory();
 
   return (
@@ -54,7 +54,7 @@ function Profile(props) {
         {props.skeleton && <Skeleton isOpen={props.skeleton} />}
         {!props.skeleton  && 
            <Flats 
-           cards={newcards} 
+           cards={userCards} 
            onCardDelete={props.onCardDelete} 
            onCardEdit={props.onCardEdit}  
            onCardHide={props.onCardHide}/>
@@ -64,14 +64,14 @@ function Profile(props) {
         <Route path='/profile/public'>
         {props.skeleton && <Skeleton isOpen={props.skeleton} />}
         {!props.skeleton  && 
-          <Flats cards={newcards} onCardDelete={props.onCardDelete} onCardEdit={props.onCardEdit} 
+          <Flats cards={userCards} onCardDelete={props.onCardDelete} onCardEdit={props.onCardEdit} 
           onCardHide={props.onCardHide} public='public' />
           }
         </Route>
         <Route path='/profile/nopublic'>
         {props.skeleton && <Skeleton isOpen={props.skeleton} />}
         {!props.skeleton  && 
-        <Flats cards={newcards} onCardDelete={props.onCardDelete} onCardEdit={props.onCardEdit} 
+        <Flats cards={userCards} onCardDelete={props.onCardDelete} onCardEdit={props.onCardEdit} 
         onCardHide={props.onCardHide} public='hidePublic' />
         }
         </Route>

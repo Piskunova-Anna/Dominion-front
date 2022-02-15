@@ -26,6 +26,7 @@ function SceletonImage (props) {
         name="myImage"
         multiple="multiple"
         onChange={props.onChange}
+        onClick={props.onClick}
     />
     </>
   )

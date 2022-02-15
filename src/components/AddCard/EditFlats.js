@@ -24,7 +24,8 @@ function EditFlats(props) {
   const [selectedImage, setSelectedImage] = React.useState({});
   const form = useRef()
   const [imageBlob, setImageBlob] = React.useState([]);
-  let copy = Object.assign([], imageBlob);
+  //let copy = Object.assign([], imageBlob);
+  let copy = Array.from(imageBlob || []);
   const submitDisabled = 
     values.rooms === undefined || values.rooms === '' ||  
     values.totalArea === undefined || values.totalArea === '' || 
@@ -36,13 +37,15 @@ function EditFlats(props) {
     values.price === undefined || values.price === '' ||
     values.transaction === undefined || values.transaction === '' ||
     values.floor === undefined || values.floor === '' || 
-    values.kadastr === undefined ||  values.kadastr === '' ||
-    selectedImage === 0
+    values.kadastr === undefined ||  values.kadastr === '' || selectedImage === 0
     
     
-     React.useEffect(()=> {
-      resetForm()
-      setSelectedImage({})
+  React.useEffect(()=> {
+    resetForm()
+    setSelectedImage({})
+    setElButtonActive(false)
+    setRapButtonActive(false)
+    setBalButtonActive(false)
       if(editCardData) {
         setValues({
           rooms: editCardData.rooms,
@@ -65,10 +68,14 @@ function EditFlats(props) {
       }
     },  [props.isOpen, setValues, setSelectedImage, resetForm, editCardData])
     
+
+    function handleNewImage() {
+      copy=[];
+      setImageBlob([]);
+    }
+
     //форматирование фотографий для бэка
   function  uploadImage(e) {
-    copy.length=0
-    setImageBlob([]) 
     setSelectedImage(e.target.files);
     const imgarr = Object.values(e.target.files);
     imgarr.map((item) => {
@@ -83,8 +90,6 @@ function EditFlats(props) {
     })
     setImageBlob(copy)
   }
-  console.log(imageBlob)
-  console.log(copy)
   
   function handleSubmit(event) {
     event.preventDefault();
@@ -95,6 +100,7 @@ function EditFlats(props) {
     })
   } 
 
+  
   function handleElButtonClick() {
     setElButtonActive(!elButtonActive)
   }
@@ -184,7 +190,7 @@ function EditFlats(props) {
             </fieldset>
             <fieldset className="add-form__fieldset add-form__type_transaction">
               <h2 className="add-form__title add-form__title_transaction">Тип сделки</h2>
-              <select name="transaction" value={values.rent || ''} onChange={handleChange}>
+              <select name="transaction" value={values.transaction || ''} onChange={handleChange}>
                 <option value="none" name="none">Выберите сделку</option>
                 <option value="Продажа">Продажа</option>
                 <option value="Аренда">Аренда</option>
@@ -207,16 +213,16 @@ function EditFlats(props) {
             </fieldset>
             <fieldset className="add-form__fieldset_type_column add-form_type_commission">
               <label className="add-form__label" htmlFor="commission">Комиссионные</label>
-              <input type="text" pattern={pattern.commission} value={values.commission || ''} onChange={handleChange} placeholder='Введите вознаграждение(необязательное)' className="modal__item add-form__item_type_commission" name="commission" id="commission"/>
+              <input type="text" pattern={pattern.commission} value={values.commission || '0'} onChange={handleChange} placeholder='Введите вознаграждение(необязательное)' className="modal__item add-form__item_type_commission" name="commission" id="commission"/>
             </fieldset>
             <fieldset className="add-form_type_image">
-              <SceletonImage selectedImage={selectedImage} isOpen={props.isOpen} imageBlob={imageBlob} editCardData={editCardData && editCardData} onChange={uploadImage} />
+              <SceletonImage selectedImage={selectedImage} isOpen={props.isOpen} imageBlob={imageBlob} editCardData={editCardData && editCardData} onChange={uploadImage} onClick={handleNewImage} />
             </fieldset>
           </div>
         </div>
        <div className='button__row'>
         <button className={`add-form__button  ${submitDisabled ? ('add-form__button_disabled') : 'element__link'}`} type="submit" disabled={submitDisabled ? true : ''} aria-label='Сохранить'>Сохранить</button>
-        
+        <button className="add-form__button element__link" type="button" onClick={props.onClose} aria-label='Отменить'>Отменить</button>
         {values.rooms === undefined && <span className="email-error add-form__item-error">Заполните количество комнат</span>}
         {values.totalArea === undefined && <span className="email-error add-form__item-error">Заполните площадь объекта</span>}
         {values.kitchenArea === undefined && <span className="email-error add-form__item-error">Заполните площадь кухни</span>}
@@ -228,10 +234,8 @@ function EditFlats(props) {
         {values.transaction === undefined && <span className="email-error add-form__item-error">Выберите тип сделки</span>}
         {values.kadastr === undefined && <span className="email-error add-form__item-error">Заполните кадастровый номер</span>}
         {values.floor === undefined && <span className="email-error add-form__item-error">Заполните этаж</span>}
-        {!editCardData 
-        ? Object.keys(selectedImage).length === 0 && <span className="email-error add-form__item-error">Добавьте фотографию</span>
-        : <button className="add-form__button element__link" type="button" onClick={props.onClose} aria-label='Отменить'>Отменить</button>
-        }
+        {(imageBlob.length === 0 && Object.keys(selectedImage).length===0) && <span className="email-error add-form__item-error">Добавьте фотографию</span>}
+        
         </div>
       </form>
     </div>

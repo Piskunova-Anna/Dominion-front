@@ -150,6 +150,14 @@
           align-items: center;
   justify-items: flex-start;
   max-height: 365px;
+  list-style-type: none;
+  -webkit-margin-before: 0;
+          margin-block-start: 0;
+  -webkit-margin-after: 0;
+          margin-block-end: 0;
+  -webkit-padding-start: 0;
+          padding-inline-start: 0;
+  word-break: break-all;
 }
 
 @media screen and (max-width: 1240px) {
@@ -229,7 +237,7 @@
 
 @media screen and (max-width: 650px) {
   .object__photo {
-    height: 400px;
+    max-height: 400px;
   }
 }
 
@@ -327,24 +335,24 @@
   -ms-grid-row: 2;
   -ms-grid-row-span: 1;
   -ms-grid-column: 1;
-  -ms-grid-column-span: 1;
-  grid-area: 2/1/3/2;
+  -ms-grid-column-span: 4;
+  grid-area: 2/1/3/5;
 }
 
 .object_c {
   -ms-grid-row: 3;
   -ms-grid-row-span: 1;
   -ms-grid-column: 1;
-  -ms-grid-column-span: 1;
-  grid-area: 3/1/4/2;
+  -ms-grid-column-span: 4;
+  grid-area: 3/1/4/5;
 }
 
 .object_d {
   -ms-grid-row: 4;
   -ms-grid-row-span: 1;
   -ms-grid-column: 1;
-  -ms-grid-column-span: 1;
-  grid-area: 4/1/5/2;
+  -ms-grid-column-span: 4;
+  grid-area: 4/1/5/5;
 }
 
 .popup__edit {
@@ -363,6 +371,7 @@
   top: 5px;
   cursor: pointer;
   transition: opacity 0.3s;
+  z-index: 5;
 }
 
 .popup__edit:hover {

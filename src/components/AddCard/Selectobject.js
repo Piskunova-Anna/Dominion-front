@@ -13,7 +13,7 @@ function SelectObject (props) {
   return (
     <div className={`popup  popup__type_${props.name} ${props.isOpen ? ('popup_opened') : ''}`} >
       <div className={`popup__container popup__container_type_${props.name}`}>
-      <button onClick={props.onClose} type="button" className="popup__close card__close" aria-label="Закрыть форму"></button>
+      <button onClick={props.onClose} type="button" className="popup__close" aria-label="Закрыть форму"></button>
       <form className="add-form"  onSubmit={handleSubmit} name="objinfo">
         <fieldset className="add-form__fieldset add-form__type_select">
           <h2 className="add-form__title add-form__title_select">Тип недвижимости</h2>
