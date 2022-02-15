@@ -46,7 +46,7 @@
       margin: 50px
       display: flex
       align-self: center
-      width: 80vw
+      //width: 80vw
     @media (max-width: 750px)
       flex-direction: column
       max-width: 260px
@@ -148,6 +148,12 @@
     @media (max-width: 650px)
       font: 18px/22px
 .object__text
+  text-overflow: ellipsis
+  overflow: hidden
+  display: -webkit-box
+  width: 100%
+  -webkit-line-clamp: 5
+  -webkit-box-orient: vertical
   @extend %margin
   @extend %fontS
   word-wrap: break-word

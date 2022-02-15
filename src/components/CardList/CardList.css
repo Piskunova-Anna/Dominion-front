@@ -2,22 +2,15 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  font-size: 36px;
-  line-height: 44px;
-  margin: 0 0 20px 0;
+  font-size: 24px;
+  line-height: 36px;
+  margin: 0 0 10px 0;
 }
 
 @media screen and (max-width: 1440px) {
   .card__block {
-    font-size: 24px;
-    line-height: 1.2;
-  }
-}
-
-@media screen and (max-width: 850px) {
-  .card__block {
     font-size: 20px;
-    margin: 0 0 10px 0;
+    line-height: 26px;
   }
 }
 

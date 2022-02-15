@@ -77,6 +77,10 @@
   position: relative;
 }
 
+.desc__photo:hover {
+  cursor: pointer;
+}
+
 @media screen and (max-width: 850px) {
   .desc__photo {
     -webkit-box-align: center;
@@ -174,6 +178,10 @@
   gap: 10px;
   -ms-flex-pack: distribute;
       justify-content: space-around;
+}
+
+.desc__photo_mini:hover {
+  cursor: pointer;
 }
 
 .desc__photo_s {

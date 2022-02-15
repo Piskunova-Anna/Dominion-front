@@ -86,7 +86,6 @@
     display: flex;
     -ms-flex-item-align: center;
         align-self: center;
-    width: 80vw;
   }
 }
 
@@ -277,6 +276,12 @@
 }
 
 .object__text {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  width: 100%;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
   word-wrap: break-word;
 }
 
