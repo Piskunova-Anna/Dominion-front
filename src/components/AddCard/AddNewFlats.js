@@ -3,8 +3,9 @@
 import React, { useRef} from 'react';
 import './AddNewFlats.css';
 import {useFormValidation} from '../../utils/Validator.js';
-import {metro} from '../../utils/constants'
+import {metro, transaction} from '../../utils/constants'
 import {SelectedMetro} from './SelectedMetro'
+import {SelectedTransaction} from './SelectedTransaction'
 import SceletonImage from './SceletonImage'
 import {pattern} from '../../utils/constants';
 
@@ -21,6 +22,7 @@ function AddNewFlats(props) {
   const [repButtonActive, setRapButtonActive] = React.useState(false);
   const [balButtonActive, setBalButtonActive] = React.useState(false);
   const [selectedImage, setSelectedImage] = React.useState({});
+  const [comis, setComis] = React.useState('0');
   const form = useRef()
   const [imageBlob, setImageBlob] = React.useState([]);
   let copy = Object.assign([], imageBlob);
@@ -43,8 +45,16 @@ function AddNewFlats(props) {
     React.useEffect(()=> {
       resetForm()
       setSelectedImage({})
+      setElButtonActive(false)
+      setRapButtonActive(false)
+      setBalButtonActive(false)
     },  [props.isOpen, setSelectedImage, resetForm])
-    
+  
+    //очистка полей фоток при открытии редактирования
+    function handleNewImage() {
+      copy=[];
+      setImageBlob([]);
+    }
     //форматирование фотографий для бэка
   function  uploadImage(e) {
     setSelectedImage(e.target.files);
@@ -160,10 +170,11 @@ function AddNewFlats(props) {
             </fieldset>
             <fieldset className="add-form__fieldset add-form__type_transaction">
               <h2 className="add-form__title add-form__title_transaction">Тип сделки</h2>
-              <select name="transaction" value={values.rent || ''} onChange={handleChange}>
-                <option value="none" name="none">Выберите сделку</option>
-                <option value="Продажа">Продажа</option>
-                <option value="Аренда">Аренда</option>
+              <select name="transaction" value={values.transaction || ''} onChange={handleChange}>
+              <option value="none" name="none">Выберите сделку</option>
+                {transaction.map((item, index)=> (
+                  <SelectedTransaction item={item} key={index}/>
+                ))}
               </select>
             </fieldset>
             <fieldset className="add-form__fieldset_type_column add-form_type_kadastr">
@@ -183,10 +194,11 @@ function AddNewFlats(props) {
             </fieldset>
             <fieldset className="add-form__fieldset_type_column add-form_type_commission">
               <label className="add-form__label" htmlFor="commission">Комиссионные</label>
-              <input type="text" pattern={pattern.commission} value={values.commission || ''} onChange={handleChange} placeholder='Введите вознаграждение(необязательное)' className="modal__item add-form__item_type_commission" name="commission" id="commission"/>
+              <input type="text" value={values.commission || ''} onChange={handleChange} placeholder='Введите вознаграждение' className="modal__item add-form__item_type_commission" name="commission" id="commission"/>
+              {values.commission==='' && <span className="email-error add-form__item-error">Поле не может быть пустым</span> }
             </fieldset>
             <fieldset className="add-form_type_image">
-              <SceletonImage selectedImage={selectedImage} isOpen={props.isOpen} imageBlob={imageBlob} onChange={uploadImage} />
+              <SceletonImage selectedImage={selectedImage} isOpen={props.isOpen} imageBlob={imageBlob} onChange={uploadImage} onClick={handleNewImage} />
             </fieldset>
           </div>
         </div>
@@ -203,6 +215,7 @@ function AddNewFlats(props) {
         {values.transaction === undefined && <span className="email-error add-form__item-error">Выберите тип сделки</span>}
         {values.kadastr === undefined && <span className="email-error add-form__item-error">Заполните кадастровый номер</span>}
         {values.floor === undefined && <span className="email-error add-form__item-error">Заполните этаж</span>}
+        {values.commission === undefined &&  <span className="email-error add-form__item-error">Заполните комиссию</span> }
         {Object.keys(selectedImage).length === 0 && <span className="email-error add-form__item-error">Добавьте фотографию</span>}
         
       </form>

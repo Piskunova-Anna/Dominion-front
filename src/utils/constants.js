@@ -49,7 +49,12 @@ export const pattern = {
     mongoErr: 11000,
   }
 
-
+  export const transaction = [
+    "Покупка", 
+    "Продажа", 
+    "Аренда"
+  ]
+  
   export const metro = [
     'Автово',
 'Адмиралтейская',
@@ -118,9 +123,4 @@ export const pattern = {
 'Чернышевская',
 'Чкаловская',
 'Электросила',
-]
-
-export const transaction = [
-  "Аренда",
-  "Продажа"
 ]

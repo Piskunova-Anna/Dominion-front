@@ -15,7 +15,7 @@ import EditFlats from "../AddCard/EditFlats";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import "./App.css";
 import api from "../../utils/Api";
-import SelectObject from "../AddCard/SelectObject";
+import SelectObject from "../AddCard/Selectobject";
 import NotFound from "../NotFound/NotFound";
 import FlatsList from "../Flats/FlatsList";
 import ProtectedRoute from "../ProtectedRoute";
@@ -177,7 +177,15 @@ function tokenCheck() {
     setSkeleton(true)
     api.getCards()
       .then((cardlist) => {
-        setCards(cardlist);
+        //Сортировка карточек по дате добавления
+        const newcards = cardlist.sort(function (a, b) {
+          a = a.createdAt
+          b = b.createdAt
+          if (a < b) return 1; 
+          if (b < a) return -1;
+          return 0;
+        }); 
+        setCards(newcards);
         setSkeleton(false)
       })
       .catch((err) => {
@@ -194,7 +202,6 @@ function tokenCheck() {
   }
   //закрытие модального окна
   function handlerClose() {
-    setShowModal(false);
     setShowCardModal(false);
     setShowSelectModal(false);
     setShowImagePopup(false);
@@ -202,6 +209,9 @@ function tokenCheck() {
     setShowEditCard(false)
   }
 
+  function handlerCloseError() {
+    setShowModal(false);
+  }
   function handlerOpenAddModal() {
     setShowSelectModal(false);
     setShowCardModal(true);
@@ -210,7 +220,7 @@ function tokenCheck() {
   function handlerOpenModal() {
     setShowSelectModal(true);
   }
-  
+
   //Создание новой карточки
   function hanldNewcard(values) {
     api.createNewCard(values)
@@ -236,7 +246,7 @@ function tokenCheck() {
   function handleDeleteCard(card) {
     api.deleteCard(card._id)
       .then((card) => {
-        setCards(() => cards.filter((c) => c._id !== card._id));
+        setCards((cards)=> cards.filter((c) => c._id !== card._id));
       })
       .catch((err) => {
         if (err === authErrors.forbiddenErr) {
@@ -251,7 +261,10 @@ function tokenCheck() {
       })
   }
 
+  console.log(cards)
+  //Открытие модального окна редактирования
   function handleEditCard(card) {
+    console.log(card)
     setShowEditCard(true)
     setSelectedCardUpdate(card)
   }
@@ -260,8 +273,6 @@ function tokenCheck() {
   function handleEditCard2(card) {
     api.editCard(card)
     .then((updateCard) => {
-      console.log(updateCard)
-      console.log(cards)
       setCards(() => cards.map((c) => c._id === updateCard._id ? updateCard : c));
       setShowEditCard(false);
     })
@@ -353,7 +364,7 @@ function tokenCheck() {
           />
           
           <Route path="/:id">
-            <CardDesc onCardClick={handleImageOpenPopup} cards={cards} />
+            <CardDesc onCardEdit={handleEditCard} onCardClick={handleImageOpenPopup} cards={cards} />
           </Route>
           <Route path="*">
             <NotFound />
@@ -383,7 +394,7 @@ function tokenCheck() {
           onChange={handleChangeObject}
           name="object"
         />
-        <ModalInfo isOpen={showModal} textError={textsucces} onClose={handlerClose} icon={iconVisual} name="modal-info" />
+        <ModalInfo isOpen={showModal} textError={textsucces} onClose={handlerCloseError} icon={iconVisual} name="modal-info" />
         <ImagePopup onClose={handlerClose} name="image" card={showImagePopup !== null && showImagePopup} />
       </div>
     </CurrentUserContext.Provider>
