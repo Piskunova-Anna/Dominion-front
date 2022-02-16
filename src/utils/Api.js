@@ -126,7 +126,7 @@ class Api {
 }
 
     const api = new Api({
-      address: 'http://localhost:3002',
+      address: 'http://84.252.136.64',
       headers: {
         'Content-Type': 'application/json'
     }

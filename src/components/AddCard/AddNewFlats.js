@@ -22,7 +22,6 @@ function AddNewFlats(props) {
   const [repButtonActive, setRapButtonActive] = React.useState(false);
   const [balButtonActive, setBalButtonActive] = React.useState(false);
   const [selectedImage, setSelectedImage] = React.useState({});
-  const [comis, setComis] = React.useState('0');
   const form = useRef()
   const [imageBlob, setImageBlob] = React.useState([]);
   let copy = Object.assign([], imageBlob);

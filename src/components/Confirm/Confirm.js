@@ -4,9 +4,9 @@ import "./Confirm.css";
 
 function Confirm(props) {
   const user=props.user
-  const status=user.access ? 'Активен' : 'Не активирован'
+  const status= user.access ? 'Активен' : 'Не активирован'
   const [access, setAccess] = React.useState(false)
-console.log('nene')
+
   //Отправляем подтверждение почты на сервер
  function handleAddAccess () {
   setAccess(true)

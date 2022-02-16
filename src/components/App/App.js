@@ -261,7 +261,6 @@ function tokenCheck() {
       })
   }
 
-  console.log(cards)
   //Открытие модального окна редактирования
   function handleEditCard(card) {
     console.log(card)

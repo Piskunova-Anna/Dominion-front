@@ -6,8 +6,6 @@ import './ConfirmList.css';
 function ConfirmList(props) {
  
   const users = props.users
-  console.log(props)
-  console.log(users)
   return (
     <>
     <h2 className = "confirm__users">Пользователи</h2>
