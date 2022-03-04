@@ -1,0 +1,249 @@
+.desc, .desc__image_block, .desc__photo, .desc__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.desc__block, .desc__photo_mini {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.desc {
+  max-width: 93%;
+  margin: 50px;
+  position: relative;
+}
+
+@media screen and (min-width: 1441px) {
+  .desc {
+    max-width: 1340px;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .desc {
+    max-width: 95%;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .desc {
+    max-width: 95%;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .desc__block {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
+.desc__image_block {
+  margin-right: 40px;
+  width: 350px;
+}
+
+@media screen and (max-width: 850px) {
+  .desc__image_block {
+    margin-right: 20px;
+    width: 300px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .desc__image_block {
+    margin-right: 0;
+    width: 260px;
+  }
+}
+
+.desc__photo {
+  position: relative;
+}
+
+@media screen and (max-width: 850px) {
+  .desc__photo {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
+.popup__image {
+  max-height: 80vh;
+  margin: auto;
+  max-width: 80vw;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.desc__photo_m {
+  position: relative;
+}
+
+@media screen and (max-width: 1440px) {
+  .desc__photo_m {
+    width: 100%;
+    height: 425px;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .desc__photo_m {
+    height: 350px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .desc__photo_m {
+    width: 260px;
+    height: 335px;
+  }
+}
+
+.object__arrow {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-top: 5px solid #9d9d9d;
+  border-right: 5px solid #9d9d9d;
+  top: 50%;
+  -webkit-transition: opacity 1s linear;
+  transition: opacity 1s linear;
+  z-index: 1;
+}
+
+.object__arrow_type_mini {
+  width: 10px;
+  height: 10px;
+  border-top: 3px solid #9d9d9d;
+  border-right: 3px solid #9d9d9d;
+}
+
+.object__arrow:hover {
+  opacity: .8;
+  cursor: pointer;
+}
+
+.object__arrow_left {
+  -webkit-transform: rotate(-135deg);
+          transform: rotate(-135deg);
+  left: 15px;
+}
+
+.object__arrow_right {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  right: 15px;
+}
+
+.popup__list {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.desc__photo_mini {
+  position: relative;
+  margin-top: 45px;
+  max-width: 100%;
+  gap: 10px;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.desc__photo_s {
+  width: 30%;
+  height: 130px;
+}
+
+@media screen and (max-width: 850px) {
+  .desc__photo_s {
+    height: 110px;
+  }
+}
+
+.desc__list {
+  margin-left: 20px;
+}
+
+@media (max-width: 850px) {
+  .desc__list {
+    margin-left: 0;
+    margin-top: 15px;
+  }
+}
+
+@media (max-width: 550px) {
+  .desc__list {
+    width: 90%;
+  }
+}
+
+.desc__title {
+  font-size: 36px;
+  line-height: 1.4;
+  text-transform: capitalize;
+  font-weight: normal;
+  margin: 0 0 23px;
+}
+
+@media screen and (max-width: 550px) {
+  .desc__title {
+    font-size: 28px;
+  }
+}
+
+.desc__text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  font-size: 24px;
+  line-height: 29px;
+  font-weight: 600;
+  font-style: italic;
+  margin-top: 45px;
+  margin-bottom: 30px;
+}
+
+@media screen and (max-width: 1440px) {
+  .desc__text {
+    font-weight: 400;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 550px) {
+  .desc__text {
+    font-size: 18px;
+    line-height: 21px;
+    margin-top: 20px;
+    margin-bottom: 15px;
+  }
+}
+/*# sourceMappingURL=Card.css.map */

@@ -1,17 +1,17 @@
 import React from "react";
 import "./Profile.css";
 import { Route, Link, NavLink, useHistory } from "react-router-dom";
-import Flats from "../Flats/Flats.js";
+import Flats from "./Flats.js";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext.js";
-import CurrentCards from "../Auxiliary/auxiliary";
-import ConfirmList from "../Confirm/ConfirmList";
+import CurrentCards from "../../utils/auxiliary";
+import ConfirmList from "./Confirm/ConfirmList";
 import Skeleton from '../Skeleton/Skeleton';
-
+import SuperVisor from "./SuperVisor";
 //Страничка профиля
 function Profile(props) {
+  const mycards= props.cards.concat(props.commercial)
   const currentUser = React.useContext(CurrentUserContext);
-  //const [userCards, setUserCards] = React.useState(CurrentCards(props.cards));
-  const userCards = CurrentCards(props.cards);
+  const userCards = CurrentCards(mycards);
   const history = useHistory();
 
   return (
@@ -23,9 +23,12 @@ function Profile(props) {
               На главную
             </Link>
             <button className="profile__go-back" onClick={() => history.goBack()}>Назад</button> 
+            {currentUser.admin ?
             <Link to="/profile/confirm" className="profile__confirm">
               Подтвердить регистрацию пользователя
             </Link>
+            : ''
+            }
             <div className="profile__user">{currentUser.name}</div>
             <Link to="/signin" className="profile__exit" onClick={props.logOut}>
               Выход
@@ -47,9 +50,16 @@ function Profile(props) {
           </div>
         </div>
         <div className="profile__block">
+          {currentUser.admin &&
           <Route path="/profile/confirm">
-            <ConfirmList onUpdateUser={props.onUpdateUser} onDeleteAcces={props.onDeleteAcces} users={props.users} />
+            <ConfirmList onAdminUser={props.onAdminUser} onUpdateUser={props.onUpdateUser} onDeleteAcces={props.onDeleteAcces} users={props.users} />
           </Route>
+          }
+          {currentUser.admin &&
+           <Route path="/profile/supervisor">
+            <SuperVisor onAdminUser={props.onAdminUser} onUpdateUser={props.onUpdateUser}  onDeleteUser={props.onDeleteUser} users={props.users} />
+          </Route>
+          }
         <Route path='/profile/myflats'>
         {props.skeleton && <Skeleton isOpen={props.skeleton} />}
         {!props.skeleton  && 

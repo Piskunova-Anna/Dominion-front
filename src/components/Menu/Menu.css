@@ -22,7 +22,7 @@
 
 @media screen and (min-width: 1440px) {
   .menu__list {
-    width: 1440px;
+    width: 100%;
     margin: 0 auto;
   }
 }

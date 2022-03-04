@@ -11,11 +11,10 @@ function NavBar(props) {
       <div className="property">
         <h2 className="property_estate">Жилая недвижимость</h2>
         <ul className="property__grid">
-            
-            <Link to="rooms" target='_self' className="property__block none">Комнаты</Link>
+            <Link to="rooms" target='_self' className="property__block">Комнаты</Link>
             <Link to="flats" target="_self" className="property__block">Квартиры</Link>
-            <Link to="new-flats" target='_self' className="property__block none">Новостройки</Link>
-            <Link to="houses" target='_self' className="property__block none">Дома</Link>
+            <Link to="new-flats" target='_self' className="property__block">Новостройки</Link>
+            <Link to="houses" target='_self' className="property__block">Дома</Link>
             <Link to="plots" target='_self' className="property__block none">Участки</Link>
             <Link to="news" target='_self' className="property__block none">Новости</Link>
         </ul>

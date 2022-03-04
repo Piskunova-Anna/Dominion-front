@@ -6,22 +6,23 @@ import Landing from "../Landing/Landing";
 import Register from "../Register/Register";
 import Login from "../Login/Login";
 import Profile from "../Profile/Profile";
-import CardDesc from "../CardDesc/CardDesc";
+import Card from "../Оbjects/Card/Card";
 import * as auth from "../../utils/Auth.js";
 import { errorMessage, authErrors, succesOk } from "../../utils/constants";
 import ModalInfo from "../ModalInfo/ModalInfo";
-import AddNewFlats from "../AddCard/AddNewFlats";
+import AddNewBuilding from "../AddCard/AddNewBuilding";
 import EditFlats from "../AddCard/EditFlats";
+
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import "./App.css";
 import api from "../../utils/Api";
-import SelectObject from "../AddCard/Selectobject";
+import SelectObject from "../AddCard/SelectObject";
 import NotFound from "../NotFound/NotFound";
-import FlatsList from "../Flats/FlatsList";
+import ObjectList from "../Оbjects/ObjectList";
 import ProtectedRoute from "../ProtectedRoute";
 import Skeleton from '../Skeleton/Skeleton';
 //import ImageBlocks from "../Auxiliary/ImageBlocks";
-import ImagePopup from "../Auxiliary/ImagePopup";
+import ImagePopup from "../Оbjects/Card/ImagePopup";
 import Menu from "../Menu/Menu";
 
 function App() {
@@ -30,22 +31,23 @@ function App() {
   const location = useLocation();
   const [showImagePopup,setShowImagePopup] = React.useState('');
   const [currentUser, setCurrentUser] = React.useState({});
-  //const [upDateUser, setUpDateUser] = React.useState({});
   const [showModal, setShowModal] = React.useState(false);
   const [iconVisual, setIconVisual] = React.useState(false);
   const [textsucces, setTextsucces] = React.useState("");
   const [users, setUsers] = React.useState([]);
   const [cards, setCards] = React.useState([]);
+  const [commercial, setCommercial] = React.useState([]);
   const [showCardModal,setShowCardModal] = React.useState(false);
   const [showEditCard,setShowEditCard] = React.useState(false);
   const [showSelectModal,setShowSelectModal] = React.useState(false);
   const [object, setObject ] = React.useState('') 
   const [skeleton, setSkeleton] =  React.useState(false);
   const [selectedCardUpdate, setSelectedCardUpdate] = React.useState(false)
+ 
   //Получение данных пользователя с сервера
   React.useEffect(() => {
     if (loggedIn) {
-      Promise.all([api.getUsers(), auth.getContent()])
+      Promise.all([api.getUsers(), auth.getCurrent()])
         .then(([userData, currentUser]) => {
           setUsers(userData);
           setCurrentUser({
@@ -69,16 +71,17 @@ function App() {
             setIconVisual(false);
             setTextsucces(errorMessage.internalServerErr);
           }
-        })
+      })
     }
   }, [loggedIn]);
 
-  //Получение токена при какждом мониторовании
+  //Получение токена при каждом мониторовании
   React.useEffect(() => {
     getCards()
     tokenCheck()
   }, []);
 
+  
   //Регистрация пользователя
   function onRegister(name, email, surname, phone, agency, password) {
     auth.register(name, email, surname, phone, agency, password)
@@ -103,7 +106,7 @@ function App() {
 
 //Получение данных пользователя, email
 function tokenCheck() {
-  auth.getContent()
+  auth.getCurrent()
   .then((res) => {
     if(res){
       setCurrentUser({
@@ -171,21 +174,26 @@ function tokenCheck() {
           setTextsucces(errorMessage.signoutErr);
       })
   }
+  //Сортировка карточек по дате добавления
+  function newcards(cards) {
+    const newCards = cards.sort(function (a, b) {
+    a = a.createdAt
+    b = b.createdAt
+    if (a < b) return 1; 
+    if (b < a) return -1;
+    return 0;
 
+  })
+  return newCards
+}
+  
   //Запрос на получение всех карточек с сервера
   function getCards() {
     setSkeleton(true)
-    api.getCards()
-      .then((cardlist) => {
-        //Сортировка карточек по дате добавления
-        const newcards = cardlist.sort(function (a, b) {
-          a = a.createdAt
-          b = b.createdAt
-          if (a < b) return 1; 
-          if (b < a) return -1;
-          return 0;
-        }); 
-        setCards(newcards);
+    Promise.all([api.getCards(), api.getCommercialCards()])
+    .then(([cardList, commercialList]) => {
+        setCards(newcards(cardList));
+        setCommercial(newcards(commercialList))
         setSkeleton(false)
       })
       .catch((err) => {
@@ -212,9 +220,13 @@ function tokenCheck() {
   function handlerCloseError() {
     setShowModal(false);
   }
-  function handlerOpenAddModal() {
+  
+  function handlerOpenAddModal(object) {
+    setObject(object)
     setShowSelectModal(false);
     setShowCardModal(true);
+   
+    
   }
 
   function handlerOpenModal() {
@@ -263,7 +275,7 @@ function tokenCheck() {
 
   //Открытие модального окна редактирования
   function handleEditCard(card) {
-    console.log(card)
+    setObject(card.name)
     setShowEditCard(true)
     setSelectedCardUpdate(card)
   }
@@ -324,6 +336,44 @@ function tokenCheck() {
       })
   }
 
+   //удаление юзера
+   function handlerDeleteUser(user) {
+    api.deleteUser(user._id)
+      .then(() => {
+        setUsers((state)=> state.filter((c) => c._id !== user._id));
+      })
+      .catch((err) => {
+        if (err === authErrors.notFoundErr) {
+          setIconVisual(false);
+          setShowModal(true);
+          setTextsucces(errorMessage.userNotFound);
+        } else {
+          setIconVisual(false);
+          setShowModal(true);
+          setTextsucces(errorMessage.internalServerErr);
+        }
+      })
+  }
+
+   //Изменение права доступа админа
+   function handlerUserAdmin(data) {
+    api.editAdmin(data.admin, data.user._id)
+      .then((UpdateUser) => {
+        setUsers((state) => state.map((c) => (c._id === data.user._id ? UpdateUser : c)));
+      })
+      .catch((err) => {
+        if (err === authErrors.notFoundErr) {
+          setIconVisual(false);
+          setShowModal(true);
+          setTextsucces(errorMessage.userNotFound);
+        } else {
+          setIconVisual(false);
+          setShowModal(true);
+          setTextsucces(errorMessage.internalServerErr);
+        }
+      })
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
@@ -343,7 +393,28 @@ function tokenCheck() {
           {skeleton && <Skeleton isOpen={skeleton} />}
            
           {!skeleton  && 
-            <FlatsList cards={cards}  />
+            <ObjectList cards={cards} type='Квартира' />
+          }
+          </Route>
+          <Route path="/new-flats">
+          {skeleton && <Skeleton isOpen={skeleton} />}
+           
+          {!skeleton  && 
+            <ObjectList cards={cards} type='Новостройка'  />
+          }
+          </Route>
+          <Route path="/rooms">
+          {skeleton && <Skeleton isOpen={skeleton} />}
+           
+          {!skeleton  && 
+            <ObjectList cards={cards} type='Комната'  />
+          }
+          </Route>
+          <Route path="/houses">
+          {skeleton && <Skeleton isOpen={skeleton} />}
+           
+          {!skeleton  && 
+            <ObjectList cards={cards} type='Дом'  />
           }
           </Route>
           <ProtectedRoute
@@ -351,6 +422,7 @@ function tokenCheck() {
             component={Profile}
             loggedIn={loggedIn}
             cards={cards}
+            commercial={commercial}
             users={users}
             logOut={onSignOut}
             onCardEdit={handleEditCard} 
@@ -358,25 +430,18 @@ function tokenCheck() {
             onCardDelete={handleDeleteCard}
             onClick={handlerOpenModal}
             onUpdateUser={handlerUserActive}
-            onDeleteAcces={handlerUserActive}
+            onDeleteUser={handlerDeleteUser}
+            onAdminUser={handlerUserAdmin}
             skeleton={skeleton}
           />
-          
           <Route path="/:id">
-            <CardDesc onCardEdit={handleEditCard} onCardClick={handleImageOpenPopup} cards={cards} />
+            <Card onCardEdit={handleEditCard} onCardClick={handleImageOpenPopup} cards={cards} commercial={commercial}/>
           </Route>
           <Route path="*">
             <NotFound />
           </Route>
         </Switch>
         <Footer />
-        <AddNewFlats
-          isOpen={showCardModal}
-          onClose={handlerClose}
-          name="flats"
-          onCardData={hanldNewcard}
-          object={object}
-        />
         <EditFlats
           isOpen={showEditCard}
           onEditCard={handleEditCard2}
@@ -392,6 +457,12 @@ function tokenCheck() {
           object={object}
           onChange={handleChangeObject}
           name="object"
+        />
+        <AddNewBuilding
+          isOpen={showCardModal}
+          onClose={handlerClose}
+          onCardData={hanldNewcard}
+          object={object}
         />
         <ModalInfo isOpen={showModal} textError={textsucces} onClose={handlerCloseError} icon={iconVisual} name="modal-info" />
         <ImagePopup onClose={handlerClose} name="image" card={showImagePopup !== null && showImagePopup} />

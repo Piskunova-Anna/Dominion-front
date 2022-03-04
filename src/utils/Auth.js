@@ -1,5 +1,5 @@
-export const BASE_URL = 'http://84.252.136.64';
-
+export const BASE_URL = 'https://api.dominion-spb.ru';
+//export const BASE_URL = 'http://localhost:3002';
 const getResponsData = (res)=> {
     if(res.ok) {
       return res.json()
@@ -33,7 +33,7 @@ const getResponsData = (res)=> {
     .then(getResponsData);
   }; 
 
-  export const getContent = () => {
+  export const getCurrent = () => {
     return fetch(`${BASE_URL}/users/me`, {
       method: 'GET',
       headers: {

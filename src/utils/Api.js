@@ -34,7 +34,6 @@ class Api {
 
   //Изменение прав доступа для юзера
   editContent (access, userId) {
-    console.log(access)
     return fetch(`${this._address}/users/${userId}`, {
       method: 'PATCH',
       headers: this._headers,
@@ -44,6 +43,29 @@ class Api {
     .then(this._getResponseData)
   }
 
+  //Удаление юзера
+  deleteUser (userId) {
+    console.log(userId)
+    return fetch(`${this._address}/users/me/admin/${userId}`, {
+      method: 'DELETE',
+      headers: this._headers,
+      credentials: "include",
+    })
+    .then(this._getResponseData)
+  }
+
+   //Добавление админа
+   editAdmin (admin, userId) {
+    return fetch(`${this._address}/users/me/admin/${userId}`, {
+      method: 'PATCH',
+      headers: this._headers,
+      credentials: "include",
+      body: JSON.stringify({admin})
+    })
+    .then(this._getResponseData)
+  }
+
+  //Удаление карточки
   deleteCard(id) {
     return fetch(`${this._address}/profile/cards/${id}`, {
       method: 'DELETE',
@@ -53,15 +75,17 @@ class Api {
     .then(this._getResponseData)
   }
 
-
+// Редактирование карточки
   editCard(data) {
     return fetch(`${this._address}/profile/cards/${data.id}`, {
       method: 'PATCH',
       headers: this._headers,
       credentials: "include",
       body: JSON.stringify({
-        name: 'Квартира',
+        name: data.object,
         image: data.imageBlob,
+        deadline: data.values.deadline,
+        roomarea: data.values.roomarea,
         description: data.values.info,
         price: data.values.price,
         adress: data.values.adress,
@@ -103,6 +127,11 @@ class Api {
       body: JSON.stringify({
         name: data.object,
         image: data.imageBlob,
+        deadline: data.values.deadline,
+        plotarea: data.values.plotarea,
+        jurstatus: data.values.jurstatus,
+        material: data.values.material,
+        roomarea: data.values.roomarea,
         description: data.values.info,
         price: data.values.price,
         adress: data.values.adress,
@@ -122,11 +151,89 @@ class Api {
       })
     })
     .then(this._getResponseData)
-  }   
+  }  
+
+
+  //Коммерческая недвижимость
+//получение коммерческой недвижимости
+  getCommercialCards () {
+    return fetch(`${this._address}/commercial`, {
+      method: 'GET',
+      headers: this._headers,
+      credentials: 'include',
+    })
+    .then(this._getResponseData)
+  }
+
+  //Создание коммерческой недвижимости
+  createCommercialCards (data) {
+    return fetch(`${this._address}/profile/commercial`, {
+      method: 'POST',
+      headers: this._headers,
+      credentials: 'include',
+      body: JSON.stringify({
+        name: data.object,
+        image: data.imageBlob,
+        access: data.values.access,
+        infrastructure: data.values.infrastructure,
+        description: data.values.info,
+        price: data.values.price,
+        adress: data.values.adress,
+        transaction: data.values.transaction,
+        floor: data.values.floor,
+        parking: data.values.balcony,
+        metro: data.values.metro,
+        totalarea: data.values.totalArea,
+        entrance: data.values.entrance,
+        commission: data.values.commission,
+        active: true,
+      })
+    })
+    .then(this._getResponseData)
+  }  
+
+  // Редактирование коммерческой недвижимости
+  editCommercialCards(data) {
+    return fetch(`${this._address}/profile/cards/${data.id}`, {
+      method: 'PATCH',
+      headers: this._headers,
+      credentials: "include",
+      body: JSON.stringify({
+        name: data.object,
+        image: data.imageBlob,
+        access: data.values.access,
+        infrastructure: data.values.infrastructure,
+        description: data.values.info,
+        price: data.values.price,
+        adress: data.values.adress,
+        transaction: data.values.transaction,
+        floor: data.values.floor,
+        parking: data.values.balcony,
+        metro: data.values.metro,
+        totalarea: data.values.totalArea,
+        entrance: data.values.entrance,
+        commission: data.values.commission,
+        active: true,
+      })
+    })
+    .then(this._getResponseData)
+  }
+
+  //Удаление коммерческой недвижимости
+  deleteCommercialCards(id) {
+    return fetch(`${this._address}/profile/commercial/${id}`, {
+      method: 'DELETE',
+      headers: this._headers,
+      credentials: 'include'
+    })
+    .then(this._getResponseData)
+  }
 }
 
+
     const api = new Api({
-      address: 'http://84.252.136.64',
+      address: 'https://api.dominion-spb.ru',
+      //address: 'http://localhost:3002',
       headers: {
         'Content-Type': 'application/json'
     }

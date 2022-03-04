@@ -1,0 +1,121 @@
+.confirm__card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  position: relative;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: -webkit-fill-available;
+}
+
+@media screen and (max-width: 850px) {
+  .confirm__card {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    width: 100%;
+    border: 3px solid rgba(251, 207, 207, 0.8);
+    margin-bottom: 20px;
+    border-radius: 5px;
+  }
+  .confirm__card div {
+    width: 100%;
+  }
+}
+
+.confirm__card div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.confirm__admin_active {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  color: red;
+  font-weight: 900;
+}
+
+.confirm__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font: 18px/24px Cormorant;
+  background-color: rgba(255, 232, 124, 0.8);
+  margin: 10px;
+  border-radius: 5px;
+  padding: 0 5px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-height: 40px;
+  width: -webkit-fill-available;
+}
+
+@media screen and (max-width: 1024px) {
+  .confirm__item {
+    font: 14px/19px Cormorant;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .confirm__item {
+    min-height: 30px;
+  }
+}
+
+.confirm__item_active {
+  background-color: rgba(106, 251, 146, 0.8);
+}
+
+.confirm__item_inactive {
+  background-color: rgba(182, 182, 180, 0.8);
+}
+
+.confirm__button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  background-color: transparent;
+  margin: 0 5px;
+  border: none;
+  padding: 0 2px;
+  width: 60px;
+  height: 60px;
+  -ms-flex-item-align: center;
+      align-self: center;
+}
+
+@media screen and (max-width: 850px) {
+  .confirm__button {
+    width: 100%;
+  }
+}
+
+.confirm__ok {
+  background: url("../../../images/zelenayagaloshka.svg") no-repeat center;
+}
+
+.confirm__no {
+  background: url("../../../images/krasniykrestik.svg") no-repeat center;
+}
+
+.confirm__ok-no_active {
+  display: none;
+}
+/*# sourceMappingURL=Confirm.css.map */

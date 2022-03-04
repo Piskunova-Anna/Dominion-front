@@ -39,7 +39,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  margin: 15px 50px 15px 60px;
+  margin: 15px 50px 15px;
   font-size: 24px;
   line-height: 29px;
   font-style: italic;
