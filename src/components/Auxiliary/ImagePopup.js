@@ -1,5 +1,5 @@
 import React from 'react';
-import "../CardDesc/CardDesc.css";
+import "../Card/Card.css";
 
 function ImagePopup(props) {
   

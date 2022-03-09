@@ -6,7 +6,7 @@ import Landing from "../Landing/Landing";
 import Register from "../Register/Register";
 import Login from "../Login/Login";
 import Profile from "../Profile/Profile";
-import CardDesc from "../CardDesc/CardDesc";
+import CardDesc from "../Card/CardDesc";
 import * as auth from "../../utils/Auth.js";
 import { errorMessage, authErrors, succesOk } from "../../utils/constants";
 import ModalInfo from "../ModalInfo/ModalInfo";
@@ -15,7 +15,7 @@ import EditFlats from "../AddCard/EditFlats";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import "./App.css";
 import api from "../../utils/Api";
-import SelectObject from "../AddCard/Selectobject";
+import SelectObject from "../AddCard/SelectObject";
 import NotFound from "../NotFound/NotFound";
 import FlatsList from "../Flats/FlatsList";
 import ProtectedRoute from "../ProtectedRoute";
@@ -347,6 +347,56 @@ function tokenCheck() {
             <FlatsList cards={cards}  />
           }
           </Route>
+          <Route path="/rooms">
+          {skeleton && <Skeleton isOpen={skeleton} />}
+           
+          {!skeleton  && 
+            <FlatsList cards={cards}  />
+          }
+          </Route>  
+          <Route path="/new-flats">
+          {skeleton && <Skeleton isOpen={skeleton} />}
+           
+          {!skeleton  && 
+            <FlatsList cards={cards}  />
+          }
+          </Route>
+          <Route path="/houses">
+          {skeleton && <Skeleton isOpen={skeleton} />}
+           
+          {!skeleton  && 
+            <FlatsList cards={cards}  />
+          }
+          </Route>
+          <Route path="/plots">
+          {skeleton && <Skeleton isOpen={skeleton} />}
+           
+          {!skeleton  && 
+            <FlatsList cards={cards}  />
+          }
+          </Route>
+          <Route path="/news"></Route>
+          <Route path="/ofices">
+          {skeleton && <Skeleton isOpen={skeleton} />}
+           
+          {!skeleton  && 
+            <FlatsList cards={cards}  />
+          }
+          </Route>
+          <Route path="/earth">
+          {skeleton && <Skeleton isOpen={skeleton} />}
+           
+          {!skeleton  && 
+            <FlatsList cards={cards}  />
+          }
+          </Route>
+          <Route path="/buildings">
+          {skeleton && <Skeleton isOpen={skeleton} />}
+           
+          {!skeleton  && 
+            <FlatsList cards={cards}  />
+          }
+          </Route>        
           <ProtectedRoute
             path="/profile"
             component={Profile}
