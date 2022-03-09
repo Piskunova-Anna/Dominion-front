@@ -1,5 +1,5 @@
 import React from "react";
-import "../CardDesc/CardDesc.css";
+import "../Card/Card.css";
 import {ImageItem} from './ImageItem'
 
 function ImageBlocks(props) {
