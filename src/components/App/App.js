@@ -6,18 +6,18 @@ import Landing from "../Landing/Landing";
 import Register from "../Register/Register";
 import Login from "../Login/Login";
 import Profile from "../Profile/Profile";
-import CardDesc from "../Card/CardDesc";
+import Card from "../Card/Card";
 import * as auth from "../../utils/Auth.js";
 import { errorMessage, authErrors, succesOk } from "../../utils/constants";
 import ModalInfo from "../ModalInfo/ModalInfo";
-import AddNewFlats from "../AddCard/AddNewFlats";
+import AddNewObject from "../AddCard/AddNewObject";
 import EditFlats from "../AddCard/EditFlats";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import "./App.css";
 import api from "../../utils/Api";
 import SelectObject from "../AddCard/SelectObject";
 import NotFound from "../NotFound/NotFound";
-import FlatsList from "../Flats/FlatsList";
+import ObjectList from "../Flats/ObjectList";
 import ProtectedRoute from "../ProtectedRoute";
 import Skeleton from '../Skeleton/Skeleton';
 //import ImageBlocks from "../Auxiliary/ImageBlocks";
@@ -344,35 +344,35 @@ function tokenCheck() {
           {skeleton && <Skeleton isOpen={skeleton} />}
            
           {!skeleton  && 
-            <FlatsList cards={cards}  />
+            <ObjectList cards={cards}  />
           }
           </Route>
           <Route path="/rooms">
           {skeleton && <Skeleton isOpen={skeleton} />}
            
           {!skeleton  && 
-            <FlatsList cards={cards}  />
+            <ObjectList cards={cards}  />
           }
           </Route>  
           <Route path="/new-flats">
           {skeleton && <Skeleton isOpen={skeleton} />}
            
           {!skeleton  && 
-            <FlatsList cards={cards}  />
+            <ObjectList cards={cards}  />
           }
           </Route>
           <Route path="/houses">
           {skeleton && <Skeleton isOpen={skeleton} />}
            
           {!skeleton  && 
-            <FlatsList cards={cards}  />
+            <ObjectList cards={cards}  />
           }
           </Route>
           <Route path="/plots">
           {skeleton && <Skeleton isOpen={skeleton} />}
            
           {!skeleton  && 
-            <FlatsList cards={cards}  />
+            <ObjectList cards={cards}  />
           }
           </Route>
           <Route path="/news"></Route>
@@ -380,21 +380,21 @@ function tokenCheck() {
           {skeleton && <Skeleton isOpen={skeleton} />}
            
           {!skeleton  && 
-            <FlatsList cards={cards}  />
+            <ObjectList cards={cards}  />
           }
           </Route>
           <Route path="/earth">
           {skeleton && <Skeleton isOpen={skeleton} />}
            
           {!skeleton  && 
-            <FlatsList cards={cards}  />
+            <ObjectList cards={cards}  />
           }
           </Route>
           <Route path="/buildings">
           {skeleton && <Skeleton isOpen={skeleton} />}
            
           {!skeleton  && 
-            <FlatsList cards={cards}  />
+            <ObjectList cards={cards}  />
           }
           </Route>        
           <ProtectedRoute
@@ -414,14 +414,14 @@ function tokenCheck() {
           />
           
           <Route path="/:id">
-            <CardDesc onCardEdit={handleEditCard} onCardClick={handleImageOpenPopup} cards={cards} />
+            <Card onCardEdit={handleEditCard} onCardClick={handleImageOpenPopup} cards={cards} />
           </Route>
           <Route path="*">
             <NotFound />
           </Route>
         </Switch>
         <Footer />
-        <AddNewFlats
+        <AddNewObject
           isOpen={showCardModal}
           onClose={handlerClose}
           name="flats"
