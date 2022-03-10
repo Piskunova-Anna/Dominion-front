@@ -1,6 +1,6 @@
 import React from "react";
 import "./CardDesc.css";
-import CardList from "../CardList/CardList";
+import CardList from "../CardFeatures/CardList";
 import { useParams } from 'react-router-dom';
 import ImageBlocks from '../Auxiliary/ImageBlocks'
 
